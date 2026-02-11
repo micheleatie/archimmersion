@@ -22,8 +22,11 @@
 ## Assets and Behavior
 - Shared CSS/JS served from `src/assets` -> `/assets`.
 - Homepage interaction:
-  - `src/assets/js/site.js` toggles `body.is-expanded` with hysteresis (`openThreshold`/`closeThreshold`) to avoid scroll flicker loops.
+  - `src/assets/js/site.js` drives a continuous `--home-progress` CSS variable from scroll for smooth hero/section transition.
+  - `home-content-active` class gates interaction while sections are still mostly hidden.
   - Subtitle words on the homepage link directly to their own section pages.
+  - Desktop: subtitle words act as visible section headers after expansion; fallback card headings are visually hidden.
+  - Mobile: subtitle fades/collapses while per-section headings remain with each section block.
 - Carousel enhancement:
   - `src/assets/js/carousel.js`
   - preferred source: `[data-carousel]` wrapped image list

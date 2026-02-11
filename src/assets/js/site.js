@@ -5,24 +5,26 @@
     return;
   }
 
-  const openThreshold = 80;
-  const closeThreshold = 8;
+  const progressStart = 24;
+  const progressEnd = 360;
   let expanded = false;
   let ticking = false;
 
-  const setExpanded = (nextState) => {
-    expanded = nextState;
-    body.classList.toggle("is-expanded", expanded);
-  };
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
-  const evaluate = () => {
+  const setProgress = () => {
     const y = window.scrollY;
+    const raw = (y - progressStart) / (progressEnd - progressStart);
+    const progress = clamp(raw, 0, 1);
+    body.style.setProperty("--home-progress", progress.toFixed(4));
 
-    if (!expanded && y > openThreshold) {
-      setExpanded(true);
-    } else if (expanded && y < closeThreshold) {
-      setExpanded(false);
+    const nextExpanded = progress > 0.62;
+    if (nextExpanded !== expanded) {
+      expanded = nextExpanded;
+      body.classList.toggle("is-expanded", expanded);
     }
+
+    body.classList.toggle("home-content-active", progress > 0.35);
   };
 
   const onScroll = () => {
@@ -32,7 +34,7 @@
 
     ticking = true;
     window.requestAnimationFrame(() => {
-      evaluate();
+      setProgress();
       ticking = false;
     });
   };
@@ -40,9 +42,11 @@
   body.classList.add("has-home-interaction");
 
   if (window.location.hash && window.location.hash !== "#top") {
-    setExpanded(true);
+    body.style.setProperty("--home-progress", "1");
+    body.classList.add("is-expanded", "home-content-active");
+    expanded = true;
   } else {
-    evaluate();
+    setProgress();
   }
 
   window.addEventListener("scroll", onScroll, { passive: true });
