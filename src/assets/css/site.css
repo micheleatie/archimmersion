@@ -152,7 +152,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   font-size: clamp(4.2rem, 10.5vw, 10rem);
-  font-weight: 800;
+  font-weight: 500;
   letter-spacing: 0.02em;
   line-height: 0.95;
   margin: 0;
@@ -259,17 +259,21 @@ a {
   --reveal-progress: 1;
   --wordmark-fade: 1;
   --offset-progress: 0;
+  --align-progress: 1;
 }
 
 .home-page.home-landscape-motion .home-hero,
 .home-page.home-landscape-motion .hero-wordmark,
 .home-page.home-landscape-motion .wordmark-piece,
 .home-page.home-landscape-motion .subtitle,
-.home-page.home-landscape-motion .subtitle-word,
 .home-page.home-landscape-motion .sections-grid,
 .home-page.home-landscape-motion .section-card {
   transition: transform 180ms linear, opacity 180ms linear, gap 180ms linear, margin 180ms linear,
     min-height 180ms linear, max-width 180ms linear;
+}
+
+.home-page.home-landscape-motion .subtitle-word {
+  transition: none;
 }
 
 .home-page.home-landscape-motion .home-hero {
@@ -464,32 +468,33 @@ a {
 
 @media (orientation: landscape) and (min-width: 1000px) {
   .home-page.home-landscape-motion .subtitle {
-    display: grid;
-    gap: calc(0.55rem + (2.4rem * var(--spread-progress)));
-    grid-template-columns: repeat(3, max-content);
-    justify-content: space-between;
-    /* grid-template-columns: repeat(3, minmax(0, 1fr)); */
-    /* justify-content: stretch; */
-    justify-items: start;
+    display: flex;
+    gap: calc(0.4rem + (2.35rem * var(--spread-progress)));
+    justify-content: center;
     margin-bottom: calc(0.08rem + (0.35rem * var(--reveal-progress)));
     margin-top: calc(0.9rem - (0.52rem * var(--reveal-progress)));
-    width: min(100%, calc(860px + (420px * var(--spread-progress))));
   }
 
   .home-page.home-landscape-motion .subtitle-word {
+    --target-shift: 0px;
     font-size: clamp(1.55rem, calc(1.32rem + 1.15vw), 2.62rem);
-    justify-self: start;
+    display: inline-block;
     text-align: left;
-    transform: translateY(calc((1 - var(--spread-progress)) * 0.22rem));
+    transform: translateX(calc(var(--target-shift) * var(--align-progress)))
+      translateY(calc((1 - var(--spread-progress)) * 0.22rem));
   }
 
   .home-page.home-landscape-motion .sections-grid {
     gap: 0.9rem 1.85rem;
     margin-top: 0;
+    opacity: clamp(0, calc(var(--reveal-progress) * 1.35), 1);
   }
 
   .home-page.home-landscape-motion .section-card {
     gap: 0.48rem;
+    opacity: clamp(0,
+        calc((var(--reveal-progress) * 1.65) - (var(--section-index, 0) * 0.08)),
+        1);
   }
 
   .home-page.home-landscape-motion .section-blurb {
