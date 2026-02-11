@@ -5,6 +5,14 @@
   --line: #c8c8c8;
   --accent: #3e4d54;
   --content-width: min(1280px, 95vw);
+  /* Home tuning */
+  --home-footer-gap: 1rem;
+  --home-contact-top-space: 2.5rem;
+  --home-contact-bottom-space: 0.8rem;
+  --home-contact-text-width: 70ch;
+  --landscape-col-offset-2: 0.85rem;
+  --landscape-col-offset-3: 1.9rem;
+  --landscape-subtitle-rise: 0.22rem;
 }
 
 * {
@@ -72,7 +80,7 @@ a {
 .site-footer {
   border-top: 1px solid var(--line);
   color: var(--muted);
-  margin-top: 1rem;
+  margin-top: var(--home-footer-gap);
   padding: 1rem;
   text-align: center;
 }
@@ -115,14 +123,14 @@ a {
 
 .subpage-nav a[aria-current="page"] {
   color: #303335;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
 }
 
 .subpage-wordmark {
   color: #212425;
   font-size: clamp(1.7rem, 2.8vw, 2.5rem);
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 0.02em;
   line-height: 1;
   text-decoration: none;
@@ -277,8 +285,8 @@ a {
 }
 
 .home-page.home-landscape-motion .home-hero {
-  min-height: calc(63vh - (53vh * var(--reveal-progress)));
-  padding-bottom: calc(1rem - (0.55rem * var(--reveal-progress)));
+  min-height: calc(67vh - (47vh * var(--reveal-progress)));
+  padding-bottom: calc(1.3rem - (0.35rem * var(--reveal-progress)));
   padding-top: calc(2rem - (1.25rem * var(--reveal-progress)));
 }
 
@@ -289,10 +297,6 @@ a {
 .home-page.home-landscape-motion .wordmark-piece {
   transform: translate(calc(var(--dx, 0) * 1px * var(--spread-progress)),
       calc(var(--dy, 0) * 1px * var(--spread-progress))) rotate(calc(var(--dr, 0) * 1deg * var(--spread-progress)));
-}
-
-.home-page.home-landscape-motion .subtitle {
-  max-width: min(100%, calc(540px + (760px * var(--spread-progress))));
 }
 
 .home-page.home-landscape-motion .sections-grid {
@@ -307,11 +311,48 @@ a {
 }
 
 .home-page.home-landscape-motion .section-card:nth-child(2) {
-  margin-top: calc(0.85rem * var(--offset-progress));
+  margin-top: calc(var(--landscape-col-offset-2) * var(--offset-progress));
 }
 
 .home-page.home-landscape-motion .section-card:nth-child(3) {
-  margin-top: calc(1.9rem * var(--offset-progress));
+  margin-top: calc(var(--landscape-col-offset-3) * var(--offset-progress));
+}
+
+.home-contact {
+  border-top: 1px solid var(--line);
+  margin-top: var(--home-contact-top-space);
+  padding: 2.4rem 0 var(--home-contact-bottom-space);
+  text-align: center;
+}
+
+.home-contact h2 {
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.04;
+  margin: 0 0 0.7rem;
+}
+
+.home-contact p {
+  color: #4d5357;
+  font-size: clamp(1.08rem, 1.4vw, 1.38rem);
+  margin: 0 auto 1.2rem;
+  max-width: var(--home-contact-text-width);
+}
+
+.contact-button {
+  border: 1px solid #3c4347;
+  border-radius: 999px;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.55rem 1rem;
+  text-decoration: none;
+}
+
+.contact-button:hover,
+.contact-button:focus-visible {
+  background: #2e3539;
+  color: #f1f1f1;
 }
 
 .home-page.home-landscape-motion .section-heading-fallback {
@@ -472,16 +513,24 @@ a {
     gap: calc(0.4rem + (2.35rem * var(--spread-progress)));
     justify-content: center;
     margin-bottom: calc(0.08rem + (0.35rem * var(--reveal-progress)));
-    margin-top: calc(0.9rem - (0.52rem * var(--reveal-progress)));
+    margin-top: calc(0.9rem + (1.25rem * var(--spread-progress)) - (0.45rem * var(--reveal-progress)));
   }
 
   .home-page.home-landscape-motion .subtitle-word {
     --target-shift: 0px;
+    --header-follow-offset-y: 0rem;
     font-size: clamp(1.55rem, calc(1.32rem + 1.15vw), 2.62rem);
     display: inline-block;
     text-align: left;
-    transform: translateX(calc(var(--target-shift) * var(--align-progress)))
-      translateY(calc((1 - var(--spread-progress)) * 0.22rem));
+    transform: translateX(calc(var(--target-shift) * var(--align-progress))) translateY(calc((1 - var(--spread-progress)) * var(--landscape-subtitle-rise) + var(--header-follow-offset-y)));
+  }
+
+  .home-page.home-landscape-motion .subtitle-word:nth-child(2) {
+    --header-follow-offset-y: calc(var(--landscape-col-offset-2) * var(--offset-progress));
+  }
+
+  .home-page.home-landscape-motion .subtitle-word:nth-child(3) {
+    --header-follow-offset-y: calc(var(--landscape-col-offset-3) * var(--offset-progress));
   }
 
   .home-page.home-landscape-motion .sections-grid {
@@ -511,7 +560,7 @@ a {
   }
 
   .home-page.home-landscape-motion .site-main--home {
-    padding-bottom: clamp(10rem, 26vh, 18rem);
+    padding-bottom: clamp(13rem, 33vh, 23rem);
   }
 }
 
@@ -574,6 +623,11 @@ a {
 
   .subpage-topbar-spacer {
     display: none;
+  }
+
+  .home-contact {
+    margin-top: 1.6rem;
+    padding-top: 1.7rem;
   }
 }
 
