@@ -7,53 +7,51 @@ bodyClass: home-page
 <div id="top" class="top-anchor" aria-hidden="true"></div>
 
 <section class="home-hero" aria-label="Homepage intro">
-  <div class="wordmark-wrap" aria-label="Archimmersion wordmark">
-    <svg
-      class="wordmark"
-      viewBox="0 0 960 180"
-      role="img"
-      aria-labelledby="wordmark-title"
-    >
-      <title id="wordmark-title">Archimmersion</title>
-      <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">
-        Archimmersion
-      </text>
-    </svg>
-  </div>
+  <h1 class="hero-wordmark" aria-label="Archimmersion">
+    <span class="sr-only">Archimmersion</span>
+    <span class="wordmark-piece" aria-hidden="true" style="--dx:-90;--dy:-44;--dr:-16;--piece:#f21f3d">A</span>
+    <span class="wordmark-piece" aria-hidden="true" style="--dx:-70;--dy:-30;--dr:-8;--piece:#0b6f3a">r</span>
+    <span class="wordmark-piece" aria-hidden="true" style="--dx:-56;--dy:-48;--dr:-12;--piece:#ba9796">c</span>
+    <span class="wordmark-piece" aria-hidden="true" style="--dx:-36;--dy:-34;--dr:-9;--piece:#732f93">h</span>
+    <span class="wordmark-piece" aria-hidden="true" style="--dx:0;--dy:0;--dr:0;--piece:#a79879">i</span>
+    <span class="wordmark-piece" aria-hidden="true" style="--dx:18;--dy:-10;--dr:11;--piece:#97b8d4">m</span>
+    <span class="wordmark-piece" aria-hidden="true" style="--dx:30;--dy:8;--dr:8;--piece:#8b163f">m</span>
+    <span class="wordmark-piece" aria-hidden="true" style="--dx:52;--dy:22;--dr:14;--piece:#7da892">e</span>
+    <span class="wordmark-piece" aria-hidden="true" style="--dx:74;--dy:36;--dr:16;--piece:#665f22">r</span>
+    <span class="wordmark-piece" aria-hidden="true" style="--dx:90;--dy:-18;--dr:9;--piece:#9358a4">s</span>
+    <span class="wordmark-piece" aria-hidden="true" style="--dx:102;--dy:16;--dr:6;--piece:#ef7f1a">i</span>
+    <span class="wordmark-piece" aria-hidden="true" style="--dx:118;--dy:28;--dr:15;--piece:#3f3f9f">o</span>
+    <span class="wordmark-piece" aria-hidden="true" style="--dx:132;--dy:-26;--dr:13;--piece:#7fba3e">n</span>
+  </h1>
 
   <p class="subtitle" aria-label="Core areas">
-    <a class="subtitle-word" href="#design" data-expand-link="design">Design</a>
-    <a class="subtitle-word" href="#representation" data-expand-link="representation">
-      Representation
-    </a>
-    <a class="subtitle-word" href="#communication" data-expand-link="communication">
-      Communication
-    </a>
+    {% for section in collections.sections %}
+    <a class="subtitle-word" href="{{ section.url }}">{{ section.data.title }}</a>
+    {% endfor %}
   </p>
 </section>
 
 <section class="sections-grid" aria-label="Core sections">
   {% for section in collections.sections %}
   <article class="section-card" id="{{ section.data.sectionKey }}">
-    <h2>{{ section.data.title }}</h2>
+    <h2><a href="{{ section.url }}">{{ section.data.title }}</a></h2>
+
+    {% if section.data.homeBlurb %}
+    <p class="section-blurb">{{ section.data.homeBlurb }}</p>
+    {% endif %}
 
     {% if section.data.heroImage %}
-    <img
-      class="section-image"
-      src="{{ section.data.heroImage | resolvePageAsset(section.url) }}"
-      alt="{{ section.data.title }} preview"
-      loading="lazy"
-    />
-    {% else %}
-    <div
-      class="section-image section-image--placeholder"
-      role="img"
-      aria-label="Placeholder for {{ section.data.title }}"
-    ></div>
+    <a class="section-image-link" href="{{ section.url }}" aria-label="Open {{ section.data.title }} page">
+      <img
+        class="section-image"
+        src="{{ section.data.heroImage | resolvePageAsset(section.url) }}"
+        alt="{{ section.data.title }} preview"
+        loading="lazy"
+      />
+    </a>
     {% endif %}
 
     <ul class="section-links">
-      <li><a href="{{ section.url }}">Explore {{ section.data.title }}</a></li>
       {% for link in section.data.links or [] %}
       <li><a href="{{ link.url }}">{{ link.label }}</a></li>
       {% endfor %}

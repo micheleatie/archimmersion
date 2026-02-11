@@ -22,11 +22,13 @@
 ## Assets and Behavior
 - Shared CSS/JS served from `src/assets` -> `/assets`.
 - Homepage interaction:
-  - `src/assets/js/site.js` toggles `body.is-expanded` on scroll/click.
+  - `src/assets/js/site.js` toggles `body.is-expanded` with hysteresis (`openThreshold`/`closeThreshold`) to avoid scroll flicker loops.
+  - Subtitle words on the homepage link directly to their own section pages.
 - Carousel enhancement:
   - `src/assets/js/carousel.js`
   - preferred source: `[data-carousel]` wrapped image list
   - fallback source: first image list under a `Gallery` heading
+  - auto-advances until first manual navigation; supports image click for next slide and hover/focus overlay arrows
 - No JS fallback remains readable (stacked images/text).
 
 ## Editing Workflow

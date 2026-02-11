@@ -4,12 +4,15 @@ title: Representation
 sectionKey: representation
 order: 2
 heroImage: ./img/cover.svg
+homeBlurb: Representation translates ideas into visuals that stakeholders can trust.
 permalink: /representation/
 links:
   - label: Rendering workflows
     url: /representation/#rendering-workflows
   - label: Diagram systems
     url: /representation/#diagram-systems
+  - label: Phasing narratives
+    url: /representation/#phasing-narratives
 ---
 Representation translates ideas into visuals that stakeholders can trust.
 

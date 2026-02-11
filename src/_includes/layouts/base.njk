@@ -14,13 +14,20 @@
     <a class="skip-link" href="#main-content">Skip to content</a>
 
     {% if page.url != "/" %}
-    <header class="titlebar" aria-label="Section menu">
-      <nav class="titlebar-nav" aria-label="Homepage anchors">
-        <a href="/#design">Design</a>
-        <a href="/#representation">Representation</a>
-        <a href="/#communication">Communication</a>
-        <a href="/#top">Top</a>
-      </nav>
+    <header class="subpage-topbar" aria-label="Section menu">
+      <div class="subpage-topbar-inner">
+        <nav class="subpage-nav" aria-label="Sections">
+          <a href="/design/" {% if page.url == "/design/" %}aria-current="page"{% endif %}>Design</a>
+          <a href="/representation/" {% if page.url == "/representation/" %}aria-current="page"{% endif %}>Representation</a>
+          <a href="/communication/" {% if page.url == "/communication/" %}aria-current="page"{% endif %}>
+            Communication
+          </a>
+          <a href="/#top">Top</a>
+        </nav>
+
+        <a class="subpage-wordmark" href="/" aria-label="Archimmersion home">Archimmersion</a>
+        <span class="subpage-topbar-spacer" aria-hidden="true"></span>
+      </div>
     </header>
     {% endif %}
 

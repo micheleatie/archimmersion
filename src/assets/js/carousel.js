@@ -1,5 +1,6 @@
 (() => {
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const autoplayDelayMs = 4600;
 
   const collectFallbackGalleries = () => {
     const fallbackTargets = [];
@@ -42,6 +43,7 @@
     const root = document.createElement("section");
     root.className = "carousel";
     root.tabIndex = 0;
+    root.setAttribute("aria-roledescription", "carousel");
 
     const frame = document.createElement("div");
     frame.className = "carousel-frame";
@@ -49,23 +51,19 @@
     const image = document.createElement("img");
     image.className = "carousel-image";
     image.loading = "lazy";
-
-    const controls = document.createElement("div");
-    controls.className = "carousel-controls";
+    image.decoding = "async";
 
     const prevButton = document.createElement("button");
     prevButton.type = "button";
-    prevButton.className = "carousel-button";
+    prevButton.className = "carousel-arrow carousel-arrow--prev";
     prevButton.setAttribute("aria-label", "Previous image");
-    prevButton.textContent = "Prev";
+    prevButton.innerHTML = '<span aria-hidden="true">&#10094;</span>';
 
     const nextButton = document.createElement("button");
     nextButton.type = "button";
-    nextButton.className = "carousel-button";
+    nextButton.className = "carousel-arrow carousel-arrow--next";
     nextButton.setAttribute("aria-label", "Next image");
-    nextButton.textContent = "Next";
-
-    controls.append(prevButton, nextButton);
+    nextButton.innerHTML = '<span aria-hidden="true">&#10095;</span>';
 
     const caption = document.createElement("p");
     caption.className = "carousel-caption";
@@ -84,10 +82,20 @@
       return dot;
     });
 
-    frame.append(image, controls);
+    frame.append(image, prevButton, nextButton);
     root.append(frame, caption, dots);
 
     let currentIndex = 0;
+    let userNavigated = false;
+    let autoplayId = null;
+
+    const stopAutoplay = () => {
+      userNavigated = true;
+      if (autoplayId) {
+        window.clearInterval(autoplayId);
+        autoplayId = null;
+      }
+    };
 
     const applySlide = (index) => {
       currentIndex = (index + slides.length) % slides.length;
@@ -101,30 +109,54 @@
       });
     };
 
-    prevButton.addEventListener("click", () => applySlide(currentIndex - 1));
-    nextButton.addEventListener("click", () => applySlide(currentIndex + 1));
+    const moveBy = (offset, fromUser) => {
+      if (fromUser) {
+        stopAutoplay();
+      }
+      applySlide(currentIndex + offset);
+    };
+
+    const goTo = (index, fromUser) => {
+      if (fromUser) {
+        stopAutoplay();
+      }
+      applySlide(index);
+    };
+
+    const startAutoplay = () => {
+      if (reduceMotion || slides.length < 2 || userNavigated || autoplayId) {
+        return;
+      }
+
+      autoplayId = window.setInterval(() => {
+        applySlide(currentIndex + 1);
+      }, autoplayDelayMs);
+    };
+
+    prevButton.addEventListener("click", () => moveBy(-1, true));
+    nextButton.addEventListener("click", () => moveBy(1, true));
+
+    image.addEventListener("click", () => moveBy(1, true));
 
     dotButtons.forEach((dot, dotIndex) => {
-      dot.addEventListener("click", () => applySlide(dotIndex));
+      dot.addEventListener("click", () => goTo(dotIndex, true));
     });
 
     root.addEventListener("keydown", (event) => {
       if (event.key === "ArrowLeft") {
         event.preventDefault();
-        applySlide(currentIndex - 1);
+        moveBy(-1, true);
       }
 
       if (event.key === "ArrowRight") {
         event.preventDefault();
-        applySlide(currentIndex + 1);
+        moveBy(1, true);
       }
     });
 
-    if (!reduceMotion) {
-      image.style.transition = "opacity 220ms ease";
-    }
-
     applySlide(0);
+    startAutoplay();
+
     return root;
   };
 

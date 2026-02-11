@@ -4,12 +4,15 @@ title: Design
 sectionKey: design
 order: 1
 heroImage: ./img/cover.svg
+homeBlurb: Design turns constraints into choices people can understand and use.
 permalink: /design/
 links:
-  - label: Space planning examples
+  - label: Space planning
     url: /design/#space-planning
   - label: Material direction
     url: /design/#material-direction
+  - label: Lighting studies
+    url: /design/#lighting-studies
 ---
 Design turns constraints into choices people can understand and use.
 
