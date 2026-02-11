@@ -1,0 +1,23 @@
+{
+  "name": "archimmersion",
+  "version": "0.1.0",
+  "description": "Basic informational website scaffolded with Eleventy.",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "clean": "rm -rf _site"
+  },
+  "keywords": [
+    "11ty",
+    "eleventy",
+    "website"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "private": true,
+  "devDependencies": {
+    "@11ty/eleventy": "latest"
+  }
+}
