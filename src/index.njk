@@ -1,38 +1,63 @@
 ---
 layout: layouts/base.njk
 title: Home
-description: Learn about Archimmersion and our work.
+description: Archimmersion homepage
+bodyClass: home-page
 ---
-<section class="hero">
-  <p class="eyebrow">Welcome</p>
-  <h1>{{ site.tagline }}</h1>
-  <p>
-    We create clear and practical informational experiences for modern
-    businesses.
+<div id="top" class="top-anchor" aria-hidden="true"></div>
+
+<section class="home-hero" aria-label="Homepage intro">
+  <div class="wordmark-wrap" aria-label="Archimmersion wordmark">
+    <svg
+      class="wordmark"
+      viewBox="0 0 960 180"
+      role="img"
+      aria-labelledby="wordmark-title"
+    >
+      <title id="wordmark-title">Archimmersion</title>
+      <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle">
+        Archimmersion
+      </text>
+    </svg>
+  </div>
+
+  <p class="subtitle" aria-label="Core areas">
+    <a class="subtitle-word" href="#design" data-expand-link="design">Design</a>
+    <a class="subtitle-word" href="#representation" data-expand-link="representation">
+      Representation
+    </a>
+    <a class="subtitle-word" href="#communication" data-expand-link="communication">
+      Communication
+    </a>
   </p>
-  <a class="button" href="/contact/">Start a conversation</a>
 </section>
 
-<section class="grid">
-  <article class="card">
-    <h2>What We Do</h2>
-    <p>
-      We design and deliver concise websites that explain your services,
-      showcase your value, and help people contact you quickly.
-    </p>
+<section class="sections-grid" aria-label="Core sections">
+  {% for section in collections.sections %}
+  <article class="section-card" id="{{ section.data.sectionKey }}">
+    <h2>{{ section.data.title }}</h2>
+
+    {% if section.data.heroImage %}
+    <img
+      class="section-image"
+      src="{{ section.data.heroImage | resolvePageAsset(section.url) }}"
+      alt="{{ section.data.title }} preview"
+      loading="lazy"
+    />
+    {% else %}
+    <div
+      class="section-image section-image--placeholder"
+      role="img"
+      aria-label="Placeholder for {{ section.data.title }}"
+    ></div>
+    {% endif %}
+
+    <ul class="section-links">
+      <li><a href="{{ section.url }}">Explore {{ section.data.title }}</a></li>
+      {% for link in section.data.links or [] %}
+      <li><a href="{{ link.url }}">{{ link.label }}</a></li>
+      {% endfor %}
+    </ul>
   </article>
-  <article class="card">
-    <h2>Who It Helps</h2>
-    <p>
-      This starter setup is ideal for a small business, studio, or consultancy
-      that needs a fast, maintainable website.
-    </p>
-  </article>
-  <article class="card">
-    <h2>How It Is Built</h2>
-    <p>
-      Eleventy templates, reusable layouts, and a simple stylesheet keep this
-      project easy to extend.
-    </p>
-  </article>
+  {% endfor %}
 </section>

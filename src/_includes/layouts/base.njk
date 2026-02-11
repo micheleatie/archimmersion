@@ -8,35 +8,40 @@
       name="description"
       content="{% if description %}{{ description }}{% else %}{{ site.description }}{% endif %}"
     />
-    <link rel="stylesheet" href="/css/site.css" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
   </head>
-  <body>
+  <body class="{% if bodyClass %}{{ bodyClass }}{% endif %}">
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <header class="site-header">
-      <div class="container">
-        <a class="brand" href="/">{{ site.name }}</a>
-        <nav aria-label="Primary">
-          <ul class="nav-list">
-            {% for item in site.navigation %}
-            <li>
-              <a href="{{ item.url }}" {% if page.url == item.url %}aria-current="page"{% endif %}>
-                {{ item.label }}
-              </a>
-            </li>
-            {% endfor %}
-          </ul>
-        </nav>
-      </div>
-    </header>
 
-    <main id="main-content" class="container">
+    {% if page.url != "/" %}
+    <header class="titlebar" aria-label="Section menu">
+      <nav class="titlebar-nav" aria-label="Homepage anchors">
+        <a href="/#design">Design</a>
+        <a href="/#representation">Representation</a>
+        <a href="/#communication">Communication</a>
+        <a href="/#top">Top</a>
+      </nav>
+    </header>
+    {% endif %}
+
+    <main id="main-content" class="site-main{% if page.url == "/" %} site-main--home{% endif %}">
+      {% if page.url == "/" %}
       {{ content | safe }}
+      {% else %}
+      <article class="markdown-body">
+        <h1>{{ title }}</h1>
+        {{ content | safe }}
+      </article>
+      {% endif %}
     </main>
 
     <footer class="site-footer">
-      <div class="container">
-        <p>&copy; {{ site.year }} {{ site.name }}.</p>
-      </div>
+      <p>&copy; {{ site.year }} {{ site.name }}</p>
     </footer>
+
+    <script src="/assets/js/site.js" defer></script>
+    {% if page.url != "/" %}
+    <script src="/assets/js/carousel.js" defer></script>
+    {% endif %}
   </body>
 </html>

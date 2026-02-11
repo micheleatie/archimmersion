@@ -1,0 +1,413 @@
+:root {
+  --bg: #f6f2ea;
+  --surface: #fffdf8;
+  --text: #1b1d1b;
+  --muted: #55615f;
+  --line: #d8d1c4;
+  --accent: #0c6a57;
+  --hero-width: min(94vw, 1050px);
+  --content-width: min(1140px, 94vw);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: radial-gradient(circle at 12% 10%, #faf7ef 0%, #ece7dc 62%, #e7e2d6 100%);
+  color: var(--text);
+  font: 16px/1.5 "Avenir Next", "Segoe UI", sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+.skip-link {
+  left: -9999px;
+  position: absolute;
+  top: 0;
+}
+
+.skip-link:focus {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 0.4rem;
+  left: 1rem;
+  padding: 0.4rem 0.65rem;
+  top: 1rem;
+}
+
+.site-main {
+  margin: 0 auto;
+  max-width: var(--content-width);
+  min-height: calc(100vh - 6rem);
+  padding: 2rem 1rem 4rem;
+}
+
+.site-main--home {
+  padding-top: 0.8rem;
+}
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  margin-top: 2rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.titlebar {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 252, 246, 0.85);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.titlebar-nav {
+  display: flex;
+  gap: 0.9rem;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: var(--content-width);
+  padding: 0.8rem 1rem;
+}
+
+.titlebar-nav a {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.93rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.25rem 0.7rem;
+  text-decoration: none;
+}
+
+.titlebar-nav a:hover,
+.titlebar-nav a:focus-visible {
+  border-color: var(--line);
+  color: var(--text);
+}
+
+.top-anchor {
+  display: block;
+  height: 1px;
+}
+
+.home-hero {
+  display: grid;
+  gap: 1.2rem;
+  justify-items: center;
+  margin: 0 auto;
+  max-width: var(--hero-width);
+  padding: clamp(1rem, 3vh, 1.8rem) 0 clamp(1rem, 4vh, 2rem);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.wordmark-wrap {
+  width: min(90vw, 860px);
+}
+
+.wordmark {
+  display: block;
+  width: 100%;
+}
+
+.wordmark text {
+  fill: #1a1f1d;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 106px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.subtitle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.85rem, 2vw, 1.8rem);
+  justify-content: center;
+  margin: 0;
+}
+
+.subtitle-word {
+  border-bottom: 1px solid transparent;
+  color: #2b302f;
+  font-size: clamp(1.05rem, 2vw, 1.36rem);
+  font-weight: 600;
+  letter-spacing: 0.035em;
+  text-decoration: none;
+  transition: border-color 240ms ease, color 240ms ease, transform 240ms ease;
+}
+
+.subtitle-word:hover,
+.subtitle-word:focus-visible {
+  border-color: #2b302f;
+  transform: translateY(-2px);
+}
+
+.sections-grid {
+  display: grid;
+  gap: 1.15rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1.4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.section-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.9rem;
+  display: grid;
+  gap: 0.85rem;
+  padding: 1rem;
+}
+
+.section-card h2 {
+  font-size: clamp(1.05rem, 1.8vw, 1.26rem);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.section-image {
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  object-fit: cover;
+  width: 100%;
+}
+
+.section-image--placeholder {
+  background: linear-gradient(135deg, #ebe4d8, #dadfd8);
+}
+
+.section-links {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.section-links a {
+  color: var(--accent);
+}
+
+.home-page.has-home-interaction .home-hero,
+.home-page.has-home-interaction .sections-grid,
+.home-page.has-home-interaction .section-card,
+.home-page.has-home-interaction .subtitle-word,
+.home-page.has-home-interaction .wordmark text {
+  transition: transform 320ms ease, opacity 320ms ease, gap 320ms ease, font-size 320ms ease,
+    letter-spacing 320ms ease;
+}
+
+.home-page.has-home-interaction:not(.is-expanded) .site-main--home {
+  min-height: 100vh;
+}
+
+.home-page.has-home-interaction:not(.is-expanded) .home-hero {
+  min-height: 78vh;
+  place-content: center;
+}
+
+.home-page.has-home-interaction:not(.is-expanded) .sections-grid {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(3.5rem);
+}
+
+.home-page.has-home-interaction.is-expanded .home-hero {
+  background: rgba(248, 244, 236, 0.88);
+  border: 1px solid var(--line);
+  border-radius: 0.95rem;
+  margin-top: 0.4rem;
+  min-height: auto;
+  padding: 0.7rem 0.8rem 0.8rem;
+}
+
+.home-page.has-home-interaction.is-expanded .wordmark {
+  width: min(86vw, 470px);
+}
+
+.home-page.has-home-interaction.is-expanded .wordmark text {
+  letter-spacing: 1.5px;
+}
+
+.home-page.has-home-interaction.is-expanded .subtitle-word {
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  letter-spacing: 0.02em;
+}
+
+.home-page.has-home-interaction.is-expanded .sections-grid {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.markdown-body {
+  margin: 0 auto;
+  max-width: 860px;
+}
+
+.markdown-body h1 {
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  line-height: 1.15;
+  margin-top: 0;
+}
+
+.markdown-body p {
+  font-size: 1.05rem;
+}
+
+.markdown-body h2 {
+  font-size: 1.22rem;
+  margin-top: 2rem;
+}
+
+.markdown-body img {
+  border: 1px solid var(--line);
+  border-radius: 0.7rem;
+  display: block;
+  height: auto;
+  margin: 0.85rem auto;
+  max-width: min(100%, 920px);
+}
+
+.markdown-body .md-image {
+  margin: 0;
+}
+
+.markdown-body .md-image figcaption {
+  color: var(--muted);
+  font-size: 0.93rem;
+  margin-top: 0.45rem;
+  text-align: center;
+}
+
+.carousel-host {
+  margin: 1rem auto 0;
+  max-width: 980px;
+}
+
+.carousel {
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+  padding: 0.8rem;
+}
+
+.carousel-frame {
+  background: #f5f1e7;
+  border-radius: 0.7rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-image {
+  display: block;
+  height: min(58vh, 560px);
+  margin: 0 auto;
+  object-fit: contain;
+  width: 100%;
+}
+
+.carousel-controls {
+  bottom: 0.65rem;
+  display: flex;
+  gap: 0.5rem;
+  position: absolute;
+  right: 0.65rem;
+}
+
+.carousel-button {
+  background: rgba(28, 31, 30, 0.8);
+  border: none;
+  border-radius: 999px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 0.38rem 0.66rem;
+}
+
+.carousel-caption {
+  color: var(--muted);
+  margin: 0.8rem 0 0;
+  min-height: 1.4rem;
+  text-align: center;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 0.35rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.carousel-dot {
+  background: #d2ccbe;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  height: 0.52rem;
+  width: 0.52rem;
+}
+
+.carousel-dot[aria-pressed="true"] {
+  background: #333a38;
+}
+
+@media (max-width: 980px) {
+  .sections-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-page.has-home-interaction:not(.is-expanded) .sections-grid {
+    transform: translateY(2rem);
+  }
+}
+
+@media (max-width: 720px) {
+  .wordmark text {
+    font-size: 84px;
+    letter-spacing: 1.8px;
+  }
+
+  .home-page.has-home-interaction.is-expanded .wordmark {
+    width: min(90vw, 360px);
+  }
+
+  .titlebar-nav {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,24 +1,34 @@
 # CODEX_MEMO
 
-## Project Snapshot
-- Repository was initially empty.
-- Goal: bootstrap a basic informational company website using Eleventy.
-- Current stack: Eleventy with Nunjucks templates and static CSS passthrough.
+## Architecture Snapshot
+- Eleventy v3 with Nunjucks templates.
+- Input/output config: `src` -> `_site`.
+- Base layout: `src/_includes/layouts/base.njk`.
+- Homepage is bespoke template: `src/index.njk`.
+- Section content is Markdown-first:
+  - `src/design/index.md`
+  - `src/representation/index.md`
+  - `src/communication/index.md`
 
-## Current Structure
-- `src/_includes/layouts/base.njk`: shared layout with header/nav/footer.
-- `src/_data/site.js`: global site/company metadata and nav links.
-- `src/index.njk`, `src/about.njk`, `src/contact.njk`: starter pages.
-- `src/css/site.css`: base styling and responsive layout.
-- `.eleventy.js`: input/output dirs and CSS passthrough config.
-- `package.json`: scripts for `dev`, `build`, `start`, `clean`.
+## Durable Conventions
+- Section pages must include front matter keys:
+  - `title`, `sectionKey`, `order`
+  - optional `heroImage`, optional `links`
+- Canonical section keys/slugs/anchors:
+  - `design`, `representation`, `communication`
+- Subpage titlebar links target homepage anchors:
+  - `/#design`, `/#representation`, `/#communication`, `/#top`
 
-## Operational Notes
-- This environment cannot reach `registry.npmjs.org` right now, so package install was not possible here.
-- To run locally with internet:
-  - `npm install`
-  - `npm run dev`
+## Assets and Behavior
+- Shared CSS/JS served from `src/assets` -> `/assets`.
+- Homepage interaction:
+  - `src/assets/js/site.js` toggles `body.is-expanded` on scroll/click.
+- Carousel enhancement:
+  - `src/assets/js/carousel.js`
+  - preferred source: `[data-carousel]` wrapped image list
+  - fallback source: first image list under a `Gallery` heading
+- No JS fallback remains readable (stacked images/text).
 
-## Keep/Prune Guidance
-- Keep only durable project decisions and structure notes here.
-- Remove temporary troubleshooting details once no longer relevant.
+## Editing Workflow
+- Client edits text/images in Markdown section pages.
+- Client places media in page-local `img/` folders and references with `./img/...`.
