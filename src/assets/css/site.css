@@ -7,7 +7,10 @@
   --content-width: min(1280px, 95vw);
   /* Home tuning */
   --home-footer-gap: 0rem;
-  --home-contact-top-space: 2.5rem;
+  --home-main-min-height: auto;
+  --home-main-bottom-space: 0rem;
+  --home-scroll-runway-space: 5rem;
+  --home-contact-top-space: 5rem;
   --home-contact-bottom-space: 0rem;
   --home-contact-text-width: 70ch;
   --landscape-col-offset-1: 3.85rem;
@@ -21,7 +24,7 @@
   --landscape-hero-bottom-pad-start: 1rem;
   --landscape-hero-bottom-pad-end: 0rem;
   --landscape-subtitle-wordmark-gap-base: 0rem;
-  --landscape-subtitle-wordmark-gap-spread: 1.9rem;
+  --landscape-subtitle-wordmark-gap-spread: 7rem;
   --landscape-subtitle-wordmark-gap-reveal: 0rem;
   --landscape-sections-lift-max: 0rem;
 }
@@ -85,6 +88,8 @@ a {
 }
 
 .site-main--home {
+  min-height: var(--home-main-min-height);
+  padding-bottom: var(--home-main-bottom-space);
   padding-top: 0.25rem;
 }
 
@@ -579,7 +584,7 @@ a {
   }
 
   .home-page.home-landscape-motion .site-main--home {
-    padding-bottom: clamp(13rem, 33vh, 23rem);
+    padding-bottom: var(--home-scroll-runway-space);
   }
 }
 

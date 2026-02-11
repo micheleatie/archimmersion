@@ -55,6 +55,8 @@
   - `--landscape-hero-top-pad-start/end`, `--landscape-hero-bottom-pad-start/end`
   - `--landscape-subtitle-wordmark-gap-base/spread/reveal` (wordmark-to-keyword spacing)
   - `--landscape-sections-lift-max` (how much section content rises toward headers during mid-transition)
+  - `--home-main-min-height`, `--home-main-bottom-space`, `--home-scroll-runway-space`
+    - these control the large blank area between the contact block and footer on homepage.
 - Portrait/narrow (`orientation: portrait` or `max-width:999px`): simplified static flow (no landscape motion transforms) to avoid duplication/overlap while landscape behavior is tuned.
 - Carousel enhancement:
   - `src/assets/js/carousel.js`
