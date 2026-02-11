@@ -21,6 +21,39 @@ module.exports = function (eleventyConfig) {
     return `<figure class="md-image"><img src="${escapedSrc}" alt="${escapedAlt}"${titleAttribute} loading="lazy" />${captionMarkup}</figure>`;
   };
 
+  const toTitle = (value) =>
+    value
+      .replace(/[-_]+/g, " ")
+      .trim()
+      .replace(/\b\w/g, (char) => char.toUpperCase());
+
+  const stripTags = (value) => value.replace(/<[^>]*>/g, "").trim();
+
+  const renderAnchorBlocks = (raw) =>
+    raw.replace(/<anchor\b([^>]*)>([\s\S]*?)<\/anchor>/gi, (match, attrs, inner) => {
+      const idMatch = attrs.match(/\bid\s*=\s*["']([^"']+)["']/i);
+      const idValue = idMatch ? idMatch[1].trim() : "";
+
+      if (!idValue) {
+        return match;
+      }
+
+      const id = mdLib.utils.escapeHtml(idValue);
+      const rawLabel = inner.trim() || toTitle(idValue);
+      const labelHtml = mdLib.renderInline(rawLabel);
+      const ariaLabel = mdLib.utils.escapeHtml(stripTags(labelHtml) || toTitle(idValue));
+
+      return `\n\n<h2 class="md-anchor" id="${id}"><a href="#${id}" aria-label="Jump to ${ariaLabel}">${labelHtml}</a></h2>\n\n`;
+    });
+
+  mdLib.core.ruler.before("normalize", "anchor-blocks", (state) => {
+    if (!state.src.includes("<anchor")) {
+      return;
+    }
+
+    state.src = renderAnchorBlocks(state.src);
+  });
+
   eleventyConfig.setLibrary("md", mdLib);
 
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });

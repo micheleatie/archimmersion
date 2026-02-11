@@ -64,6 +64,11 @@
   - fallback source: first image list under a `Gallery` heading
   - auto-advances until first manual navigation; supports image click for next slide and hover/focus overlay arrows
 - No JS fallback remains readable (stacked images/text).
+- Markdown authoring supports custom section anchor tags on subpages:
+  - `<anchor id="space-planning">Space planning</anchor>`
+  - empty form `<anchor id="space-planning"></anchor>` auto-generates title from id.
+  - rendered output is `<h2 class="md-anchor" id="..."><a href="#...">...</a></h2>`.
+  - implemented via markdown-it core preprocess in `.eleventy.js`.
 
 ## Editing Workflow
 - Client edits text/images in Markdown section pages.

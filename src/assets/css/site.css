@@ -297,7 +297,11 @@ a {
 }
 
 .home-page.home-landscape-motion .subtitle-word {
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
   transition: none;
+  z-index: 5;
 }
 
 .home-page.home-landscape-motion .home-hero {
@@ -317,7 +321,9 @@ a {
 
 .home-page.home-landscape-motion .sections-grid {
   opacity: var(--reveal-progress);
+  position: relative;
   transform: translateY(calc((1 - var(--reveal-progress)) * 1.2rem));
+  z-index: 2;
 }
 
 .home-page.home-landscape-motion .section-card {
@@ -408,6 +414,24 @@ a {
 .markdown-body h2 {
   font-size: clamp(2rem, 3vw, 2.9rem);
   margin: 2rem 0 1rem;
+}
+
+.markdown-body .md-anchor {
+  font-size: clamp(2rem, 3vw, 2.9rem);
+  line-height: 1.08;
+  margin: 2rem 0 0.8rem;
+  scroll-margin-top: 6rem;
+}
+
+.markdown-body .md-anchor a {
+  text-decoration: underline;
+  text-decoration-color: #d2d2d2;
+  text-underline-offset: 8px;
+}
+
+.markdown-body .md-anchor a:hover,
+.markdown-body .md-anchor a:focus-visible {
+  text-decoration-color: #939ba0;
 }
 
 .markdown-body img {
