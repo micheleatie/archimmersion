@@ -22,11 +22,16 @@
 ## Assets and Behavior
 - Shared CSS/JS served from `src/assets` -> `/assets`.
 - Homepage interaction:
-  - `src/assets/js/site.js` drives a continuous `--home-progress` CSS variable from scroll for smooth hero/section transition.
-  - `home-content-active` class gates interaction while sections are still mostly hidden.
+  - `src/assets/js/site.js` now uses a staged landscape-only motion model with 4 variables:
+    - `--spread-progress` (keywords spread)
+    - `--wordmark-fade` (wordmark disappearance)
+    - `--reveal-progress` (section fade-in)
+    - `--offset-progress` (post-reveal vertical offsets)
+  - Motion range is short (`max(150px, 20vh)`) so heading spread and section reveal happen quickly.
+  - Landscape mode class is `home-landscape-motion`.
   - Subtitle words on the homepage link directly to their own section pages.
-  - Desktop: subtitle words act as visible section headers after expansion; fallback card headings are visually hidden.
-  - Mobile: subtitle fades/collapses while per-section headings remain with each section block.
+- Landscape (`orientation: landscape` and `min-width:1000px`): subtitle words start clustered, spread quickly, then act as left-aligned section headings while sections fade in; section columns receive progressive vertical offsets after reveal.
+- Portrait/narrow (`orientation: portrait` or `max-width:999px`): simplified static flow (no landscape motion transforms) to avoid duplication/overlap while landscape behavior is tuned.
 - Carousel enhancement:
   - `src/assets/js/carousel.js`
   - preferred source: `[data-carousel]` wrapped image list
