@@ -51,6 +51,10 @@
   - `--landscape-subtitle-rise`
   - `--home-contact-top-space`, `--home-contact-bottom-space`
   - `--home-footer-gap`
+  - `--landscape-hero-min-start`, `--landscape-hero-min-end` (top-state centering and collapse depth)
+  - `--landscape-hero-top-pad-start/end`, `--landscape-hero-bottom-pad-start/end`
+  - `--landscape-subtitle-wordmark-gap-base/spread/reveal` (wordmark-to-keyword spacing)
+  - `--landscape-sections-lift-max` (how much section content rises toward headers during mid-transition)
 - Portrait/narrow (`orientation: portrait` or `max-width:999px`): simplified static flow (no landscape motion transforms) to avoid duplication/overlap while landscape behavior is tuned.
 - Carousel enhancement:
   - `src/assets/js/carousel.js`

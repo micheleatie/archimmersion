@@ -46,7 +46,7 @@
     const spread = clamp(stage / 0.22, 0, 1);
     const reveal = clamp((stage - 0.16) / 0.26, 0, 1);
     const wordmarkFade = clamp((stage - 0.1) / 0.22, 0, 1);
-    const tail = clamp((raw - 1) / 0.85, 0, 1);
+    const tail = clamp((raw - 0.2) / 0.85, 0, 1);
     const align = clamp((stage - 0.08) / 0.24, 0, 1);
 
     setVars(spread, reveal, wordmarkFade, tail, align);
