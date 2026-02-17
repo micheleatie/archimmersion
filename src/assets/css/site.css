@@ -173,19 +173,24 @@ a {
 }
 
 .hero-wordmark {
+  --wordmark-size: clamp(4.2rem, 10.5vw, 10rem);
   display: flex;
-  flex-wrap: wrap;
-  font-size: clamp(4.2rem, 10.5vw, 10rem);
+  flex-wrap: nowrap;
+  font-size: 0;
   font-weight: 500;
+  justify-content: center;
   letter-spacing: 0.02em;
   line-height: 0.95;
   margin: 0;
   position: relative;
+  white-space: nowrap;
 }
 
 .wordmark-piece {
   color: var(--piece, #3d4042);
   display: inline-block;
+  font-size: var(--wordmark-size);
+  line-height: 0.95;
   text-transform: uppercase;
 }
 
@@ -621,7 +626,7 @@ a {
   }
 
   .hero-wordmark {
-    font-size: clamp(3rem, 11vw, 5rem);
+    --wordmark-size: clamp(3rem, 11vw, 5rem);
   }
 
   .subtitle {

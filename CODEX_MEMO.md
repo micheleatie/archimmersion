@@ -57,6 +57,9 @@
   - `--landscape-sections-lift-max` (how much section content rises toward headers during mid-transition)
   - `--home-main-min-height`, `--home-main-bottom-space`, `--home-scroll-runway-space`
     - these control the large blank area between the contact block and footer on homepage.
+- Wordmark stability:
+  - `.hero-wordmark` uses `font-size: 0` + `.wordmark-piece` `font-size: var(--wordmark-size)` to eliminate whitespace text-node flex wrapping;
+  - wordmark is forced single-line with `flex-wrap: nowrap` and `white-space: nowrap`.
 - Portrait/narrow (`orientation: portrait` or `max-width:999px`): simplified static flow (no landscape motion transforms) to avoid duplication/overlap while landscape behavior is tuned.
 - Carousel enhancement:
   - `src/assets/js/carousel.js`
