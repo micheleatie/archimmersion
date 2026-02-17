@@ -14,6 +14,7 @@ links:
   - label: Lighting studies
     url: /design/#lighting-studies
 ---
+
 *Design turns constraints into choices people can understand and use.*
 
 <!-- the #space-planning section begins here, /design/#space-planning links here  -->
