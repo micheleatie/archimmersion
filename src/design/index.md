@@ -18,7 +18,7 @@ links:
 *Design turns constraints into choices people can understand and use.*
 
 <!-- the #space-planning section begins here, /design/#space-planning links here  -->
-<anchor id="space-planning">This is Space Planning</anchor>
+<anchor id="space-planning">The Space Planning</anchor>
 
 Space planning is the process of organizing and arranging physical spaces to optimize functionality, flow, and aesthetics. It involves analyzing the needs and requirements of a space, considering factors such as traffic patterns, furniture placement, and spatial relationships. The goal of space planning is to create an efficient and harmonious environment that meets the needs of its occupants while maximizing the use of available space.
 
