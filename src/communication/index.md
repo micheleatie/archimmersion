@@ -4,7 +4,7 @@ title: Communication
 sectionKey: communication
 order: 3
 heroImage: ./img/cover.svg
-homeBlurb: Communication makes technical work legible to every audience.
+homeBlurb: Communication
 permalink: /communication/
 links:
   - label: Client handoff kits
@@ -14,8 +14,7 @@ links:
   - label: Presentation systems
     url: /communication/#presentation-systems
 ---
-Architectural photography in 2D and immersive 360° formats, dedicated to enhancing and showcasing built spaces.
-A sensitive interpretation of atmosphere, light, and materiality.
+Communication
 
 ## Gallery
 
