@@ -23,13 +23,30 @@ Small informational website built with Eleventy and Markdown-first content editi
 
 Most content updates can be done safely without touching code.
 
-### 1) Only edit these 3 files
+### 1) For most edits, use these 3 files
 
 - `src/design/index.md`
 - `src/representation/index.md`
 - `src/communication/index.md`
 
 If you only change text/images in these files, you are in the safe area.
+
+### 1b) Homepage-only text that lives outside those files
+
+Two extra files control global/homepage text:
+
+- `src/index.njk`
+  - editable for Contact section text at the bottom of homepage:
+    - `Contact` heading
+    - contact paragraph
+    - email button label and email address (`mailto:...`)
+- `src/_data/site.js`
+  - editable global values:
+    - `name` (used in page titles/footer)
+    - `description` (default meta description)
+
+For non-developers: in `src/index.njk`, only edit the visible words in the Contact section.  
+Do not edit the hero letter spans, loops, or template tags (`{% ... %}`, `{{ ... }}`).
 
 ### 2) In each file, the very top block controls homepage content
 
