@@ -4,7 +4,7 @@ title: Design
 sectionKey: design
 order: 1
 heroImage: ./img/cover.svg
-homeBlurb: "Design turns constraints into choices people can understand and use. Here is some more placeholder text: We shape information, drawings, and visual hierarchy so the right details are visible at the right moment. We shape information, drawings, and visual hierarchy so the right details are visible at the right moment. We shape information, drawings, and visual hierarchy so the right details are visible at the right moment. We shape information, drawings, and visual hierarchy so the right details are visible at the right moment. We shape information, drawings, and visual hierarchy so the right details are visible at the right moment."
+homeBlurb: Architectural design focused on atmosphere, perception, and experiential quality. We develop spatial concepts that integrate light, materiality, and perception from the earliest stages of the project.
 permalink: /design/
 links:
   - label: Space planning
