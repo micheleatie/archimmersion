@@ -1,5 +1,12 @@
 const markdownIt = require("markdown-it");
 
+const fallbackPreviewHost = "micheleatie.github.io";
+const fallbackPreviewPath = "/archimmersion/";
+
+const [repoOwner, repoName] = (process.env.GITHUB_REPOSITORY || "").split("/");
+const runtimePreviewHost = repoOwner ? `${repoOwner}.github.io` : fallbackPreviewHost;
+const runtimePreviewPath = repoName ? `/${repoName}/` : fallbackPreviewPath;
+
 module.exports = function (eleventyConfig) {
   const mdLib = markdownIt({
     html: true,
@@ -55,6 +62,10 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.setLibrary("md", mdLib);
+  eleventyConfig.addGlobalData("runtime", {
+    previewHost: runtimePreviewHost,
+    previewPath: runtimePreviewPath,
+  });
 
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/design/img": "design/img" });
@@ -70,14 +81,36 @@ module.exports = function (eleventyConfig) {
       return "";
     }
 
-    if (/^(?:[a-z]+:)?\/\//i.test(assetPath) || assetPath.startsWith("/")) {
+    if (/^(?:[a-z]+:)?\/\//i.test(assetPath)) {
       return assetPath;
     }
 
-    const cleanAsset = assetPath.replace(/^\.\//, "");
-    const cleanPageUrl = pageUrl.endsWith("/") ? pageUrl : `${pageUrl}/`;
+    const normalizedAsset = assetPath.startsWith("/")
+      ? assetPath.slice(1)
+      : assetPath.replace(/^\.\//, "");
+    const normalizedPageUrl = (pageUrl || "").replace(/^\/+/, "");
+    const cleanPageUrl = normalizedPageUrl.endsWith("/")
+      ? normalizedPageUrl
+      : `${normalizedPageUrl}/`;
 
-    return `${cleanPageUrl}${cleanAsset}`;
+    return `${cleanPageUrl}${normalizedAsset}`;
+  });
+
+  eleventyConfig.addFilter("toBaseRelative", (pathValue) => {
+    if (!pathValue) {
+      return "";
+    }
+
+    if (
+      /^(?:[a-z]+:)?\/\//i.test(pathValue) ||
+      pathValue.startsWith("#") ||
+      pathValue.startsWith("mailto:") ||
+      pathValue.startsWith("tel:")
+    ) {
+      return pathValue;
+    }
+
+    return pathValue.replace(/^\/+/, "");
   });
 
   eleventyConfig.addCollection("sections", (collectionApi) => {

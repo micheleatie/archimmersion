@@ -8,7 +8,20 @@
       name="description"
       content="{% if description %}{{ description }}{% else %}{{ site.description }}{% endif %}"
     />
-    <link rel="stylesheet" href="/assets/css/site.css" />
+    <script>
+      (function () {
+        var previewHost = "{{ runtime.previewHost }}";
+        var previewPath = "{{ runtime.previewPath }}";
+        var onPreviewHost = window.location.hostname === previewHost;
+        var onPreviewPath =
+          window.location.pathname === previewPath.slice(0, -1) ||
+          window.location.pathname.indexOf(previewPath) === 0;
+        var base = document.createElement("base");
+        base.href = onPreviewHost && onPreviewPath ? previewPath : "/";
+        document.head.appendChild(base);
+      })();
+    </script>
+    <link rel="stylesheet" href="assets/css/site.css" />
   </head>
   <body class="{% if bodyClass %}{{ bodyClass }}{% endif %}">
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -17,14 +30,14 @@
     <header class="subpage-topbar" aria-label="Section menu">
       <div class="subpage-topbar-inner">
         <nav class="subpage-nav" aria-label="Sections">
-          <a href="/design/" {% if page.url == "/design/" %}aria-current="page"{% endif %}>Design</a>
-          <a href="/representation/" {% if page.url == "/representation/" %}aria-current="page"{% endif %}>Representation</a>
-          <a href="/communication/" {% if page.url == "/communication/" %}aria-current="page"{% endif %}>
+          <a href="design/" {% if page.url == "/design/" %}aria-current="page"{% endif %}>Design</a>
+          <a href="representation/" {% if page.url == "/representation/" %}aria-current="page"{% endif %}>Representation</a>
+          <a href="communication/" {% if page.url == "/communication/" %}aria-current="page"{% endif %}>
             Communication
           </a>
         </nav>
 
-        <a class="subpage-wordmark" href="/" aria-label="Archimmersion home">Archimmersion</a>
+        <a class="subpage-wordmark" href="./" aria-label="Archimmersion home">Archimmersion</a>
         <span class="subpage-topbar-spacer" aria-hidden="true"></span>
       </div>
     </header>
@@ -45,9 +58,9 @@
       <p>&copy; {{ site.year }} {{ site.name }}</p>
     </footer>
 
-    <script src="/assets/js/site.js" defer></script>
+    <script src="assets/js/site.js" defer></script>
     {% if page.url != "/" %}
-    <script src="/assets/js/carousel.js" defer></script>
+    <script src="assets/js/carousel.js" defer></script>
     {% endif %}
   </body>
 </html>

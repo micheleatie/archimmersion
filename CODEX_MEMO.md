@@ -73,3 +73,18 @@
 ## Editing Workflow
 - Client edits text/images in Markdown section pages.
 - Client places media in page-local `img/` folders and references with `./img/...`.
+
+## Deployment Notes
+- Repository currently tracks remote `client` -> `git@github.com:micheleatie/archimmersion.git`.
+- Local/default working branch is `main`, tracking `client/main`.
+- `_site/` is build output and is intentionally git-ignored; do not commit generated HTML.
+- Preferred hosting path:
+  - GitHub Pages via GitHub Actions (build Eleventy from source).
+  - Workflow file committed at `.github/workflows/deploy-pages.yml`.
+  - Custom domain on Pages: `www.archimmersion.fr`.
+  - URL compatibility fix in templates:
+    - runtime `<base>` is set to `/archimmersion/` only when host/path match GitHub preview (`micheleatie.github.io` + `/archimmersion/...`), otherwise `/`.
+    - templates now emit base-relative URLs (no leading `/`) so preview and custom-domain root both resolve assets/routes.
+  - DNS at Squarespace:
+    - `CNAME` `www` -> `micheleatie.github.io`
+    - `A` records for apex `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`.

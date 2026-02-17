@@ -26,7 +26,7 @@ bodyClass: home-page
 
   <p class="subtitle" aria-label="Core areas">
     {% for section in collections.sections %}
-    <a class="subtitle-word" href="{{ section.url }}" style="--section-index: {{ loop.index0 }};">
+    <a class="subtitle-word" href="{{ section.url | toBaseRelative }}" style="--section-index: {{ loop.index0 }};">
       {{ section.data.title }}
     </a>
     {% endfor %}
@@ -36,17 +36,17 @@ bodyClass: home-page
 <section class="sections-grid" aria-label="Core sections">
   {% for section in collections.sections %}
   <article class="section-card" id="{{ section.data.sectionKey }}" style="--section-index: {{ loop.index0 }};">
-    <h2 class="section-heading-fallback"><a href="{{ section.url }}">{{ section.data.title }}</a></h2>
+    <h2 class="section-heading-fallback"><a href="{{ section.url | toBaseRelative }}">{{ section.data.title }}</a></h2>
 
     {% if section.data.homeBlurb %}
     <p class="section-blurb">{{ section.data.homeBlurb }}</p>
     {% endif %}
 
     {% if section.data.heroImage %}
-    <a class="section-image-link" href="{{ section.url }}" aria-label="Open {{ section.data.title }} page">
+    <a class="section-image-link" href="{{ section.url | toBaseRelative }}" aria-label="Open {{ section.data.title }} page">
       <img
         class="section-image"
-        src="{{ section.data.heroImage | resolvePageAsset(section.url) }}"
+        src="{{ section.data.heroImage | resolvePageAsset(section.url) | toBaseRelative }}"
         alt="{{ section.data.title }} preview"
         loading="lazy"
       />
@@ -55,7 +55,7 @@ bodyClass: home-page
 
     <ul class="section-links">
       {% for link in section.data.links or [] %}
-      <li><a href="{{ link.url }}">{{ link.label }}</a></li>
+      <li><a href="{{ link.url | toBaseRelative }}">{{ link.label }}</a></li>
       {% endfor %}
     </ul>
   </article>
