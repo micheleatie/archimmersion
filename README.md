@@ -21,27 +21,75 @@ Small informational website built with Eleventy and Markdown-first content editi
 
 ## Client editing guide
 
-### 1) Edit subpage text in Markdown
+Most content updates can be done safely without touching code.
 
-Update body text directly in:
+### 1) Only edit these 3 files
 
 - `src/design/index.md`
 - `src/representation/index.md`
 - `src/communication/index.md`
 
-### 2) Edit homepage section cards via front matter
+If you only change text/images in these files, you are in the safe area.
 
-Each section page controls homepage card content with front matter keys:
+### 2) In each file, the very top block controls homepage content
 
-- `title` (required)
-- `sectionKey` (required: `design`, `representation`, `communication`)
-- `order` (required ordering)
-- `heroImage` (optional image path, usually `./img/cover.svg` or `./img/cover.jpg`)
-- `links` (optional list of `{ label, url }`)
+At the top of each file, there is a block between `---` and `---`.  
+You can edit text values there, but keep the structure.
 
-### 3) Gallery authoring
+Important fields:
+- `title`: section title (also shown on homepage)
+- `homeBlurb`: short text on homepage card
+- `heroImage`: homepage card image path (usually `./img/cover.jpg`)
+- `links`: clickable list shown on homepage card
 
-Preferred format:
+Please do not change these unless asked:
+- `layout`
+- `sectionKey`
+- `order`
+- `permalink`
+
+### 3) Edit the main page text below that block
+
+Everything below the second `---` is the actual page content.  
+You can freely edit paragraphs, headings, and image captions there.
+
+### 4) Creating link targets inside a page
+
+If you want a homepage card link to jump to a specific place in a page, use:
+
+```md
+<anchor id="space-planning">Space planning</anchor>
+```
+
+Then point the related link to:
+
+```text
+/design/#space-planning
+```
+
+Tips:
+- use lowercase ids
+- use hyphens instead of spaces
+- keep ids unique on the same page
+
+### 5) Add images
+
+Place images in the matching folder:
+- `src/design/img/`
+- `src/representation/img/`
+- `src/communication/img/`
+
+Use them in content like this:
+
+```md
+![Short caption](./img/example.jpg)
+```
+
+That caption text is also used as visible figure/carousel caption.
+
+### 6) Gallery format
+
+Use this format for image galleries:
 
 ```md
 ## Gallery
@@ -50,24 +98,36 @@ Preferred format:
 
 - ![Caption 1](./img/01.jpg)
 - ![Caption 2](./img/02.jpg)
-- ![Caption 3](./img/03.jpg)
 
 </div>
 ```
 
-Fallback also supported:
+At least 2 images are needed for carousel behavior.
 
-- Under `## Gallery`, a plain Markdown image list (without `<div data-carousel>`) is auto-detected by JS.
+### 7) What not to edit
 
-### 4) Add images
-
-- Put image files in the local `img/` folder beside the section page, for example:
-- `src/design/img/`
-- `src/representation/img/`
-- `src/communication/img/`
-- Reference with relative paths, for example: `![Caption](./img/name.jpg)`
+Avoid editing these unless a developer asks:
+- `.eleventy.js`
+- files in `src/_includes/`
+- files in `src/assets/js/`
+- files in `src/assets/css/`
 
 ## Progressive enhancement behavior
 
 - Without JS: homepage sections/links still display, and gallery images remain stacked.
 - With JS: homepage gets animated expand/collapse and galleries become interactive carousels.
+
+## Publishing flow
+
+Local preview:
+- `npm install`
+- `npm run dev`
+
+Publish:
+- Commit changes
+- Push to `main`
+- GitHub Actions deploys automatically
+
+Notes:
+- Do not commit `_site/` (generated output).
+- Do not commit `node_modules/`.
