@@ -18,8 +18,8 @@ links:
 
 *Architecture as Experience*
 
-<!-- the #space-planning section begins here, /communication/#whatweoffer links here  -->
-<anchor id="whatweoffer">What we offer</anchor>
+<!-- the #space-planning section begins here, /communication/#whatweoffer links here 
+<anchor id="whatweoffer">What we offer</anchor> -->
 
 Architectural photography 2D & immersive 360°
 
