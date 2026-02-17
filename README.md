@@ -65,6 +65,22 @@ Please do not change these unless asked:
 - `order`
 - `permalink`
 
+Important formatting rules for this top block:
+- keep both `---` lines (start and end of the block)
+- every line must be `key: value` format (no loose text lines)
+- for long text, use either:
+  - one quoted line, or
+  - a multiline YAML block with `>` like this:
+
+```yaml
+homeBlurb: >
+  First sentence of the blurb.
+  Second sentence of the blurb.
+```
+
+- do not use tabs; use normal spaces
+- if this formatting breaks, `npm run dev` / build will fail
+
 ### 3) Edit the main page text below that block
 
 Everything below the second `---` is the actual page content.  
@@ -128,6 +144,14 @@ Avoid editing these unless a developer asks:
 - files in `src/_includes/`
 - files in `src/assets/js/`
 - files in `src/assets/css/`
+
+### 8) Quick troubleshooting (if local preview fails)
+
+If `npm run dev` or `npm run build` suddenly fails after content edits, first check:
+- front matter in the edited `.md` file (top `---` block) for broken formatting
+- accidental deletion of `---`
+- accidental plain text line inside front matter without `key:`
+- malformed link/anchor lines in `links:`
 
 ## Progressive enhancement behavior
 

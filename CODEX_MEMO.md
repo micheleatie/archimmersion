@@ -76,6 +76,9 @@
 ## Editing Workflow
 - Client edits text/images in Markdown section pages.
 - Client places media in page-local `img/` folders and references with `./img/...`.
+- Front matter pitfall:
+  - multiline text must stay valid YAML; for long values use quoted strings or block scalars (`>`).
+  - plain unkeyed text inside front matter breaks build with `TemplateContentFrontMatterError`.
 
 ## Deployment Notes
 - Repository currently tracks remote `client` -> `git@github.com:micheleatie/archimmersion.git`.

@@ -4,8 +4,9 @@ title: Communication
 sectionKey: communication
 order: 3
 heroImage: ./img/cover.svg
-homeBlurb: Architectural photography in 2D and immersive 360° formats, dedicated to enhancing and showcasing built spaces.
-A sensitive interpretation of atmosphere, light, and materiality.
+homeBlurb: >
+  Architectural photography in 2D and immersive 360° formats, dedicated to enhancing and
+  showcasing built spaces. A sensitive interpretation of atmosphere, light, and materiality.
 permalink: /communication/
 links:
   - label: Client handoff kits
