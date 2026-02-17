@@ -27,6 +27,51 @@
   --landscape-subtitle-wordmark-gap-spread: 7rem;
   --landscape-subtitle-wordmark-gap-reveal: 0rem;
   --landscape-sections-lift-max: 0rem;
+  /* Wordmark palette (A R C H I M M E R S I O N) */
+  --wm-a: #f21f3d;
+  --wm-r: #0b6f3a;
+  --wm-c: #ba9796;
+  --wm-h: #732f93;
+  --wm-i1: #a79879;
+  --wm-m1: #97b8d4;
+  --wm-m2: #8b163f;
+  --wm-e: #7da892;
+  --wm-r2: #665f22;
+  --wm-s: #9358a4;
+  --wm-i2: #ef7f1a;
+  --wm-o: #3f3f9f;
+  --wm-n: #7fba3e;
+  /* Homepage keyword colors are derived from wordmark tokens */
+  --subtitle-design: var(--wm-h);
+  --subtitle-design-underline: var(--wm-c);
+  --subtitle-representation: var(--wm-o);
+  --subtitle-representation-underline: var(--wm-m1);
+  --subtitle-communication: var(--wm-i2);
+  --subtitle-communication-underline: var(--wm-i1);
+}
+
+/* Liquid-glass palette sampled from reflected highlights/tones in provided photo. */
+body[data-palette="liquid-glass"] {
+  --wm-a: #d8d4c6;
+  --wm-r: #8c9a9d;
+  --wm-c: #b9b6aa;
+  --wm-h: #7a8792;
+  --wm-i1: #dcd8cc;
+  --wm-m1: #9cadbd;
+  --wm-m2: #6c7a89;
+  --wm-e: #c7d0cb;
+  --wm-r2: #8f7d6a;
+  --wm-s: #6f86a3;
+  --wm-i2: #c6b69b;
+  --wm-o: #4f6076;
+  --wm-n: #a6afa2;
+  /* Explicit subtitle remap for liquid-glass mode (muted, no vivid orange) */
+  --subtitle-design: var(--wm-s);
+  --subtitle-design-underline: var(--wm-c);
+  --subtitle-representation: var(--wm-o);
+  --subtitle-representation-underline: var(--wm-m1);
+  --subtitle-communication: var(--wm-r2);
+  --subtitle-communication-underline: var(--wm-i1);
 }
 
 * {
@@ -188,6 +233,7 @@ a {
 
 .wordmark-piece {
   color: var(--piece, #3d4042);
+  /* color: #000000; */
   display: inline-block;
   font-size: var(--wordmark-size);
   line-height: 0.95;
@@ -213,9 +259,24 @@ a {
   text-underline-offset: 8px;
 }
 
+.subtitle-word:nth-child(1) {
+  color: var(--subtitle-design);
+  text-decoration-color: var(--subtitle-design-underline);
+}
+
+.subtitle-word:nth-child(2) {
+  color: var(--subtitle-representation);
+  text-decoration-color: var(--subtitle-representation-underline);
+}
+
+.subtitle-word:nth-child(3) {
+  color: var(--subtitle-communication);
+  text-decoration-color: var(--subtitle-communication-underline);
+}
+
 .subtitle-word:hover,
 .subtitle-word:focus-visible {
-  text-decoration-color: #929a9f;
+  text-decoration-color: currentColor;
 }
 
 .sections-grid {

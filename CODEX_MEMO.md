@@ -35,6 +35,19 @@
     - `wordmarkFade = (stage - 0.1) / 0.22`
 - Landscape mode class is `home-landscape-motion`.
 - Subtitle words on the homepage link directly to their own section pages.
+- Wordmark colors are centralized as `:root` tokens in `src/assets/css/site.css`:
+  - `--wm-a ... --wm-n` (mapped to the 13 letters in `ARCHIMMERSION`)
+  - `src/index.njk` letter spans now reference these variables via `--piece:var(--wm-...)`.
+- Palette toggle is set from `src/_data/site.js` via `site.palette` (`"colorful"` or `"liquid-glass"`), applied on `<body data-palette="...">` in `src/_includes/layouts/base.njk`.
+- Homepage subtitle words are derived automatically from wordmark tokens:
+  - `Design` -> `--subtitle-design: var(--wm-h)`
+  - `Representation` -> `--subtitle-representation: var(--wm-o)`
+  - `Communication` -> `--subtitle-communication: var(--wm-i2)`
+  - underlines are also derived from wordmark tokens (`--wm-c`, `--wm-m1`, `--wm-i1`) for broad browser compatibility.
+- `liquid-glass` mode includes an explicit subtitle remap in CSS to force muted keyword tones (and avoid vivid carryover):
+  - `Design` -> `--wm-s`
+  - `Representation` -> `--wm-o`
+  - `Communication` -> `--wm-r2`
 - Landscape (`orientation: landscape` and `min-width:1000px`): subtitle words start clustered, spread quickly, then act as left-aligned section headings while sections fade in; section columns receive progressive vertical offsets after reveal.
 - Landscape subtitle alignment details:
   - dynamic per-word alignment model is active:
