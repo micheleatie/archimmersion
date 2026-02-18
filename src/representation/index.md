@@ -37,6 +37,7 @@ We combine advanced 3D scanning tools with a sensitive understanding of architec
 <anchor id="our-services"></anchor>
 
 **We analyze**
+
 	•	Luminous and thermal atmospheres
 
 	•	Context
@@ -67,7 +68,7 @@ We combine advanced 3D scanning tools with a sensitive understanding of architec
 	•	Heritage documentation
 
 	•	Real estate transformation
-  
+
 	•	Architects/Interior Designers needing high-precision base models for renovation and construction
 
 
