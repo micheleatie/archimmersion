@@ -1,7 +1,29 @@
 (() => {
   const body = document.body;
+  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+  const hasSunraysBackdrop = () => body.dataset.backgroundStyle === "sunrays-glass";
+
+  const updateBackdropDepth = () => {
+    if (!hasSunraysBackdrop()) {
+      body.style.removeProperty("--sunrays-blur");
+      body.style.removeProperty("--sunrays-veil-opacity");
+      return;
+    }
+
+    const y = window.scrollY;
+    const range = Math.max(window.innerHeight * 0.95, 520);
+    const progress = clamp(y / range, 0, 1);
+    const blur = 2 + progress * 13;
+    const veilOpacity = 0.08 + progress * 0.2;
+
+    body.style.setProperty("--sunrays-blur", `${blur.toFixed(2)}px`);
+    body.style.setProperty("--sunrays-veil-opacity", veilOpacity.toFixed(3));
+  };
 
   if (!body.classList.contains("home-page")) {
+    updateBackdropDepth();
+    window.addEventListener("scroll", updateBackdropDepth, { passive: true });
+    window.addEventListener("resize", updateBackdropDepth, { passive: true });
     return;
   }
 
@@ -11,8 +33,6 @@
   let ticking = false;
   let motionEnabled = false;
   let lastAlign = 1;
-
-  const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
 
   const setVars = (spread, reveal, wordmarkFade, tail, align) => {
     body.style.setProperty("--spread-progress", spread.toFixed(4));
@@ -79,6 +99,7 @@
 
   const applyMode = () => {
     progressRange = Math.max(150, window.innerHeight * 0.18);
+    updateBackdropDepth();
 
     if (landscapeQuery.matches) {
       setMotionMode();
@@ -91,14 +112,18 @@
   };
 
   const onScroll = () => {
-    if (!motionEnabled || ticking) {
+    if ((!motionEnabled && !hasSunraysBackdrop()) || ticking) {
       return;
     }
 
     ticking = true;
     window.requestAnimationFrame(() => {
-      updateProgress();
-      updateSubtitleShifts();
+      updateBackdropDepth();
+
+      if (motionEnabled) {
+        updateProgress();
+        updateSubtitleShifts();
+      }
       ticking = false;
     });
   };

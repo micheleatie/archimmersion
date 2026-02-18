@@ -23,7 +23,11 @@
     </script>
     <link rel="stylesheet" href="assets/css/site.css" />
   </head>
-  <body class="{% if bodyClass %}{{ bodyClass }}{% endif %}" data-palette="{{ site.palette or 'colorful' }}">
+  <body
+    class="{% if bodyClass %}{{ bodyClass }}{% endif %}"
+    data-palette="{{ site.palette or 'colorful' }}"
+    data-background-style="{{ site.backgroundStyle or 'flat' }}"
+  >
     <a class="skip-link" href="#main-content">Skip to content</a>
 
     {% if page.url != "/" %}

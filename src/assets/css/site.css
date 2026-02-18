@@ -27,6 +27,14 @@
   --landscape-subtitle-wordmark-gap-spread: 7rem;
   --landscape-subtitle-wordmark-gap-reveal: 0rem;
   --landscape-sections-lift-max: 0rem;
+  --sunrays-image: url("../img/sunrays-soft.png");
+  --sunrays-blur: 2px;
+  --sunrays-contrast: 1;
+  --sunrays-saturate: 1;
+  --sunrays-brightness: 1;
+  --sunrays-veil-opacity: 0.08;
+  --glass-wordmark-opacity: 1;
+  --glass-subtitle-opacity: 1;
   /* Wordmark palette (A R C H I M M E R S I O N) */
   --wm-a: #f21f3d;
   --wm-r: #0b6f3a;
@@ -92,6 +100,55 @@ body {
   background: var(--bg);
   color: var(--text);
   font: 16px/1.55 "Avenir Next", "Segoe UI", sans-serif;
+}
+
+body[data-background-style="sunrays-glass"] {
+  --bg: #ecebe5;
+  --line: #c9c7bf;
+  --sunrays-contrast: 1.2;
+  --sunrays-saturate: 1.08;
+  --sunrays-brightness: 0.94;
+  --glass-wordmark-opacity: 1;
+  --glass-subtitle-opacity: 0.78;
+  isolation: isolate;
+}
+
+body[data-background-style="sunrays-glass"]::before {
+  background: var(--sunrays-image) center center / cover no-repeat;
+  content: "";
+  filter: blur(var(--sunrays-blur)) contrast(var(--sunrays-contrast)) saturate(var(--sunrays-saturate)) brightness(var(--sunrays-brightness));
+  inset: -8vmax;
+  opacity: 0.86;
+  pointer-events: none;
+  position: fixed;
+  transform: scale(1.08);
+  z-index: 0;
+}
+
+body.home-page[data-background-style="sunrays-glass"] .hero-wordmark .wordmark-piece {
+  color: #ffffff;
+  opacity: 1;
+  text-shadow: 0 1px 2px rgba(20, 30, 46, 0.2), 0 0 8px rgba(255, 255, 255, 0.22);
+}
+
+body[data-background-style="sunrays-glass"]::after {
+  background: rgba(236, 235, 229, var(--sunrays-veil-opacity));
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: 0;
+}
+
+body[data-background-style="sunrays-glass"] > * {
+  position: relative;
+  z-index: 1;
+}
+
+body[data-background-style="sunrays-glass"] .subpage-topbar {
+  backdrop-filter: blur(8px);
+  background: rgba(236, 235, 229, 0.72);
+  border-bottom-color: rgba(164, 161, 152, 0.55);
 }
 
 a {
@@ -237,6 +294,7 @@ a {
   display: inline-block;
   font-size: var(--wordmark-size);
   line-height: 0.95;
+  opacity: var(--glass-wordmark-opacity);
   text-transform: uppercase;
 }
 
@@ -253,6 +311,7 @@ a {
   font-size: clamp(1.95rem, 3.8vw, 3rem);
   font-weight: 600;
   letter-spacing: 0.01em;
+  opacity: var(--glass-subtitle-opacity);
   text-align: center;
   text-decoration: underline;
   text-decoration-color: #d2d2d2;

@@ -39,6 +39,7 @@
   - `--wm-a ... --wm-n` (mapped to the 13 letters in `ARCHIMMERSION`)
   - `src/index.njk` letter spans now reference these variables via `--piece:var(--wm-...)`.
 - Palette toggle is set from `src/_data/site.js` via `site.palette` (`"colorful"` or `"liquid-glass"`), applied on `<body data-palette="...">` in `src/_includes/layouts/base.njk`.
+- Background style toggle is set from `src/_data/site.js` via `site.backgroundStyle` (`"flat"` or `"sunrays-glass"`), applied on `<body data-background-style="...">`.
 - Homepage subtitle words are derived automatically from wordmark tokens:
   - `Design` -> `--subtitle-design: var(--wm-h)`
   - `Representation` -> `--subtitle-representation: var(--wm-o)`
@@ -48,6 +49,12 @@
   - `Design` -> `--wm-s`
   - `Representation` -> `--wm-o`
   - `Communication` -> `--wm-r2`
+- `sunrays-glass` background style:
+  - static fixed backdrop image is set by `--sunrays-image` in `src/assets/css/site.css` (currently `src/assets/img/sunrays-soft.png`) and rendered via `body::before`.
+  - JS (`src/assets/js/site.js`) updates `--sunrays-blur` and `--sunrays-veil-opacity` based on scroll depth for readability.
+  - wordmark and subtitle words gain controlled transparency via `--glass-wordmark-opacity` and `--glass-subtitle-opacity`.
+  - additional backdrop tuning tokens exist for quick adjustments: `--sunrays-contrast`, `--sunrays-saturate`, `--sunrays-brightness`.
+  - in `sunrays-glass` mode on homepage, `.hero-wordmark .wordmark-piece` is forced to crisp white.
 - Landscape (`orientation: landscape` and `min-width:1000px`): subtitle words start clustered, spread quickly, then act as left-aligned section headings while sections fade in; section columns receive progressive vertical offsets after reveal.
 - Landscape subtitle alignment details:
   - dynamic per-word alignment model is active:
