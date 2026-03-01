@@ -633,14 +633,30 @@
 
   closeButton.addEventListener("click", closePanel);
   backdrop.addEventListener("click", closePanel);
+
   panelCta.addEventListener("click", (event) => {
-    const href = panelCta.getAttribute("href");
+    if (event.defaultPrevented) {
+      return;
+    }
+
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return;
+    }
+
+    const href = panelCta.getAttribute("href") || "";
     if (!href || href === "#") {
       event.preventDefault();
       return;
     }
 
-    window.location.assign(href);
+    event.preventDefault();
+
+    try {
+      const targetUrl = new URL(href, document.baseURI || window.location.href);
+      window.location.assign(targetUrl.href);
+    } catch {
+      window.location.assign(href);
+    }
   });
 
   document.addEventListener("keydown", (event) => {

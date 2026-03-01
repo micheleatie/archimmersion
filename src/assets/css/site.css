@@ -1252,9 +1252,15 @@ body.home-page .site-footer {
 }
 
 .home-lang-switch {
-  display: inline-flex;
+  display: flex;
   gap: 0.35rem;
-  margin-top: 1rem;
+  justify-content: center;
+  margin: 0.95rem auto 0.2rem;
+  width: fit-content;
+}
+
+.home-lang-switch--room {
+  margin-top: 0.55rem;
 }
 
 .home-lang-button {
@@ -1390,11 +1396,11 @@ body.home-page .site-footer {
   border-left: 1px solid #000000;
   box-shadow: -8px 0 24px rgba(0, 0, 0, 0.08);
   display: grid;
-  gap: 1.2rem;
-  grid-template-rows: auto auto auto 1fr;
+  gap: 1rem;
+  grid-template-rows: auto minmax(0, 1fr);
   height: 100dvh;
   max-width: 430px;
-  overflow-y: auto;
+  overflow: hidden;
   padding: 1.2rem 1.35rem 1.5rem;
   position: fixed;
   right: 0;
@@ -1429,6 +1435,15 @@ body.home-page .site-footer {
   background: #f2f2f2;
 }
 
+.pillar-panel-content {
+  align-content: start;
+  display: grid;
+  gap: 0.95rem;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 0.1rem;
+}
+
 .pillar-panel-title {
   font-size: clamp(2rem, 2.5vw, 2.4rem);
   font-weight: 500;
@@ -1461,23 +1476,19 @@ body.home-page .site-footer {
 }
 
 .pillar-panel-cta {
-  align-self: end;
+  align-self: start;
   border: 1px solid #000000;
   border-radius: 999px;
   cursor: pointer;
   display: inline-flex;
   font-size: 0.95rem;
   font-weight: 600;
-  justify-self: start;
   letter-spacing: 0.03em;
-  margin-top: 0.5rem;
+  margin-top: 0.1rem;
   pointer-events: auto;
-  position: sticky;
-  bottom: 0.4rem;
   padding: 0.54rem 0.95rem;
   background: #ffffff;
   text-decoration: none;
-  z-index: 4;
 }
 
 .pillar-panel-cta:hover,
@@ -1546,6 +1557,10 @@ body.room-panel-open {
 
   .pillar-panel.is-open {
     transform: translateY(0);
+  }
+
+  .pillar-panel-content {
+    padding-right: 0;
   }
 
   .pillar-panel-title {

@@ -8,10 +8,6 @@ bodyClass: home-page
 
 <section class="room-hero" aria-label="Homepage intro">
   <h1 class="room-hero-wordmark">ARCHIMMERSION</h1>
-  <div class="home-lang-switch" role="group" aria-label="Language switch">
-    <button class="home-lang-button is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
-    <button class="home-lang-button" type="button" data-lang="fr" aria-pressed="false">FR</button>
-  </div>
 </section>
 
 <section class="room-stage" data-room-scene aria-label="Interactive room metaphor">
@@ -108,6 +104,11 @@ bodyClass: home-page
   </div>
 </section>
 
+<div class="home-lang-switch home-lang-switch--room" role="group" aria-label="Language switch">
+  <button class="home-lang-button is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
+  <button class="home-lang-button" type="button" data-lang="fr" aria-pressed="false">FR</button>
+</div>
+
 <div class="pillar-backdrop" id="panel-backdrop" hidden></div>
 <aside
   class="pillar-panel"
@@ -119,10 +120,12 @@ bodyClass: home-page
   hidden
 >
   <button class="pillar-panel-close" id="panel-close" type="button" aria-label="Close panel">&times;</button>
-  <h2 class="pillar-panel-title" id="panel-title"></h2>
-  <p class="pillar-panel-body" id="panel-body" hidden></p>
-  <ul class="pillar-panel-points" id="panel-points"></ul>
-  <a class="pillar-panel-cta" id="panel-cta" href="#">Open section</a>
+  <div class="pillar-panel-content">
+    <h2 class="pillar-panel-title" id="panel-title"></h2>
+    <p class="pillar-panel-body" id="panel-body" hidden></p>
+    <ul class="pillar-panel-points" id="panel-points"></ul>
+    <a class="pillar-panel-cta" id="panel-cta" href="#">Open section</a>
+  </div>
 </aside>
 
 <section class="home-contact home-contact--room" aria-label="Contact">

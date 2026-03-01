@@ -24,7 +24,7 @@
   2. interactive line-art architectural room scene revealed on scroll.
 - Room instruction caption above SVG is now `Explore the room.` (centered, light weight, slightly larger than prior caption size).
 - `Explore the room.` caption is explicitly forced to pure black in CSS.
-- Homepage now includes an EN/FR language switch (`.home-lang-switch`) in the hero.
+- Homepage EN/FR switch is positioned below the interactive room sketch (`.home-lang-switch--room`) and centered.
 - Scene is inline SVG (vector, black line-art on white) in `src/index.njk`.
 - Required SVG group structure is present:
   - `g#room-background`
@@ -66,7 +66,8 @@
   - fixed caption min-height on desktop keeps exterior/interior windows aligned even with longer French strings.
   - anchor-click reveal now prevents default jump and updates hash with `history.replaceState(...)` to avoid visual displacement.
 - Home panel CTA usability:
-  - `pillar-panel-cta` is sticky near panel bottom for consistent click access with long translated text.
+  - panel layout keeps close button + scrollable content, and CTA now sits directly under each section summary/list inside `.pillar-panel-content` (higher placement).
+  - CTA click is handled with explicit URL resolution against `document.baseURI` before `window.location.assign(...)` to avoid FR/EN navigation breakage.
 - Communication narrative copy now mirrors client-approved phrasing for:
   - `Immersive Storytelling for Architecture`
   - `What Makes Us Different`
@@ -105,7 +106,7 @@
   - ESC closes panel
   - backdrop click closes panel
   - clicking another hotspot switches panel content in place.
-- Panel CTA link also has JS `window.location.assign(...)` fallback to ensure navigation fires reliably when clicked.
+- Panel CTA link uses robust JS navigation (`new URL(href, document.baseURI)` + `window.location.assign(...)`) for reliable routing in both EN/FR.
 - Focus behavior: when panel closes, focus returns to last active hotspot.
 
 ## Styling Notes
