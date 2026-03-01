@@ -4,116 +4,113 @@
 - Eleventy v3 with Nunjucks templates.
 - Input/output config: `src` -> `_site`.
 - Base layout: `src/_includes/layouts/base.njk`.
-- Homepage is bespoke template: `src/index.njk`.
+- Homepage template: `src/index.njk`.
 - Section content is Markdown-first:
   - `src/design/index.md`
   - `src/representation/index.md`
   - `src/communication/index.md`
 
 ## Durable Conventions
-- Section pages must include front matter keys:
-  - `title`, `sectionKey`, `order`
-  - optional `heroImage`, optional `links`
-- Canonical section keys/slugs/anchors:
-  - `design`, `representation`, `communication`
-- Subpage titlebar links target homepage anchors:
-  - `/#design`, `/#representation`, `/#communication`, `/#top`
+- Section pages use front matter keys: `title`, `sectionKey`, `order`, and optional `links`.
+- Canonical section keys/slugs:
+  - `design` -> `/design/`
+  - `representation` -> `/representation/`
+  - `communication` -> `/communication/`
+- Subpage titlebar links route to each section page plus homepage.
 
-## Assets and Behavior
-- Shared CSS/JS served from `src/assets` -> `/assets`.
-- Homepage interaction:
-  - `src/assets/js/site.js` now uses a staged landscape-only motion model with 4 variables:
-    - `--spread-progress` (keywords spread)
-    - `--wordmark-fade` (wordmark disappearance)
-    - `--reveal-progress` (section fade-in)
-    - `--offset-progress` (post-reveal vertical offsets)
-  - Motion range is `max(150px, 18vh)` with staged timing:
-    - spread first, then wordmark fade, then section reveal, then column offsets.
-  - Current stage mapping:
-    - `spread = stage / 0.22`
-    - `reveal = (stage - 0.16) / 0.26`
-    - `wordmarkFade = (stage - 0.1) / 0.22`
-- Landscape mode class is `home-landscape-motion`.
-- Subtitle words on the homepage link directly to their own section pages.
-- Wordmark colors are centralized as `:root` tokens in `src/assets/css/site.css`:
-  - `--wm-a ... --wm-n` (mapped to the 13 letters in `ARCHIMMERSION`)
-  - `src/index.njk` letter spans now reference these variables via `--piece:var(--wm-...)`.
-- Palette toggle is set from `src/_data/site.js` via `site.palette` (`"colorful"` or `"liquid-glass"`), applied on `<body data-palette="...">` in `src/_includes/layouts/base.njk`.
-- Background style toggle is set from `src/_data/site.js` via `site.backgroundStyle` (`"flat"` or `"sunrays-glass"`), applied on `<body data-background-style="...">`.
-- Current default theme (2026-02-18): `palette: "colorful"` + `backgroundStyle: "sunrays-glass"` using `src/assets/img/sunrays-soft.jpg`.
-- Homepage subtitle words are derived automatically from wordmark tokens:
-  - `Design` -> `--subtitle-design: var(--wm-h)`
-  - `Representation` -> `--subtitle-representation: var(--wm-o)`
-  - `Communication` -> `--subtitle-communication: var(--wm-i2)`
-  - underlines are also derived from wordmark tokens (`--wm-c`, `--wm-m1`, `--wm-i1`) for broad browser compatibility.
-- `liquid-glass` mode includes an explicit subtitle remap in CSS to force muted keyword tones (and avoid vivid carryover):
-  - `Design` -> `--wm-s`
-  - `Representation` -> `--wm-o`
-  - `Communication` -> `--wm-r2`
-- `sunrays-glass` background style (current default mode):
-  - static fixed backdrop image is set by `--sunrays-image` in `src/assets/css/site.css` (current asset: `src/assets/img/sunrays-soft.jpg`) and rendered via `body::before`.
-  - `src/assets/img/sunrays-soft.jpg` was refreshed on 2026-02-18 from `IMG_9286.jpg` and resized for web delivery (SHA-256 `db3a4d12f2486efa53ffdd0672bee7d077432e6e4ce3952dd1c6fd754ab163ad`).
-  - sharp-background mode: blur is locked at `0px` (no scroll blur); JS (`src/assets/js/site.js`) only updates `--sunrays-veil-opacity` by scroll depth.
-  - transparency tuning (2026-02-18): backdrop layer opacity reduced to `0.8`; veil now ranges `0.12 -> 0.30` with scroll.
-  - wordmark and subtitle words gain controlled transparency via `--glass-wordmark-opacity` and `--glass-subtitle-opacity`.
-  - additional backdrop tuning tokens exist for quick adjustments: `--sunrays-contrast`, `--sunrays-saturate`, `--sunrays-brightness`.
-  - in `sunrays-glass` mode on homepage, `.hero-wordmark .wordmark-piece` is forced to crisp white.
-- Landscape (`orientation: landscape` and `min-width:1000px`): subtitle words start clustered, spread quickly, then act as left-aligned section headings while sections fade in; section columns receive progressive vertical offsets after reveal.
-- Landscape subtitle alignment details:
-  - dynamic per-word alignment model is active:
-    - JS computes each word's X delta to its corresponding `.section-card` left edge.
-    - CSS applies `translateX(calc(var(--target-shift) * var(--align-progress)))`.
-  - start state uses centered subtitle phrase; end state aligns words to section column headers.
-  - section header words now follow the same vertical column offsets as cards:
-    - column 2 and 3 use shared offset vars multiplied by `--offset-progress`.
-  - visible section fade-in is accelerated via boosted opacity multipliers on `.sections-grid` and `.section-card`.
-- Homepage includes a full-width `Contact` section below the three columns:
-  - heading, short text, and `mailto:` button; content is center-aligned.
-- Primary visual spacing/motion tuning lives in `src/assets/css/site.css` `:root`:
-  - `--landscape-col-offset-2`, `--landscape-col-offset-3`
-  - `--landscape-subtitle-rise`
-  - `--home-contact-top-space`, `--home-contact-bottom-space`
-  - `--home-footer-gap`
-  - `--landscape-hero-min-start`, `--landscape-hero-min-end` (top-state centering and collapse depth)
-  - `--landscape-hero-top-pad-start/end`, `--landscape-hero-bottom-pad-start/end`
-  - `--landscape-subtitle-wordmark-gap-base/spread/reveal` (wordmark-to-keyword spacing)
-  - `--landscape-sections-lift-max` (how much section content rises toward headers during mid-transition)
-  - `--home-main-min-height`, `--home-main-bottom-space`, `--home-scroll-runway-space`
-    - these control the large blank area between the contact block and footer on homepage.
-- Wordmark stability:
-  - `.hero-wordmark` uses `font-size: 0` + `.wordmark-piece` `font-size: var(--wordmark-size)` to eliminate whitespace text-node flex wrapping;
-  - wordmark is forced single-line with `flex-wrap: nowrap` and `white-space: nowrap`.
-- Portrait/narrow (`orientation: portrait` or `max-width:999px`): simplified static flow (no landscape motion transforms) to avoid duplication/overlap while landscape behavior is tuned.
-- Carousel enhancement:
-  - `src/assets/js/carousel.js`
-  - preferred source: `[data-carousel]` wrapped image list
-  - fallback source: first image list under a `Gallery` heading
-  - auto-advances until first manual navigation; supports image click for next slide and hover/focus overlay arrows
-- No JS fallback remains readable (stacked images/text).
-- Markdown authoring supports custom section anchor tags on subpages:
-  - `<anchor id="space-planning">Space planning</anchor>`
-  - empty form `<anchor id="space-planning"></anchor>` auto-generates title from id.
-  - rendered output is `<h2 class="md-anchor" id="..."><a href="#...">...</a></h2>`.
-  - implemented via markdown-it core preprocess in `.eleventy.js`.
+## Homepage Model (2026-03-01)
+- Homepage is now a two-stage flow:
+  1. minimal hero with centered `ARCHIMMERSION` wordmark.
+  2. interactive line-art architectural room scene revealed on scroll.
+- Room instruction caption above SVG is now `Explore the room.` (centered, light weight, slightly larger than prior caption size).
+- Scene is inline SVG (vector, black line-art on white) in `src/index.njk`.
+- Required SVG group structure is present:
+  - `g#room-background`
+  - `g#hotspot-window` (Design)
+  - `g#hotspot-laptop` (Communication)
+  - `g#hotspot-model` (Representation)
+- Each hotspot group includes:
+  - `role="button"`
+  - `tabindex="0"`
+  - `aria-label` for action text
+  - `aria-controls="pillar-panel"`
+  - per-hotspot panel content via `data-panel-*` attributes.
+- Communication hotspot laptop uses a straight, open silhouette with explicit screen + base geometry.
+- Representation hotspot object is a small house-like physical model silhouette.
+- Laptop/model hitboxes were adjusted to avoid overlap and improve reliable click selection of Communication.
+
+## Communication Page Model (2026-03-01)
+- `src/communication/index.md` now sets `bodyClass: communication-page` for page-specific styling.
+- Communication subpage uses pure white presentation (sunrays background disabled only on this page).
+- Communication text is intentionally compact:
+  - smaller typography than default subpages
+  - content block width constrained to roughly half-page on desktop.
+- Added interactive street-to-360 block:
+  - square black-and-white wireframe top-view map (`src/communication/img/street-map-wireframe.svg`)
+  - map has one exterior pin only (street -> exterior 360)
+  - exterior 360 example (`src/communication/img/panorama-360-example.svg`)
+  - interior 360 example (`src/communication/img/panorama-360-interior-example.svg`)
+  - interior reveal is triggered by a second pin placed on a building inside the exterior 360 (`.comm-panorama-pin`)
+  - interior reveal includes adjacent explanatory text block (`.comm-interior-text`)
+  - fisheye view removed from page and assets
+  - map and panorama SVGs were densified with richer wireframe detail to make scroll/navigation obvious
+  - panorama viewport intentionally small; navigation uses mouse-wheel horizontal scroll + pointer drag via `src/assets/js/site.js`.
+  - reveal action hardened:
+    - map spot now handles click + pointerup + keyboard Enter/Space
+    - CSS fallback enabled via `:target` so reveal works even without JS
+    - JS also adds `.is-visible` class when active
+    - when interior target is selected, JS reveals both exterior and interior windows side-by-side
+    - hashchange listener keeps reveal state aligned with URL hash navigation
+    - map spot has explicit z-index/pointer-events for reliable tapping.
+  - panorama navigation tuning:
+    - wheel horizontal scroll accelerated (`deltaY * 2.4`)
+    - drag-to-scroll accelerated (delta multiplied by `1.7`)
+    - panorama render widths reduced (desktop/mobile) so key content appears sooner.
+
+## Homepage Interaction Logic
+- Implemented in `src/assets/js/site.js`.
+- Uses `IntersectionObserver` to reveal the room section when scrolled into view.
+- Single click (or keyboard Enter/Space) on a hotspot opens panel immediately.
+- Panel system:
+  - reusable dialog panel (`#pillar-panel`)
+  - right-side slide-in on desktop
+  - bottom sheet on mobile
+  - no extra kicker label above panel title
+  - ESC closes panel
+  - backdrop click closes panel
+  - clicking another hotspot switches panel content in place.
+- Panel CTA link also has JS `window.location.assign(...)` fallback to ensure navigation fires reliably when clicked.
+- Focus behavior: when panel closes, focus returns to last active hotspot.
+
+## Styling Notes
+- Global stylesheet: `src/assets/css/site.css`.
+- Homepage has dedicated override block:
+  - enforced white background + black text/lines
+  - sunrays pseudo-background disabled on homepage only
+  - hotspot hover/focus/active state uses subtle stroke-weight increase
+  - panel and backdrop transitions are lightweight CSS transitions.
+- Mobile refinements:
+  - hero height reduced for faster access to the room section.
+  - room SVG gets minimum render height to keep hotspots readable on phones.
+  - hotspot interaction uses `touch-action: manipulation` and larger stroke presence.
+  - panel bottom sheet height increased for better content legibility.
+- Subpage styles and carousel remain in the same stylesheet.
 
 ## Editing Workflow
-- Client edits text/images in Markdown section pages.
-- Client places media in page-local `img/` folders and references with `./img/...`.
-- Front matter pitfall:
-  - multiline text must stay valid YAML; for long values use quoted strings or block scalars (`>`).
-  - plain unkeyed text inside front matter breaks build with `TemplateContentFrontMatterError`.
+- Client-safe text/media edits remain in:
+  - `src/design/index.md`
+  - `src/representation/index.md`
+  - `src/communication/index.md`
+- Homepage interactive pillar copy and CTA targets are currently authored directly in hotspot `data-panel-*` attributes inside `src/index.njk`.
+- Homepage contact button currently uses fixed recipient `mailto:atiemichele@gmail.com`.
+- In Markdown pages using raw HTML tags (`<img ...>`), image paths should use:
+  - `{{ './img/file.svg' | resolvePageAsset(page.url) | toBaseRelative }}`
+  - this avoids broken asset URLs under the runtime `<base>` behavior.
+- With runtime `<base>` enabled, fragment links in subpages should include the page path:
+  - use `{{ '/communication/#some-id' | toBaseRelative }}` instead of `href="#some-id"`.
 
 ## Deployment Notes
-- Repository currently tracks remote `client` -> `git@github.com:micheleatie/archimmersion.git`.
-- Local/default working branch is `main`, tracking `client/main`.
-- `_site/` is build output and is intentionally git-ignored; do not commit generated HTML.
-- Preferred hosting path:
-  - GitHub Pages via GitHub Actions (build Eleventy from source).
-  - Workflow file committed at `.github/workflows/deploy-pages.yml`.
-  - Custom domain on Pages: `www.archimmersion.fr`.
-  - URL compatibility fix in templates:
-    - runtime `<base>` is set to `/archimmersion/` only when host/path match GitHub preview (`micheleatie.github.io` + `/archimmersion/...`), otherwise `/`.
-    - templates now emit base-relative URLs (no leading `/`) so preview and custom-domain root both resolve assets/routes.
-  - DNS at Squarespace:
-    - `CNAME` `www` -> `micheleatie.github.io`
-    - `A` records for apex `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`.
+- Repository remote: `client` -> `git@github.com:micheleatie/archimmersion.git`.
+- Primary working branch: `main`.
+- `_site/` is generated output and should not be committed.
+- GitHub Pages workflow file: `.github/workflows/deploy-pages.yml`.

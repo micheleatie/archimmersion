@@ -6,67 +6,125 @@ bodyClass: home-page
 ---
 <div id="top" class="top-anchor" aria-hidden="true"></div>
 
-<section class="home-hero" aria-label="Homepage intro">
-  <h1 class="hero-wordmark" aria-label="Archimmersion">
-    <span class="sr-only">Archimmersion</span>
-    <span class="wordmark-piece" aria-hidden="true" style="--dx:-90;--dy:-44;--dr:-16;--piece:var(--wm-a)">A</span>
-    <span class="wordmark-piece" aria-hidden="true" style="--dx:-70;--dy:-30;--dr:-8;--piece:var(--wm-r)">r</span>
-    <span class="wordmark-piece" aria-hidden="true" style="--dx:-56;--dy:-48;--dr:-12;--piece:var(--wm-c)">c</span>
-    <span class="wordmark-piece" aria-hidden="true" style="--dx:-36;--dy:-34;--dr:-9;--piece:var(--wm-h)">h</span>
-    <span class="wordmark-piece" aria-hidden="true" style="--dx:0;--dy:0;--dr:0;--piece:var(--wm-i1)">i</span>
-    <span class="wordmark-piece" aria-hidden="true" style="--dx:18;--dy:-10;--dr:11;--piece:var(--wm-m1)">m</span>
-    <span class="wordmark-piece" aria-hidden="true" style="--dx:30;--dy:8;--dr:8;--piece:var(--wm-m2)">m</span>
-    <span class="wordmark-piece" aria-hidden="true" style="--dx:52;--dy:22;--dr:14;--piece:var(--wm-e)">e</span>
-    <span class="wordmark-piece" aria-hidden="true" style="--dx:74;--dy:36;--dr:16;--piece:var(--wm-r2)">r</span>
-    <span class="wordmark-piece" aria-hidden="true" style="--dx:90;--dy:-18;--dr:9;--piece:var(--wm-s)">s</span>
-    <span class="wordmark-piece" aria-hidden="true" style="--dx:102;--dy:16;--dr:6;--piece:var(--wm-i2)">i</span>
-    <span class="wordmark-piece" aria-hidden="true" style="--dx:118;--dy:28;--dr:15;--piece:var(--wm-o)">o</span>
-    <span class="wordmark-piece" aria-hidden="true" style="--dx:132;--dy:-26;--dr:13;--piece:var(--wm-n)">n</span>
-  </h1>
-
-  <p class="subtitle" aria-label="Core areas">
-    {% for section in collections.sections %}
-    <a class="subtitle-word" href="{{ section.url | toBaseRelative }}" style="--section-index: {{ loop.index0 }};">
-      {{ section.data.title }}
-    </a>
-    {% endfor %}
-  </p>
+<section class="room-hero" aria-label="Homepage intro">
+  <h1 class="room-hero-wordmark">ARCHIMMERSION</h1>
 </section>
 
-<section class="sections-grid" aria-label="Core sections">
-  {% for section in collections.sections %}
-  <article class="section-card" id="{{ section.data.sectionKey }}" style="--section-index: {{ loop.index0 }};">
-    <h2 class="section-heading-fallback"><a href="{{ section.url | toBaseRelative }}">{{ section.data.title }}</a></h2>
+<section class="room-stage" data-room-scene aria-label="Interactive room metaphor">
+  <div class="room-stage-headline" aria-hidden="true">Explore the room.</div>
+  <div class="room-svg-wrap">
+    <svg
+      class="room-svg"
+      viewBox="0 0 1000 620"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="Architectural room with three interactive objects"
+    >
+      <g id="room-background" class="room-lines">
+        <path d="M200 120H800V420H200Z" />
+        <path d="M200 120L130 80H870L800 120" />
+        <path d="M200 420L130 500H870L800 420" />
+        <path d="M130 80V500" />
+        <path d="M870 80V500" />
 
-    {% if section.data.homeBlurb %}
-    <p class="section-blurb">{{ section.data.homeBlurb }}</p>
-    {% endif %}
+        <path d="M320 322H700L760 360H260Z" />
+        <path d="M260 360V470" />
+        <path d="M760 360V470" />
+        <path d="M320 322V442" />
+        <path d="M700 322V442" />
+      </g>
 
-    {% if section.data.heroImage %}
-    <a class="section-image-link" href="{{ section.url | toBaseRelative }}" aria-label="Open {{ section.data.title }} page">
-      <img
-        class="section-image"
-        src="{{ section.data.heroImage | resolvePageAsset(section.url) | toBaseRelative }}"
-        alt="{{ section.data.title }} preview"
-        loading="lazy"
-      />
-    </a>
-    {% endif %}
+      <g
+        id="hotspot-window"
+        class="room-hotspot"
+        role="button"
+        tabindex="0"
+        aria-label="Open Design section"
+        aria-controls="pillar-panel"
+        aria-pressed="false"
+        data-panel-title="DESIGN"
+        data-panel-points="Light as a design material|Atmosphere-led interior strategy|Spatial sequence and proportion|Calm, sensorial architectural thinking"
+        data-panel-cta-label="Open Design"
+        data-panel-cta-href="{{ '/design/' | toBaseRelative }}"
+      >
+        <rect class="hotspot-hitarea" x="232" y="152" width="196" height="156" />
+        <rect class="hotspot-shape" x="250" y="170" width="160" height="120" />
+        <path class="hotspot-shape" d="M330 170V290" />
+        <path class="hotspot-shape" d="M250 230H410" />
+      </g>
 
-    <ul class="section-links">
-      {% for link in section.data.links or [] %}
-      <li><a href="{{ link.url | toBaseRelative }}">{{ link.label }}</a></li>
-      {% endfor %}
-    </ul>
-  </article>
-  {% endfor %}
+      <g
+        id="hotspot-laptop"
+        class="room-hotspot"
+        role="button"
+        tabindex="0"
+        aria-label="Open Communication section"
+        aria-controls="pillar-panel"
+        aria-pressed="false"
+        data-panel-title="COMMUNICATION"
+        data-panel-points="Client interaction through immersive media|Narrative-driven project presentation|360° and high-fidelity visual storytelling|Clear architectural communication tools"
+        data-panel-cta-label="Open Communication"
+        data-panel-cta-href="{{ '/communication/' | toBaseRelative }}"
+      >
+        <rect class="hotspot-hitarea" x="518" y="244" width="202" height="126" />
+        <rect class="hotspot-shape" x="548" y="250" width="124" height="76" />
+        <rect class="hotspot-shape" x="560" y="261" width="100" height="54" />
+        <path class="hotspot-shape" d="M544 328H676" />
+        <path class="hotspot-shape" d="M524 334H696L682 354H538Z" />
+        <path class="hotspot-shape" d="M551 341H669" />
+        <path class="hotspot-shape" d="M560 347H660" />
+      </g>
+
+      <g
+        id="hotspot-model"
+        class="room-hotspot"
+        role="button"
+        tabindex="0"
+        aria-label="Open Representation section"
+        aria-controls="pillar-panel"
+        aria-pressed="false"
+        data-panel-title="REPRESENTATION"
+        data-panel-points="Physical and digital fidelity in parallel|VR-ready spatial representation|Measured geometry and atmosphere capture|Immersive models for renovation workflows"
+        data-panel-cta-label="Open Representation"
+        data-panel-cta-href="{{ '/representation/' | toBaseRelative }}"
+      >
+        <rect class="hotspot-hitarea" x="370" y="286" width="130" height="90" />
+        <path class="hotspot-shape" d="M388 327H490L520 345H418Z" />
+        <path class="hotspot-shape" d="M406 334H486L506 345H426Z" />
+        <path class="hotspot-shape" d="M420 301H468L484 313H436Z" />
+        <path class="hotspot-shape" d="M444 287L420 301L436 313L460 299Z" />
+        <path class="hotspot-shape" d="M444 287L468 301L484 313L460 299Z" />
+        <path class="hotspot-shape" d="M436 313V338" />
+        <path class="hotspot-shape" d="M484 313V338" />
+        <path class="hotspot-shape" d="M436 338H484" />
+        <path class="hotspot-shape" d="M455 319V338" />
+        <path class="hotspot-shape" d="M448 329H462" />
+      </g>
+    </svg>
+  </div>
 </section>
 
-<section class="home-contact" aria-label="Contact">
+<div class="pillar-backdrop" id="panel-backdrop" hidden></div>
+<aside
+  class="pillar-panel"
+  id="pillar-panel"
+  role="dialog"
+  aria-modal="true"
+  aria-hidden="true"
+  aria-labelledby="panel-title"
+  hidden
+>
+  <button class="pillar-panel-close" id="panel-close" type="button" aria-label="Close panel">&times;</button>
+  <h2 class="pillar-panel-title" id="panel-title"></h2>
+  <ul class="pillar-panel-points" id="panel-points"></ul>
+  <a class="pillar-panel-cta" id="panel-cta" href="#">Open section</a>
+</aside>
+
+<section class="home-contact home-contact--room" aria-label="Contact">
   <h2>Contact</h2>
   <p>
     Have a project in mind or want to learn more about Archimmersion?
     Send us a note and we will get back to you.
   </p>
-  <a class="contact-button" href="mailto:hello@archimmersion.com">Email Us</a>
+  <a class="contact-button" href="mailto:atiemichele@gmail.com">Email Us</a>
 </section>

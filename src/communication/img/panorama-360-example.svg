@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3600 680" role="img" aria-label="Detailed 360 street panorama">
+  <rect width="3600" height="680" fill="#fff"/>
+  <g fill="none" stroke="#000" stroke-width="2">
+    <path d="M0 474H3600"/>
+    <path d="M0 518H3600"/>
+    <path d="M0 568H3600"/>
+
+    <path d="M30 474V210H190V474"/>
+    <path d="M190 474V240H304V474"/>
+    <path d="M304 474V170H520V474"/>
+    <path d="M520 474V232H650V474"/>
+    <path d="M650 474V182H862V474"/>
+    <path d="M862 474V224H1012V474"/>
+    <path d="M1012 474V154H1238V474"/>
+
+    <path d="M1300 474V236H1432V474"/>
+    <path d="M1432 474V188H1642V474"/>
+    <path d="M1642 474V228H1780V474"/>
+    <path d="M1780 474V160H2018V474"/>
+    <path d="M2018 474V214H2180V474"/>
+
+    <path d="M2264 474V244H2410V474"/>
+    <path d="M2410 474V178H2630V474"/>
+    <path d="M2630 474V226H2782V474"/>
+    <path d="M2782 474V160H3008V474"/>
+    <path d="M3008 474V226H3154V474"/>
+    <path d="M3154 474V192H3364V474"/>
+    <path d="M3364 474V236H3564V474"/>
+
+    <path d="M70 252H150"/>
+    <path d="M346 240H472"/>
+    <path d="M700 244H814"/>
+    <path d="M1070 214H1194"/>
+    <path d="M1476 230H1606"/>
+    <path d="M1840 206H1968"/>
+    <path d="M2472 224H2572"/>
+    <path d="M2840 206H2970"/>
+    <path d="M3220 232H3344"/>
+
+    <rect x="62" y="548" width="82" height="20"/>
+    <rect x="268" y="548" width="126" height="20"/>
+    <rect x="480" y="548" width="98" height="20"/>
+    <rect x="708" y="548" width="116" height="20"/>
+    <rect x="946" y="548" width="138" height="20"/>
+    <rect x="1208" y="548" width="102" height="20"/>
+    <rect x="1446" y="548" width="126" height="20"/>
+    <rect x="1708" y="548" width="118" height="20"/>
+    <rect x="1948" y="548" width="126" height="20"/>
+    <rect x="2190" y="548" width="132" height="20"/>
+    <rect x="2452" y="548" width="118" height="20"/>
+    <rect x="2690" y="548" width="132" height="20"/>
+    <rect x="2938" y="548" width="126" height="20"/>
+    <rect x="3190" y="548" width="118" height="20"/>
+    <rect x="3438" y="548" width="122" height="20"/>
+
+    <path d="M0 596C198 556 392 628 588 594C786 560 982 626 1182 592C1378 560 1578 626 1774 592C1972 560 2174 626 2370 592C2572 558 2782 628 2982 592C3186 558 3400 624 3600 590"/>
+
+    <path d="M320 474V362H362V474"/>
+    <path d="M990 474V350H1032V474"/>
+    <path d="M1718 474V354H1760V474"/>
+    <path d="M2528 474V346H2570V474"/>
+    <path d="M3340 474V358H3382V474"/>
+
+    <path d="M250 518L312 474"/>
+    <path d="M1240 518L1308 474"/>
+    <path d="M2148 518L2220 474"/>
+    <path d="M3048 518L3120 474"/>
+  </g>
+</svg>

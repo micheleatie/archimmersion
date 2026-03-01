@@ -1,6 +1,7 @@
 ---
 layout: layouts/base.njk
 title: Communication
+bodyClass: communication-page
 sectionKey: communication
 order: 3
 heroImage: ./img/cover.svg
@@ -11,56 +12,55 @@ links:
     url: /communication/#what-we-offer
   - label: Ideal For
     url: /communication/#ideal-for
-  # - label: Presentation systems
-  #   url: /communication/#presentation-systems
 ---
-<!-- the #what-we-offer section begins here  -->
 <anchor id="what-we-offer"></anchor>
 
+We frame architecture as an experience: spatially precise, emotionally clear, and understandable for clients before construction decisions are locked.
 
-**Immersive Storytelling for Architecture**
+- Immersive 360 capture for client dialogue
+- Atmosphere-driven visual narratives
+- High-fidelity still imagery for editorial and project communication
+- Delivery-ready assets for web and presentation workflows
 
-We use advanced photographic and immersive technologies to capture the true sensory atmosphere of your buildings. Our process combines:
-
-	•	High-dynamic-range photography
-
-	•	Immersive scans, 2D, or 360° immersive photography
-
-	•	Additional sensorial aspects (sounds, light, etc.) when needed
-
-	•	Sensitive atmosphere description by experts in spatial perception
-
-Our team does more than present a building in a photograph — we interpret its qualities
-
-**What Makes Us Different**
-
-•	Atmospheric and high-quality representation of your photographs
-
-	•	Sensitive interpretation by experts in architectural atmospheres
-
-	•	Immersive experience via 360° environments or refined 2D photography
-
-	•	Seamless integration into your website and digital platforms
-
-	•	We help your clients truly see the space you have designed — without outdated visualization techniques diminishing its impact
-
-<!-- the #ideal-for section begins here  -->
 <anchor id="ideal-for"></anchor>
 
-	•	Architects and design studios
+- Architecture and interior design studios
+- Client-facing renovation and transformation projects
+- Hospitality, culture, and residential storytelling
 
-	•	Real estate developers
-
-	•	Cultural institutions
-
-	•	Hospitality and wellness spaces
-
-## Gallery
-
-<div data-carousel>
-
-- ![Project narrative page](./img/01.svg)
-- ![Presentation layout draft](./img/02.svg)
-- ![Signage communication sample](./img/03.svg)
-
+<div class="comm-experience" data-comm-experience>
+  <h2>Street to immersion</h2>
+  <figure class="comm-map">
+    <div class="comm-map-frame">
+      <img src="{{ './img/street-map-wireframe.svg' | resolvePageAsset(page.url) | toBaseRelative }}" alt="Wireframe top-view street map" />
+      <a class="comm-map-spot comm-map-spot--street" href="{{ '/communication/#comm-panorama-stack' | toBaseRelative }}" data-map-spot data-target="comm-panorama-stack" aria-label="Open 360 view from this street spot" aria-controls="comm-panorama-stack" aria-pressed="false"></a>
+    </div>
+    <figcaption>Map pin: open exterior 360 street view.</figcaption>
+  </figure>
+  <div class="comm-panorama-area">
+    <div class="comm-panorama-stack" id="comm-panorama-stack" data-panorama-stack>
+      <figure class="comm-panorama">
+        <figcaption>360 street panorama (scroll/drag horizontally, then click the building pin)</figcaption>
+        <div class="comm-panorama-scroll" data-panorama-scroll>
+          <div class="comm-panorama-track">
+            <img src="{{ './img/panorama-360-example.svg' | resolvePageAsset(page.url) | toBaseRelative }}" alt="Example 360 panoramic street view" />
+            <a class="comm-panorama-pin" href="{{ '/communication/#comm-interior-stack' | toBaseRelative }}" data-interior-pin aria-label="Open interior 360 from this building" aria-controls="comm-interior-stack" aria-pressed="false"></a>
+          </div>
+        </div>
+      </figure>
+    </div>
+    <div class="comm-panorama-stack comm-panorama-stack--interior" id="comm-interior-stack" data-panorama-stack>
+      <figure class="comm-panorama">
+        <figcaption>360 interior panorama</figcaption>
+        <div class="comm-panorama-scroll" data-panorama-scroll>
+          <img src="{{ './img/panorama-360-interior-example.svg' | resolvePageAsset(page.url) | toBaseRelative }}" alt="Example 360 interior panoramic view" />
+        </div>
+      </figure>
+      <aside class="comm-interior-text">
+        <h3>Interior reading</h3>
+        <p>This viewpoint captures a transition space where light, circulation, and ceiling rhythm define the atmosphere. It is useful for discussing material continuity and how users perceive depth across connected rooms.</p>
+        <p>The 360 interior sequence helps clients evaluate scale, openings, and ambient quality before final detailing.</p>
+      </aside>
+    </div>
+  </div>
 </div>
