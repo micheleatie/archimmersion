@@ -13,10 +13,9 @@
     const y = window.scrollY;
     const range = Math.max(window.innerHeight * 0.95, 520);
     const progress = clamp(y / range, 0, 1);
-    const blur = 2 + progress * 13;
-    const veilOpacity = 0.08 + progress * 0.2;
+    const veilOpacity = 0.12 + progress * 0.18;
 
-    body.style.setProperty("--sunrays-blur", `${blur.toFixed(2)}px`);
+    body.style.setProperty("--sunrays-blur", "0px");
     body.style.setProperty("--sunrays-veil-opacity", veilOpacity.toFixed(3));
   };
 

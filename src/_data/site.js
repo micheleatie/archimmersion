@@ -4,7 +4,7 @@ module.exports = {
     "Archimmersion is a studio focused on design, representation, and communication.",
   subtitleWords: ["Design", "Representation", "Communication"],
   // Toggle homepage palette here: "colorful" or "liquid-glass"
-  palette: "liquid-glass",
+  palette: "colorful",
   // Toggle background style here: "flat" or "sunrays-glass"
   backgroundStyle: "sunrays-glass",
   year: new Date().getFullYear(),

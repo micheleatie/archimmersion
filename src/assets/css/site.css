@@ -27,12 +27,12 @@
   --landscape-subtitle-wordmark-gap-spread: 7rem;
   --landscape-subtitle-wordmark-gap-reveal: 0rem;
   --landscape-sections-lift-max: 0rem;
-  --sunrays-image: url("../img/sunrays-soft.png");
-  --sunrays-blur: 2px;
+  --sunrays-image: url("../img/sunrays-soft.jpg");
+  --sunrays-blur: 0px;
   --sunrays-contrast: 1;
   --sunrays-saturate: 1;
   --sunrays-brightness: 1;
-  --sunrays-veil-opacity: 0.08;
+  --sunrays-veil-opacity: 0.12;
   --glass-wordmark-opacity: 1;
   --glass-subtitle-opacity: 1;
   /* Wordmark palette (A R C H I M M E R S I O N) */
@@ -117,11 +117,11 @@ body[data-background-style="sunrays-glass"]::before {
   background: var(--sunrays-image) center center / cover no-repeat;
   content: "";
   filter: blur(var(--sunrays-blur)) contrast(var(--sunrays-contrast)) saturate(var(--sunrays-saturate)) brightness(var(--sunrays-brightness));
-  inset: -8vmax;
-  opacity: 0.86;
+  inset: 0;
+  opacity: 0.8;
   pointer-events: none;
   position: fixed;
-  transform: scale(1.08);
+  transform: none;
   z-index: 0;
 }
 
@@ -668,6 +668,79 @@ a {
 
 .carousel-dot[aria-pressed="true"] {
   background: #4a5255;
+}
+
+/* Flat monochrome mode: white background, black text. */
+body[data-background-style="flat"] {
+  --bg: #ffffff;
+  --text: #000000;
+  --muted: #000000;
+  --line: #d9d9d9;
+  --wm-a: #000000;
+  --wm-r: #000000;
+  --wm-c: #000000;
+  --wm-h: #000000;
+  --wm-i1: #000000;
+  --wm-m1: #000000;
+  --wm-m2: #000000;
+  --wm-e: #000000;
+  --wm-r2: #000000;
+  --wm-s: #000000;
+  --wm-i2: #000000;
+  --wm-o: #000000;
+  --wm-n: #000000;
+  --subtitle-design: #000000;
+  --subtitle-design-underline: #000000;
+  --subtitle-representation: #000000;
+  --subtitle-representation-underline: #000000;
+  --subtitle-communication: #000000;
+  --subtitle-communication-underline: #000000;
+}
+
+body[data-background-style="flat"] a,
+body[data-background-style="flat"] .wordmark-piece,
+body[data-background-style="flat"] .home-contact p,
+body[data-background-style="flat"] .markdown-body h1,
+body[data-background-style="flat"] .carousel-caption {
+  color: #000000;
+}
+
+body[data-background-style="flat"] .subpage-nav a,
+body[data-background-style="flat"] .subpage-nav a:hover,
+body[data-background-style="flat"] .subpage-nav a:focus-visible,
+body[data-background-style="flat"] .subpage-nav a[aria-current="page"] {
+  color: #000000;
+}
+
+body[data-background-style="flat"] .subpage-topbar {
+  background: #ffffff;
+}
+
+body[data-background-style="flat"] .contact-button {
+  background: #ffffff;
+  border-color: #000000;
+  color: #000000;
+}
+
+body[data-background-style="flat"] .contact-button:hover,
+body[data-background-style="flat"] .contact-button:focus-visible {
+  background: #ffffff;
+  color: #000000;
+}
+
+body[data-background-style="flat"] .carousel-frame {
+  background: #ffffff;
+}
+
+body[data-background-style="flat"] .carousel-arrow {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #000000;
+  color: #000000;
+}
+
+body[data-background-style="flat"] .carousel-arrow:hover,
+body[data-background-style="flat"] .carousel-arrow:focus-visible {
+  background: #ffffff;
 }
 
 @media (hover: none) {
