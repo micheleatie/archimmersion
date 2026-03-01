@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1040" role="img" aria-labelledby="title desc">
+  <title id="title">Annotated model - white board</title>
+  <desc id="desc">Isometric architectural massing with four annotation zones on light background.</desc>
+
+  <rect width="1600" height="1040" fill="#ececec"/>
+
+  <g stroke="#171717" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="315,618 955,618 1268,520 628,520" stroke-width="1.8"/>
+    <polygon points="420,706 1060,706 1373,608 733,608" stroke-width="1.8"/>
+
+    <polygon points="420,680 905,680 905,455 420,455" fill="#e2e2e2" stroke-width="2"/>
+    <polygon points="420,455 595,386 1080,386 905,455" fill="#d7d7d7" stroke-width="2"/>
+    <polygon points="905,680 1080,611 1080,386 905,455" fill="#cbcbcb" stroke-width="2"/>
+
+    <polygon points="702,640 1037,640 1037,518 702,518" fill="#e3e3e3" stroke-width="2"/>
+    <polygon points="702,518 862,456 1197,456 1037,518" fill="#d8d8d8" stroke-width="2"/>
+    <polygon points="1037,640 1197,578 1197,456 1037,518" fill="#cccccc" stroke-width="2"/>
+
+    <polygon points="806,583 978,583 978,516 806,516" fill="#e2e2e2" stroke-width="2"/>
+    <polygon points="806,516 897,480 1068,480 978,516" fill="#d7d7d7" stroke-width="2"/>
+    <polygon points="978,583 1068,547 1068,480 978,516" fill="#cbcbcb" stroke-width="2"/>
+
+    <path d="M468 680V560" stroke-width="1.2"/>
+    <path d="M574 680V560" stroke-width="1.2"/>
+    <path d="M778 640V540" stroke-width="1.2"/>
+    <path d="M888 640V540" stroke-width="1.2"/>
+    <path d="M997 640V540" stroke-width="1.2"/>
+    <path d="M1112 640V540" stroke-width="1.2"/>
+
+    <path d="M475 485L905 485" stroke-width="1.1" opacity="0.6"/>
+    <path d="M525 465L955 465" stroke-width="1.1" opacity="0.6"/>
+    <path d="M575 445L1005 445" stroke-width="1.1" opacity="0.6"/>
+
+    <circle cx="655" cy="455" r="7" fill="#171717"/>
+    <path d="M655 455V210" stroke-width="1.6" stroke-dasharray="8 8"/>
+    <path d="M655 210H565" stroke-width="1.6" stroke-dasharray="8 8"/>
+    <circle cx="655" cy="210" r="7" fill="#171717"/>
+
+    <circle cx="930" cy="392" r="7" fill="#171717"/>
+    <path d="M930 392L980 290" stroke-width="1.6" stroke-dasharray="8 8"/>
+    <path d="M980 290H1060" stroke-width="1.6" stroke-dasharray="8 8"/>
+    <circle cx="1060" cy="290" r="7" fill="#171717"/>
+
+    <circle cx="1088" cy="642" r="7" fill="#171717"/>
+    <path d="M1088 642V790" stroke-width="1.6" stroke-dasharray="8 8"/>
+    <path d="M1088 790H1128" stroke-width="1.6" stroke-dasharray="8 8"/>
+    <circle cx="1088" cy="790" r="7" fill="#171717"/>
+
+    <circle cx="266" cy="470" r="7" fill="#171717"/>
+    <path d="M266 470V790" stroke-width="1.6" stroke-dasharray="8 8"/>
+    <path d="M266 470H350" stroke-width="1.6" stroke-dasharray="8 8"/>
+    <circle cx="266" cy="790" r="7" fill="#171717"/>
+  </g>
+
+  <g fill="#111111" font-family="Avenir Next, Segoe UI, sans-serif">
+    <text x="145" y="155" font-size="56" font-weight="600">Qualitative &amp; contextual</text>
+    <text x="145" y="216" font-size="56" font-weight="600">information</text>
+    <path d="M145 236H575" stroke="#111111" stroke-width="1.2"/>
+    <text x="150" y="292" font-size="48">Atmosphere, usage, sensory elements</text>
+    <text x="150" y="344" font-size="48">(light, thermal, etc.)</text>
+
+    <text x="1090" y="155" font-size="56" font-weight="600">Technical information</text>
+    <path d="M1078 236H1460" stroke="#111111" stroke-width="1.2"/>
+    <text x="1090" y="292" font-size="48">Materials, systems,</text>
+    <text x="1090" y="344" font-size="48">performance</text>
+
+    <text x="150" y="830" font-size="56" font-weight="600">Other</text>
+    <path d="M145 850H500" stroke="#111111" stroke-width="1.2"/>
+    <text x="150" y="906" font-size="46">Constraints, variants, decisions</text>
+
+    <text x="1080" y="830" font-size="56" font-weight="600">In situ measurements</text>
+    <path d="M1078 850H1460" stroke="#111111" stroke-width="1.2"/>
+    <text x="1080" y="906" font-size="46">Distances, lux, photos, notes</text>
+  </g>
+</svg>

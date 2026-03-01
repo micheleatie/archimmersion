@@ -16,6 +16,7 @@
   - `design` -> `/design/`
   - `representation` -> `/representation/`
   - `communication` -> `/communication/`
+- User-facing section label for `design` is now `Lighting` (URL remains `/design/`).
 - Subpage titlebar links route to each section page plus homepage.
 
 ## Homepage Model (2026-03-01)
@@ -26,9 +27,10 @@
 - `Explore the room.` caption is explicitly forced to pure black in CSS.
 - Homepage EN/FR switch is positioned below the interactive room sketch (`.home-lang-switch--room`) and centered.
 - Scene is inline SVG (vector, black line-art on white) in `src/index.njk`.
+- Room background was updated to an open, frameless perspective (no closed perimeter box), keeping a more limitless spatial feel.
 - Required SVG group structure is present:
   - `g#room-background`
-  - `g#hotspot-window` (Design)
+  - `g#hotspot-window` (Lighting)
   - `g#hotspot-laptop` (Communication)
   - `g#hotspot-model` (Representation)
 - Each hotspot group includes:
@@ -41,7 +43,7 @@
 - Representation hotspot object is a small house-like physical model silhouette.
 - Home panel content now supports both formats:
   - bullet mode via `data-panel-points`
-  - paragraph mode via `data-panel-body` (used by Communication for long summary copy).
+  - paragraph mode via `data-panel-body` (used by Communication and Representation summary copy).
 - Communication panel body formatting:
   - first two sentences are rendered as a bold lead (`<strong>`)
   - a blank line is inserted before the remaining paragraph text.
@@ -53,6 +55,13 @@
   - hotspot aria-labels for each language.
 - Home language choice is now persisted in `localStorage` key `arch_home_lang` and reused by subpages.
 - Laptop/model hitboxes were adjusted to avoid overlap and improve reliable click selection of Communication.
+- Homepage typography alignment:
+  - `Explore the room.` is larger, black, and bold.
+  - Home contact typography is aligned to the same title-family style (`Avenir Next` stack) with stronger tracking/weight for heading and CTA.
+- Homepage contact now includes a subtle location line under the email CTA: `Paris, France`.
+- Room reveal pacing is intentionally delayed:
+  - increased vertical runway before room section (`.room-stage` top margin),
+  - stricter IntersectionObserver trigger (`threshold: 0.52`, `rootMargin: 0 0 -18% 0`, plus minimum scroll gate).
 
 ## Communication Page Model (2026-03-01)
 - `src/communication/index.md` now sets `bodyClass: communication-page` for page-specific styling.
@@ -92,7 +101,26 @@
   - panorama navigation tuning:
     - wheel horizontal scroll accelerated (`deltaY * 2.4`)
     - drag-to-scroll accelerated (delta multiplied by `1.7`)
-    - panorama render widths reduced (desktop/mobile) so key content appears sooner.
+  - panorama render widths reduced (desktop/mobile) so key content appears sooner.
+
+## Representation Page Model (2026-03-01)
+- `src/representation/index.md` now sets `bodyClass: representation-page`.
+- Representation now uses the same pure-white visual language as Communication:
+  - no sunrays overlays
+  - white topbar/background
+  - compact text widths and typography.
+- Representation now includes an interactive map-to-model block (same interaction language as Communication):
+  - map asset: `src/representation/img/street-map-wireframe.svg`
+  - map spot reveals `#rep-model-stack` on single click
+  - revealed window shows `src/representation/img/model-reference-white-v3.svg` (light annotation board; versioned URL for cache busting).
+- In Representation services copy, the standalone `We analyze` subsection was removed and its items were merged in parentheses into `Atmosphere-sensitive information`.
+
+## Lighting Page Model (2026-03-01)
+- `src/design/index.md` now sets `bodyClass: lighting-page`.
+- Lighting uses pure-white presentation (same neutral style family as Communication/Representation):
+  - no sunrays overlays
+  - white topbar/background
+  - compact text widths and typography.
 
 ## Homepage Interaction Logic
 - Implemented in `src/assets/js/site.js`.
@@ -108,6 +136,9 @@
   - clicking another hotspot switches panel content in place.
 - Panel CTA link uses robust JS navigation (`new URL(href, document.baseURI)` + `window.location.assign(...)`) for reliable routing in both EN/FR.
 - Focus behavior: when panel closes, focus returns to last active hotspot.
+- Non-home interactive experiences are now initialized generically from `src/assets/js/site.js` via:
+  - `[data-comm-experience]` and `[data-repr-experience]` containers
+  - shared spot/stack reveal attributes (`data-map-spot`, `data-panorama-stack`, `data-panorama-scroll`).
 
 ## Styling Notes
 - Global stylesheet: `src/assets/css/site.css`.

@@ -578,8 +578,10 @@ a {
   text-align: center;
 }
 
-/* Communication page: pure background + compact text + map/panorama interaction */
-body.communication-page {
+/* Communication + Representation + Lighting pages: pure background + compact text */
+body.communication-page,
+body.lighting-page,
+body.representation-page {
   --bg: #ffffff;
   --text: #000000;
   --muted: #222222;
@@ -589,42 +591,64 @@ body.communication-page {
 }
 
 body.communication-page[data-background-style="sunrays-glass"]::before,
-body.communication-page[data-background-style="sunrays-glass"]::after {
+body.communication-page[data-background-style="sunrays-glass"]::after,
+body.lighting-page[data-background-style="sunrays-glass"]::before,
+body.lighting-page[data-background-style="sunrays-glass"]::after,
+body.representation-page[data-background-style="sunrays-glass"]::before,
+body.representation-page[data-background-style="sunrays-glass"]::after {
   display: none;
 }
 
-body.communication-page .subpage-topbar {
+body.communication-page .subpage-topbar,
+body.lighting-page .subpage-topbar,
+body.representation-page .subpage-topbar {
   backdrop-filter: none;
   background: #ffffff;
   border-bottom-color: #d9d9d9;
 }
 
-body.communication-page .markdown-body {
+body.communication-page .markdown-body,
+body.lighting-page .markdown-body,
+body.representation-page .markdown-body {
   max-width: min(1260px, 96vw);
 }
 
-body.communication-page .markdown-body h1 {
+body.communication-page .markdown-body h1,
+body.lighting-page .markdown-body h1,
+body.representation-page .markdown-body h1 {
   font-size: clamp(2rem, 3.4vw, 3rem);
   margin-bottom: 0.9rem;
 }
 
 body.communication-page .markdown-body .md-anchor,
 body.communication-page .markdown-body p,
-body.communication-page .markdown-body ul {
+body.communication-page .markdown-body ul,
+body.lighting-page .markdown-body .md-anchor,
+body.lighting-page .markdown-body p,
+body.lighting-page .markdown-body ul,
+body.representation-page .markdown-body .md-anchor,
+body.representation-page .markdown-body p,
+body.representation-page .markdown-body ul {
   max-width: min(50vw, 74ch);
 }
 
-body.communication-page .markdown-body .md-anchor {
+body.communication-page .markdown-body .md-anchor,
+body.lighting-page .markdown-body .md-anchor,
+body.representation-page .markdown-body .md-anchor {
   font-size: clamp(1.32rem, 1.8vw, 1.75rem);
   margin-top: 1.4rem;
 }
 
-body.communication-page .markdown-body p {
+body.communication-page .markdown-body p,
+body.lighting-page .markdown-body p,
+body.representation-page .markdown-body p {
   font-size: clamp(0.98rem, 1.05vw, 1.16rem);
   line-height: 1.48;
 }
 
-body.communication-page .markdown-body ul {
+body.communication-page .markdown-body ul,
+body.lighting-page .markdown-body ul,
+body.representation-page .markdown-body ul {
   font-size: clamp(0.96rem, 1.02vw, 1.12rem);
   line-height: 1.46;
   margin-top: 0.3rem;
@@ -776,6 +800,18 @@ body.communication-page .markdown-body ul {
   height: 190px;
   max-width: none;
   width: 2400px;
+}
+
+body.representation-page .rep-model-window .comm-panorama-scroll {
+  max-width: min(94vw, 780px);
+  cursor: default;
+  overflow: hidden;
+}
+
+body.representation-page .rep-model-image {
+  display: block;
+  height: auto;
+  width: min(94vw, 760px);
 }
 
 .comm-panorama-pin {
@@ -1147,7 +1183,13 @@ body[data-background-style="flat"] .carousel-arrow:focus-visible {
 
   body.communication-page .markdown-body .md-anchor,
   body.communication-page .markdown-body p,
-  body.communication-page .markdown-body ul {
+  body.communication-page .markdown-body ul,
+  body.lighting-page .markdown-body .md-anchor,
+  body.lighting-page .markdown-body p,
+  body.lighting-page .markdown-body ul,
+  body.representation-page .markdown-body .md-anchor,
+  body.representation-page .markdown-body p,
+  body.representation-page .markdown-body ul {
     max-width: 100%;
   }
 
@@ -1157,6 +1199,10 @@ body[data-background-style="flat"] .carousel-arrow:focus-visible {
 
   .comm-panorama-stack {
     max-width: 100%;
+  }
+
+  body.representation-page .rep-model-image {
+    width: min(92vw, 760px);
   }
 
   .comm-panorama-area {
@@ -1215,6 +1261,7 @@ body.home-page {
   --line: #161616;
   background: #ffffff;
   color: #000000;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
 }
 
 body.home-page[data-background-style="sunrays-glass"]::before,
@@ -1284,6 +1331,7 @@ body.home-page .site-footer {
 }
 
 .room-stage {
+  margin-top: clamp(6rem, 14vh, 12rem);
   opacity: 0;
   padding: 1.4rem 0 0.8rem;
   transform: translateY(2.2rem);
@@ -1297,12 +1345,21 @@ body.home-page .site-footer {
 
 .room-stage-headline {
   color: #000000;
-  font-size: clamp(1.04rem, 1.45vw, 1.18rem);
-  font-weight: 350;
-  letter-spacing: 0.05em;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
   margin-bottom: 0.9rem;
   text-align: center;
   text-transform: none;
+}
+
+.home-page .home-contact,
+.home-page .home-contact h2,
+.home-page .home-contact p,
+.home-page .contact-button,
+.home-page .pillar-panel,
+.home-page .home-lang-button {
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
 }
 
 .room-svg-wrap {
@@ -1501,6 +1558,47 @@ body.home-page .site-footer {
   margin-top: 2.8rem;
 }
 
+.home-contact--room h2 {
+  color: #000000;
+  font-size: clamp(1.9rem, 3.1vw, 3rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.home-contact--room p {
+  color: #000000;
+  font-size: clamp(1rem, 1.18vw, 1.2rem);
+  letter-spacing: 0.015em;
+  line-height: 1.45;
+}
+
+.home-contact--room .contact-button {
+  border-color: #000000;
+  color: #000000;
+  font-size: 0.96rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.home-contact--room .contact-button:hover,
+.home-contact--room .contact-button:focus-visible {
+  background: #000000;
+  color: #ffffff;
+}
+
+.home-contact--room .home-contact-location {
+  color: #5b5b5b;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  margin-top: 2.8rem;
+  text-transform: uppercase;
+}
+
 body.room-panel-open {
   overflow: hidden;
 }
@@ -1519,12 +1617,14 @@ body.room-panel-open {
   }
 
   .room-stage {
+    margin-top: clamp(2.2rem, 8vh, 4.2rem);
     padding-top: 0.4rem;
   }
 
   .room-stage-headline {
-    font-size: 0.92rem;
-    letter-spacing: 0.05em;
+    font-size: clamp(1.12rem, 3.8vw, 1.35rem);
+    font-weight: 700;
+    letter-spacing: 0.06em;
     margin-bottom: 0.6rem;
   }
 

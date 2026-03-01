@@ -43,7 +43,7 @@
     const lang = getStoredLang();
     const t = {
       en: {
-        navDesign: "Design",
+        navDesign: "Lighting",
         navRepresentation: "Representation",
         navCommunication: "Communication",
         h1: "Communication",
@@ -82,7 +82,7 @@
           "The 360 interior sequence helps clients evaluate scale, openings, and ambient quality before final detailing.",
       },
       fr: {
-        navDesign: "Design",
+        navDesign: "Lumiere",
         navRepresentation: "Representation",
         navCommunication: "Communication",
         h1: "Communication",
@@ -172,12 +172,8 @@
     });
   };
 
-  const initCommunicationExperience = () => {
-    if (!body.classList.contains("communication-page")) {
-      return;
-    }
-
-    const experiences = Array.from(document.querySelectorAll("[data-comm-experience]"));
+  const initInteractiveExperiences = () => {
+    const experiences = Array.from(document.querySelectorAll("[data-comm-experience], [data-repr-experience]"));
     if (!experiences.length) {
       return;
     }
@@ -220,7 +216,7 @@
         });
 
         mapSpots.forEach((spot) => {
-          const pressed = getTargetId(spot) === targetId && targetId === "comm-panorama-stack";
+          const pressed = getTargetId(spot) === targetId;
           spot.setAttribute("aria-pressed", pressed ? "true" : "false");
         });
 
@@ -342,7 +338,7 @@
 
   if (!body.classList.contains("home-page")) {
     initCommunicationLanguage();
-    initCommunicationExperience();
+    initInteractiveExperiences();
     updateBackdropDepth();
     window.addEventListener("scroll", updateBackdropDepth, { passive: true });
     window.addEventListener("resize", updateBackdropDepth, { passive: true });
@@ -377,15 +373,15 @@
       contactCta: "Email Us",
       panels: {
         "hotspot-window": {
-          openLabel: "Open Design section",
-          title: "DESIGN",
+          openLabel: "Open Lighting section",
+          title: "LIGHTING",
           points: [
             "Light as a design material",
             "Atmosphere-led interior strategy",
             "Spatial sequence and proportion",
             "Calm, sensorial architectural thinking",
           ],
-          ctaLabel: "Open Design",
+          ctaLabel: "Open Lighting",
         },
         "hotspot-laptop": {
           openLabel: "Open Communication section",
@@ -399,12 +395,9 @@
         "hotspot-model": {
           openLabel: "Open Representation section",
           title: "REPRESENTATION",
-          points: [
-            "Physical and digital fidelity in parallel",
-            "VR-ready spatial representation",
-            "Measured geometry and atmosphere capture",
-            "Immersive models for renovation workflows",
-          ],
+          lead: "Faithful 3D Scan & Immersive Representation",
+          body:
+            "We intervene on-site to capture your building with precision and sensitivity. Using advanced 3D scanning technologies, we provide a faithful, immersive, and atmosphere-driven digital restitution — ideal for renovation, design development, and communication.",
           ctaLabel: "Open Representation",
         },
       },
@@ -417,15 +410,15 @@
       contactCta: "Envoyer un email",
       panels: {
         "hotspot-window": {
-          openLabel: "Ouvrir la section Design",
-          title: "DESIGN",
+          openLabel: "Ouvrir la section Lumiere",
+          title: "LUMIERE",
           points: [
             "La lumiere comme matiere de conception",
             "Strategie interieure guidee par l'atmosphere",
             "Sequence spatiale et proportions",
             "Approche architecturale calme et sensorielle",
           ],
-          ctaLabel: "Ouvrir Design",
+          ctaLabel: "Ouvrir Lumiere",
         },
         "hotspot-laptop": {
           openLabel: "Ouvrir la section Communication",
@@ -439,12 +432,9 @@
         "hotspot-model": {
           openLabel: "Ouvrir la section Representation",
           title: "REPRESENTATION",
-          points: [
-            "Fidelite physique et numerique en parallele",
-            "Representation spatiale prete pour la VR",
-            "Geometrie mesuree et capture d'atmosphere",
-            "Modeles immersifs pour les projets de renovation",
-          ],
+          lead: "Scan 3D fidele et representation immersive",
+          body:
+            "Nous intervenons sur site pour capturer votre batiment avec precision et sensibilite. Grace a des technologies avancees de scan 3D, nous produisons une restitution numerique fidele, immersive et guidee par l'atmosphere, ideale pour la renovation, le developpement de projet et la communication.",
           ctaLabel: "Ouvrir Representation",
         },
       },
@@ -669,15 +659,16 @@
     const roomObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          const minRevealScroll = Math.max(window.innerHeight * 0.42, 220);
+          if (entry.isIntersecting && window.scrollY >= minRevealScroll) {
             roomStage.classList.add("is-visible");
             roomObserver.disconnect();
           }
         });
       },
       {
-        threshold: 0.24,
-        rootMargin: "0px 0px -10% 0px",
+        threshold: 0.52,
+        rootMargin: "0px 0px -18% 0px",
       },
     );
 

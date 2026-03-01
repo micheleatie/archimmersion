@@ -1,6 +1,7 @@
 ---
 layout: layouts/base.njk
 title: Representation
+bodyClass: representation-page
 sectionKey: representation
 order: 2
 heroImage: ./img/cover.svg
@@ -36,18 +37,6 @@ We combine advanced 3D scanning tools with a sensitive understanding of architec
 <!-- the #our-services section begins here  -->
 <anchor id="our-services"></anchor>
 
-**We analyze**
-
-	•	Luminous and thermal atmospheres
-
-	•	Context
-
-	•	Material presence
-
-	•	Spatial perception (Materiality, volumes, proportions, etc.)
-
-	•	Emotional tone of the existing space
-
 **What You Receive**
 
 	•	Detailed 3D models for renovation or redesign (we go on site and do all the measurements with our advanced professional tools)
@@ -56,7 +45,7 @@ We combine advanced 3D scanning tools with a sensitive understanding of architec
 
 	•	Accurate documentation for architectural planning
 
-	•	Atmosphere-sensitive information
+	•	Atmosphere-sensitive information (luminous and thermal atmospheres, context, material presence, spatial perception (materiality, volumes, proportions, etc.), emotional tone of the existing space)
 
 	•	360° captured photographs of the existing building
 
@@ -71,13 +60,24 @@ We combine advanced 3D scanning tools with a sensitive understanding of architec
 
 	•	Architects/Interior Designers needing high-precision base models for renovation and construction
 
+<div class="comm-experience" data-repr-experience>
+  <h2>Street to annotated model</h2>
+  <figure class="comm-map">
+    <div class="comm-map-frame">
+      <img src="{{ './img/street-map-wireframe.svg' | resolvePageAsset(page.url) | toBaseRelative }}" alt="Wireframe top-view street map" />
+      <a class="comm-map-spot comm-map-spot--street" href="{{ '/representation/#rep-model-stack' | toBaseRelative }}" data-map-spot data-target="rep-model-stack" aria-label="Open annotated 3D model from this street spot" aria-controls="rep-model-stack" aria-pressed="false"></a>
+    </div>
+    <figcaption>Map pin: open the annotated 3D model view.</figcaption>
+  </figure>
 
-
-
-<!-- <div data-carousel>
-
-- ![Exterior render draft](./img/01.svg)
-- ![Program diagram stack](./img/02.svg)
-- ![Phasing storyboard](./img/03.svg)
-
-</div> -->
+  <div class="comm-panorama-area">
+    <div class="comm-panorama-stack rep-model-stack" id="rep-model-stack" data-panorama-stack>
+      <figure class="comm-panorama rep-model-window">
+        <figcaption>Annotated 3D model window</figcaption>
+        <div class="comm-panorama-scroll">
+          <img class="rep-model-image" src="{{ './img/model-reference-white-v3.svg' | resolvePageAsset(page.url) | toBaseRelative }}?v=20260301d" alt="Annotated 3D architectural model with integrated technical callouts" />
+        </div>
+      </figure>
+    </div>
+  </div>
+</div>

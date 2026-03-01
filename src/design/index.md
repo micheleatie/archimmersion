@@ -1,6 +1,7 @@
 ---
 layout: layouts/base.njk
-title: Design
+title: Lighting
+bodyClass: lighting-page
 sectionKey: design
 order: 1
 heroImage: ./img/cover.svg

@@ -21,11 +21,12 @@ bodyClass: home-page
       aria-label="Architectural room with three interactive objects"
     >
       <g id="room-background" class="room-lines">
-        <path d="M200 120H800V420H200Z" />
-        <path d="M200 120L130 80H870L800 120" />
-        <path d="M200 420L130 500H870L800 420" />
-        <path d="M130 80V500" />
-        <path d="M870 80V500" />
+        <path d="M220 130H780" />
+        <path d="M220 130L140 90" />
+        <path d="M780 130L860 90" />
+        <path d="M220 420H780" />
+        <path d="M220 420L140 500" />
+        <path d="M780 420L860 500" />
 
         <path d="M320 322H700L760 360H260Z" />
         <path d="M260 360V470" />
@@ -39,12 +40,12 @@ bodyClass: home-page
         class="room-hotspot"
         role="button"
         tabindex="0"
-        aria-label="Open Design section"
+        aria-label="Open Lighting section"
         aria-controls="pillar-panel"
         aria-pressed="false"
-        data-panel-title="DESIGN"
+        data-panel-title="LIGHTING"
         data-panel-points="Light as a design material|Atmosphere-led interior strategy|Spatial sequence and proportion|Calm, sensorial architectural thinking"
-        data-panel-cta-label="Open Design"
+        data-panel-cta-label="Open Lighting"
         data-panel-cta-href="{{ '/design/' | toBaseRelative }}"
       >
         <rect class="hotspot-hitarea" x="232" y="152" width="196" height="156" />
@@ -84,7 +85,7 @@ bodyClass: home-page
         aria-controls="pillar-panel"
         aria-pressed="false"
         data-panel-title="REPRESENTATION"
-        data-panel-points="Physical and digital fidelity in parallel|VR-ready spatial representation|Measured geometry and atmosphere capture|Immersive models for renovation workflows"
+        data-panel-body="We intervene on-site to capture your building with precision and sensitivity. Using advanced 3D scanning technologies, we provide a faithful, immersive, and atmosphere-driven digital restitution — ideal for renovation, design development, and communication."
         data-panel-cta-label="Open Representation"
         data-panel-cta-href="{{ '/representation/' | toBaseRelative }}"
       >
@@ -135,4 +136,5 @@ bodyClass: home-page
     Send us a note and we will get back to you.
   </p>
   <a class="contact-button" href="mailto:atiemichele@gmail.com" data-i18n="contactCta">Email Us</a>
+  <p class="home-contact-location" aria-label="Location">Paris, France</p>
 </section>
