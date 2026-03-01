@@ -23,6 +23,8 @@
   1. minimal hero with centered `ARCHIMMERSION` wordmark.
   2. interactive line-art architectural room scene revealed on scroll.
 - Room instruction caption above SVG is now `Explore the room.` (centered, light weight, slightly larger than prior caption size).
+- `Explore the room.` caption is explicitly forced to pure black in CSS.
+- Homepage now includes an EN/FR language switch (`.home-lang-switch`) in the hero.
 - Scene is inline SVG (vector, black line-art on white) in `src/index.njk`.
 - Required SVG group structure is present:
   - `g#room-background`
@@ -37,6 +39,19 @@
   - per-hotspot panel content via `data-panel-*` attributes.
 - Communication hotspot laptop uses a straight, open silhouette with explicit screen + base geometry.
 - Representation hotspot object is a small house-like physical model silhouette.
+- Home panel content now supports both formats:
+  - bullet mode via `data-panel-points`
+  - paragraph mode via `data-panel-body` (used by Communication for long summary copy).
+- Communication panel body formatting:
+  - first two sentences are rendered as a bold lead (`<strong>`)
+  - a blank line is inserted before the remaining paragraph text.
+  - lead line now supports explicit line breaks (`\n`) to force split lines (used between `magazines.` and `Beyond...`).
+- Home language translation coverage includes:
+  - room instruction line
+  - contact title/text/button
+  - panel titles/content/CTA labels
+  - hotspot aria-labels for each language.
+- Home language choice is now persisted in `localStorage` key `arch_home_lang` and reused by subpages.
 - Laptop/model hitboxes were adjusted to avoid overlap and improve reliable click selection of Communication.
 
 ## Communication Page Model (2026-03-01)
@@ -45,6 +60,17 @@
 - Communication text is intentionally compact:
   - smaller typography than default subpages
   - content block width constrained to roughly half-page on desktop.
+- Communication content now supports EN/FR dynamic translation via `data-comm-i18n` / `data-comm-i18n-aria` attributes, driven by the stored home language.
+- The duplicate line `Ideal for` under the `#ideal-for` anchor heading was removed (single heading remains).
+- Panorama alignment stabilization:
+  - fixed caption min-height on desktop keeps exterior/interior windows aligned even with longer French strings.
+  - anchor-click reveal now prevents default jump and updates hash with `history.replaceState(...)` to avoid visual displacement.
+- Home panel CTA usability:
+  - `pillar-panel-cta` is sticky near panel bottom for consistent click access with long translated text.
+- Communication narrative copy now mirrors client-approved phrasing for:
+  - `Immersive Storytelling for Architecture`
+  - `What Makes Us Different`
+  - `Ideal for`.
 - Added interactive street-to-360 block:
   - square black-and-white wireframe top-view map (`src/communication/img/street-map-wireframe.svg`)
   - map has one exterior pin only (street -> exterior 360)

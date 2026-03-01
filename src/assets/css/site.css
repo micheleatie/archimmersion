@@ -721,6 +721,7 @@ body.communication-page .markdown-body ul {
 }
 
 .comm-panorama-area {
+  align-items: start;
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -732,12 +733,21 @@ body.communication-page .markdown-body ul {
   display: grid;
 }
 
+.comm-panorama-stack {
+  align-content: start;
+}
+
 .comm-panorama {
+  align-content: start;
+  display: grid;
+  grid-template-rows: auto auto;
   margin: 0;
 }
 
 .comm-panorama figcaption {
   font-size: 0.92rem;
+  line-height: 1.35;
+  min-height: 3.1em;
   margin-bottom: 0.45rem;
 }
 
@@ -1170,6 +1180,10 @@ body[data-background-style="flat"] .carousel-arrow:focus-visible {
     width: 1900px;
   }
 
+  .comm-panorama figcaption {
+    min-height: auto;
+  }
+
   .comm-panorama-track {
     width: 1900px;
   }
@@ -1237,6 +1251,32 @@ body.home-page .site-footer {
   text-align: center;
 }
 
+.home-lang-switch {
+  display: inline-flex;
+  gap: 0.35rem;
+  margin-top: 1rem;
+}
+
+.home-lang-button {
+  appearance: none;
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 999px;
+  color: #000000;
+  cursor: pointer;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  min-width: 3rem;
+  padding: 0.34rem 0.62rem;
+}
+
+.home-lang-button.is-active,
+.home-lang-button:hover,
+.home-lang-button:focus-visible {
+  background: #000000;
+  color: #ffffff;
+}
+
 .room-stage {
   opacity: 0;
   padding: 1.4rem 0 0.8rem;
@@ -1250,6 +1290,7 @@ body.home-page .site-footer {
 }
 
 .room-stage-headline {
+  color: #000000;
   font-size: clamp(1.04rem, 1.45vw, 1.18rem);
   font-weight: 350;
   letter-spacing: 0.05em;
@@ -1396,6 +1437,16 @@ body.home-page .site-footer {
   margin: 0;
 }
 
+.pillar-panel-body {
+  font-size: 1rem;
+  line-height: 1.48;
+  margin: 0;
+}
+
+.pillar-panel-body strong {
+  font-weight: 700;
+}
+
 .pillar-panel-points {
   display: grid;
   gap: 0.72rem;
@@ -1410,7 +1461,7 @@ body.home-page .site-footer {
 }
 
 .pillar-panel-cta {
-  align-self: start;
+  align-self: end;
   border: 1px solid #000000;
   border-radius: 999px;
   cursor: pointer;
@@ -1421,10 +1472,12 @@ body.home-page .site-footer {
   letter-spacing: 0.03em;
   margin-top: 0.5rem;
   pointer-events: auto;
-  position: relative;
+  position: sticky;
+  bottom: 0.4rem;
   padding: 0.54rem 0.95rem;
+  background: #ffffff;
   text-decoration: none;
-  z-index: 2;
+  z-index: 4;
 }
 
 .pillar-panel-cta:hover,
