@@ -578,6 +578,34 @@ a {
   text-align: center;
 }
 
+.section-project-cta-wrap {
+  margin-top: 1.8rem;
+}
+
+.section-project-cta {
+  align-items: center;
+  background: #000000;
+  border: 1px solid #000000;
+  border-radius: 2px;
+  color: #ffffff;
+  display: inline-flex;
+  font-size: 0.9rem;
+  font-weight: 600;
+  justify-content: center;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  min-height: 44px;
+  padding: 0.78rem 1.1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.section-project-cta:hover,
+.section-project-cta:focus-visible {
+  background: #ffffff;
+  color: #000000;
+}
+
 /* Communication + Representation + Lighting pages: pure background + compact text */
 body.communication-page,
 body.lighting-page,
@@ -653,6 +681,12 @@ body.representation-page .markdown-body ul {
   line-height: 1.46;
   margin-top: 0.3rem;
   padding-left: 1.15rem;
+}
+
+body.communication-page .section-project-cta-wrap,
+body.lighting-page .section-project-cta-wrap,
+body.representation-page .section-project-cta-wrap {
+  max-width: min(50vw, 74ch);
 }
 
 .comm-experience {
@@ -1259,6 +1293,7 @@ body.home-page {
   --text: #000000;
   --muted: #222222;
   --line: #161616;
+  --hotspot-accent: #2f5ec9;
   background: #ffffff;
   color: #000000;
   font-family: "Avenir Next", "Segoe UI", sans-serif;
@@ -1382,30 +1417,32 @@ body.home-page .site-footer {
 
 .room-hotspot {
   cursor: pointer;
+  filter: blur(1.6px);
   opacity: 0;
+  pointer-events: none;
   -webkit-tap-highlight-color: transparent;
-  transform: translateY(10px);
+  transform: translateY(18px) scale(0.97);
   transform-box: fill-box;
   transform-origin: center;
-  transition: opacity 340ms ease, transform 340ms ease;
+  will-change: opacity, transform, filter;
   touch-action: manipulation;
 }
 
 .room-stage.is-visible .room-hotspot {
-  opacity: 1;
-  transform: translateY(0);
+  animation: room-hotspot-enter 560ms cubic-bezier(0.22, 0.78, 0.2, 1) forwards;
+  pointer-events: auto;
 }
 
 .room-stage.is-visible #hotspot-window {
-  transition-delay: 120ms;
+  animation-delay: 120ms;
 }
 
 .room-stage.is-visible #hotspot-laptop {
-  transition-delay: 200ms;
+  animation-delay: 220ms;
 }
 
 .room-stage.is-visible #hotspot-model {
-  transition-delay: 280ms;
+  animation-delay: 320ms;
 }
 
 .room-hotspot .hotspot-hitarea {
@@ -1417,20 +1454,113 @@ body.home-page .site-footer {
   fill: none;
   opacity: 0.92;
   stroke: #000000;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
   stroke-width: 1.45;
-  transition: stroke-width 180ms ease, opacity 180ms ease;
+  transition: stroke 180ms ease, stroke-width 180ms ease, opacity 180ms ease;
   vector-effect: non-scaling-stroke;
+}
+
+.room-hotspot .hotspot-tooltip {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.room-hotspot .hotspot-tooltip-bg {
+  fill: #ffffff;
+  stroke: #000000;
+  stroke-width: 1.1;
+  transition: stroke 160ms ease;
+  vector-effect: non-scaling-stroke;
+}
+
+.room-hotspot .hotspot-tooltip-text {
+  fill: #000000;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: fill 160ms ease;
+  user-select: none;
+}
+
+.room-stage.is-visible #hotspot-window .hotspot-shape {
+  animation: room-hotspot-draw 640ms ease-out forwards;
+  animation-delay: 180ms;
+}
+
+.room-stage.is-visible #hotspot-laptop .hotspot-shape {
+  animation: room-hotspot-draw 640ms ease-out forwards;
+  animation-delay: 280ms;
+}
+
+.room-stage.is-visible #hotspot-model .hotspot-shape {
+  animation: room-hotspot-draw 640ms ease-out forwards;
+  animation-delay: 380ms;
 }
 
 .room-hotspot:hover .hotspot-shape,
 .room-hotspot:focus-visible .hotspot-shape,
 .room-hotspot.is-active .hotspot-shape {
   opacity: 1;
+  stroke: var(--hotspot-accent);
   stroke-width: 2.1;
+}
+
+.room-hotspot:hover .hotspot-tooltip,
+.room-hotspot:focus-visible .hotspot-tooltip,
+.room-hotspot.is-active .hotspot-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.room-hotspot:hover .hotspot-tooltip-bg,
+.room-hotspot:focus-visible .hotspot-tooltip-bg,
+.room-hotspot.is-active .hotspot-tooltip-bg {
+  stroke: var(--hotspot-accent);
+}
+
+.room-hotspot:hover .hotspot-tooltip-text,
+.room-hotspot:focus-visible .hotspot-tooltip-text,
+.room-hotspot.is-active .hotspot-tooltip-text {
+  fill: var(--hotspot-accent);
 }
 
 .room-hotspot:focus-visible {
   outline: none;
+}
+
+@keyframes room-hotspot-enter {
+  0% {
+    filter: blur(1.6px);
+    opacity: 0;
+    transform: translateY(18px) scale(0.97);
+  }
+
+  68% {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(-1px) scale(1);
+  }
+
+  100% {
+    filter: blur(0);
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes room-hotspot-draw {
+  from {
+    stroke-dashoffset: 1200;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 .pillar-backdrop {

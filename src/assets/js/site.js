@@ -375,6 +375,7 @@
         "hotspot-window": {
           openLabel: "Open Lighting section",
           title: "LIGHTING",
+          tooltip: "Lighting",
           points: [
             "Light as a design material",
             "Atmosphere-led interior strategy",
@@ -386,6 +387,7 @@
         "hotspot-laptop": {
           openLabel: "Open Communication section",
           title: "COMMUNICATION",
+          tooltip: "Communication",
           lead:
             "Immersive Architectural Communication for professional websites and magazines.\nBeyond vision. We capture architecture as it is experienced.",
           body:
@@ -395,6 +397,7 @@
         "hotspot-model": {
           openLabel: "Open Representation section",
           title: "REPRESENTATION",
+          tooltip: "Representation",
           lead: "Faithful 3D Scan & Immersive Representation",
           body:
             "We intervene on-site to capture your building with precision and sensitivity. Using advanced 3D scanning technologies, we provide a faithful, immersive, and atmosphere-driven digital restitution — ideal for renovation, design development, and communication.",
@@ -412,6 +415,7 @@
         "hotspot-window": {
           openLabel: "Ouvrir la section Lumiere",
           title: "LUMIERE",
+          tooltip: "Lumiere",
           points: [
             "La lumiere comme matiere de conception",
             "Strategie interieure guidee par l'atmosphere",
@@ -423,6 +427,7 @@
         "hotspot-laptop": {
           openLabel: "Ouvrir la section Communication",
           title: "COMMUNICATION",
+          tooltip: "Communication",
           lead:
             "Communication architecturale immersive pour les sites professionnels et les magazines.\nAu-dela de la vision. Nous captons l'architecture telle qu'elle est vecue.",
           body:
@@ -432,6 +437,7 @@
         "hotspot-model": {
           openLabel: "Ouvrir la section Representation",
           title: "REPRESENTATION",
+          tooltip: "Representation",
           lead: "Scan 3D fidele et representation immersive",
           body:
             "Nous intervenons sur site pour capturer votre batiment avec precision et sensibilite. Grace a des technologies avancees de scan 3D, nous produisons une restitution numerique fidele, immersive et guidee par l'atmosphere, ideale pour la renovation, le developpement de projet et la communication.",
@@ -478,6 +484,10 @@
       const panelCopy = copy.panels[hotspot.id];
       if (panelCopy && panelCopy.openLabel) {
         hotspot.setAttribute("aria-label", panelCopy.openLabel);
+      }
+      const tooltipTextNode = hotspot.querySelector("[data-tooltip-text]");
+      if (tooltipTextNode && panelCopy && panelCopy.tooltip) {
+        tooltipTextNode.textContent = panelCopy.tooltip;
       }
     });
 
@@ -656,14 +666,36 @@
   });
 
   if ("IntersectionObserver" in window) {
+    let roomIsIntersecting = false;
+    let roomRevealed = false;
+    const minRevealScroll = () => Math.max(window.innerHeight * 0.42, 220);
+
+    const cleanupRevealListeners = () => {
+      window.removeEventListener("scroll", tryRevealRoom);
+      window.removeEventListener("resize", tryRevealRoom);
+    };
+
+    const revealRoom = () => {
+      if (roomRevealed) {
+        return;
+      }
+      roomRevealed = true;
+      roomStage.classList.add("is-visible");
+      roomObserver.disconnect();
+      cleanupRevealListeners();
+    };
+
+    const tryRevealRoom = () => {
+      if (roomIsIntersecting && window.scrollY >= minRevealScroll()) {
+        revealRoom();
+      }
+    };
+
     const roomObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          const minRevealScroll = Math.max(window.innerHeight * 0.42, 220);
-          if (entry.isIntersecting && window.scrollY >= minRevealScroll) {
-            roomStage.classList.add("is-visible");
-            roomObserver.disconnect();
-          }
+          roomIsIntersecting = entry.isIntersecting;
+          tryRevealRoom();
         });
       },
       {
@@ -673,6 +705,9 @@
     );
 
     roomObserver.observe(roomStage);
+    window.addEventListener("scroll", tryRevealRoom, { passive: true });
+    window.addEventListener("resize", tryRevealRoom, { passive: true });
+    window.setTimeout(tryRevealRoom, 250);
   } else {
     roomStage.classList.add("is-visible");
   }

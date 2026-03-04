@@ -23,7 +23,7 @@
 - Homepage is now a two-stage flow:
   1. minimal hero with centered `ARCHIMMERSION` wordmark.
   2. interactive line-art architectural room scene revealed on scroll.
-- Room instruction caption above SVG is now `Explore the room.` (centered, light weight, slightly larger than prior caption size).
+- Room instruction caption above SVG is now `Explore the room.` (centered, larger, black, bold).
 - `Explore the room.` caption is explicitly forced to pure black in CSS.
 - Homepage EN/FR switch is positioned below the interactive room sketch (`.home-lang-switch--room`) and centered.
 - Scene is inline SVG (vector, black line-art on white) in `src/index.njk`.
@@ -39,6 +39,7 @@
   - `aria-label` for action text
   - `aria-controls="pillar-panel"`
   - per-hotspot panel content via `data-panel-*` attributes.
+  - inline tooltip label node (`[data-tooltip-text]`) shown on hover/focus before click.
 - Communication hotspot laptop uses a straight, open silhouette with explicit screen + base geometry.
 - Representation hotspot object is a small house-like physical model silhouette.
 - Home panel content now supports both formats:
@@ -62,6 +63,20 @@
 - Room reveal pacing is intentionally delayed:
   - increased vertical runway before room section (`.room-stage` top margin),
   - stricter IntersectionObserver trigger (`threshold: 0.52`, `rootMargin: 0 0 -18% 0`, plus minimum scroll gate).
+- Reveal reliability fix:
+  - room reveal now checks both IntersectionObserver state and live scroll/resize events.
+  - this avoids a deadlock where the room stayed hidden if intersection happened before the minimum scroll gate was reached.
+- Hotspot reveal animation now uses a stronger staged entrance style:
+  - each object appears sequentially with soft blur-to-sharp + upward settle (`room-hotspot-enter`),
+  - line geometry draws in with short delayed stroke animation (`room-hotspot-draw`),
+  - pointer events stay disabled until reveal is active.
+- Hover/focus discoverability now includes small in-SVG tooltip pills (EN/FR localized) for each object:
+  - Lighting
+  - Communication
+  - Representation.
+- Homepage hotspot interaction color state:
+  - default remains black line-art,
+  - hover/focus/active (clicked) state now switches object strokes + tooltip label accents to blue.
 
 ## Communication Page Model (2026-03-01)
 - `src/communication/index.md` now sets `bodyClass: communication-page` for page-specific styling.
@@ -159,6 +174,10 @@
   - `src/design/index.md`
   - `src/representation/index.md`
   - `src/communication/index.md`
+- All detailed section pages (non-home) now include a shared bottom CTA button via `src/_includes/layouts/base.njk`:
+  - label: `Start a project`
+  - action: `mailto:atiemichele@gmail.com`
+  - style: black rectangular button (`.section-project-cta`).
 - Homepage interactive pillar copy and CTA targets are currently authored directly in hotspot `data-panel-*` attributes inside `src/index.njk`.
 - Homepage contact button currently uses fixed recipient `mailto:atiemichele@gmail.com`.
 - In Markdown pages using raw HTML tags (`<img ...>`), image paths should use:
