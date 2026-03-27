@@ -43,8 +43,7 @@
     const lang = getStoredLang();
     const t = {
       en: {
-        navDesign: "Lighting",
-        navRepresentation: "Representation",
+        navRepresentation: "Captation and Restitution",
         navCommunication: "Communication",
         h1: "Communication",
         whatWeOffer: "What We Offer",
@@ -82,8 +81,7 @@
           "The 360 interior sequence helps clients evaluate scale, openings, and ambient quality before final detailing.",
       },
       fr: {
-        navDesign: "Lumiere",
-        navRepresentation: "Representation",
+        navRepresentation: "Captation and Restitution",
         navCommunication: "Communication",
         h1: "Communication",
         whatWeOffer: "Ce Que Nous Proposons",
@@ -142,7 +140,6 @@
       }
     };
 
-    updateText(".subpage-nav a[href='design/']", t.navDesign);
     updateText(".subpage-nav a[href='representation/']", t.navRepresentation);
     updateText(".subpage-nav a[href='communication/']", t.navCommunication);
     updateText(".markdown-body > h1", t.h1);
@@ -372,17 +369,14 @@
         "Have a project in mind or want to learn more about Archimmersion? Send us a note and we will get back to you.",
       contactCta: "Email Us",
       panels: {
-        "hotspot-window": {
-          openLabel: "Open Lighting section",
-          title: "LIGHTING",
-          tooltip: "Lighting",
-          points: [
-            "Light as a design material",
-            "Atmosphere-led interior strategy",
-            "Spatial sequence and proportion",
-            "Calm, sensorial architectural thinking",
-          ],
-          ctaLabel: "Open Lighting",
+        "hotspot-caption": {
+          openLabel: "Open Captation and Restitution section",
+          title: "CAPTATION AND RESTITUTION",
+          tooltip: "Captation & Restitution",
+          lead: "Faithful 3D Scan & Immersive Representation",
+          body:
+            "We intervene on-site to capture your building with precision and sensitivity. Using advanced 3D scanning technologies, we provide a faithful, immersive, and atmosphere-driven digital restitution — ideal for renovation, design development, and communication.",
+          ctaLabel: "Open Captation and Restitution",
         },
         "hotspot-laptop": {
           openLabel: "Open Communication section",
@@ -394,15 +388,6 @@
             "Through advanced imaging technologies and an expert eye for atmosphere, we translate spaces into immersive experiences — faithful, sensory, and atmospheric. Using cutting-edge tools — from 360° immersive environments to high-fidelity 2D photography — we present your project as a true sensory experience, seamlessly integrated into your website or delivered directly to your clients.",
           ctaLabel: "Open Communication",
         },
-        "hotspot-model": {
-          openLabel: "Open Representation section",
-          title: "REPRESENTATION",
-          tooltip: "Representation",
-          lead: "Faithful 3D Scan & Immersive Representation",
-          body:
-            "We intervene on-site to capture your building with precision and sensitivity. Using advanced 3D scanning technologies, we provide a faithful, immersive, and atmosphere-driven digital restitution — ideal for renovation, design development, and communication.",
-          ctaLabel: "Open Representation",
-        },
       },
     },
     fr: {
@@ -412,17 +397,14 @@
         "Vous avez un projet en tete ou souhaitez en savoir plus sur Archimmersion ? Envoyez-nous un message et nous vous repondrons rapidement.",
       contactCta: "Envoyer un email",
       panels: {
-        "hotspot-window": {
-          openLabel: "Ouvrir la section Lumiere",
-          title: "LUMIERE",
-          tooltip: "Lumiere",
-          points: [
-            "La lumiere comme matiere de conception",
-            "Strategie interieure guidee par l'atmosphere",
-            "Sequence spatiale et proportions",
-            "Approche architecturale calme et sensorielle",
-          ],
-          ctaLabel: "Ouvrir Lumiere",
+        "hotspot-caption": {
+          openLabel: "Ouvrir la section Captation et Restitution",
+          title: "CAPTATION ET RESTITUTION",
+          tooltip: "Captation & Restitution",
+          lead: "Scan 3D fidele et representation immersive",
+          body:
+            "Nous intervenons sur site pour capturer votre batiment avec precision et sensibilite. Grace a des technologies avancees de scan 3D, nous produisons une restitution numerique fidele, immersive et guidee par l'atmosphere, ideale pour la renovation, le developpement de projet et la communication.",
+          ctaLabel: "Ouvrir Captation et Restitution",
         },
         "hotspot-laptop": {
           openLabel: "Ouvrir la section Communication",
@@ -433,15 +415,6 @@
           body:
             "Grace a des technologies d'imagerie avancees et a un regard expert sur les atmospheres, nous traduisons les espaces en experiences immersives, fideles, sensorielles et atmospheriques. Avec des outils de pointe — des environnements immersifs 360° a la photographie 2D haute fidelite — nous presentons votre projet comme une veritable experience sensorielle, integree a votre site web ou livree directement a vos clients.",
           ctaLabel: "Ouvrir Communication",
-        },
-        "hotspot-model": {
-          openLabel: "Ouvrir la section Representation",
-          title: "REPRESENTATION",
-          tooltip: "Representation",
-          lead: "Scan 3D fidele et representation immersive",
-          body:
-            "Nous intervenons sur site pour capturer votre batiment avec precision et sensibilite. Grace a des technologies avancees de scan 3D, nous produisons une restitution numerique fidele, immersive et guidee par l'atmosphere, ideale pour la renovation, le developpement de projet et la communication.",
-          ctaLabel: "Ouvrir Representation",
         },
       },
     },
@@ -485,9 +458,11 @@
       if (panelCopy && panelCopy.openLabel) {
         hotspot.setAttribute("aria-label", panelCopy.openLabel);
       }
-      const tooltipTextNode = hotspot.querySelector("[data-tooltip-text]");
-      if (tooltipTextNode && panelCopy && panelCopy.tooltip) {
-        tooltipTextNode.textContent = panelCopy.tooltip;
+      const tooltipTextNodes = hotspot.querySelectorAll("[data-tooltip-text]");
+      if (tooltipTextNodes.length && panelCopy && panelCopy.tooltip) {
+        tooltipTextNodes.forEach((node) => {
+          node.textContent = panelCopy.tooltip;
+        });
       }
     });
 

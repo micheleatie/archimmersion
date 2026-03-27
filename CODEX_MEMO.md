@@ -17,7 +17,10 @@
   - `representation` -> `/representation/`
   - `communication` -> `/communication/`
 - User-facing section label for `design` is now `Lighting` (URL remains `/design/`).
-- Subpage titlebar links route to each section page plus homepage.
+- Subpage titlebar headnote now lists only:
+  - `Captation and Restitution` (`/representation/`)
+  - `Communication` (`/communication/`)
+  - plus the `Archimmersion` home wordmark link.
 
 ## Homepage Model (2026-03-01)
 - Homepage is now a two-stage flow:
@@ -27,12 +30,17 @@
 - `Explore the room.` caption is explicitly forced to pure black in CSS.
 - Homepage EN/FR switch is positioned below the interactive room sketch (`.home-lang-switch--room`) and centered.
 - Scene is inline SVG (vector, black line-art on white) in `src/index.njk`.
+- Homepage room drawing source is now `src/assets/img/for-archimmersion.svg`, placed as the `#room-background` layer inside the home inline SVG (viewBox `1536 1024`).
+- As of 2026-03-06, `src/assets/img/for-archimmersion.svg` was refreshed from client file `Desktop/archimmersion2.svg` (only SVG source swapped; scene structure and hotspots unchanged).
+- `src/assets/img/room-sketch-test-pdf.png` and `src/assets/img/room-autotrace-clean.svg` remain as legacy references but are no longer active homepage backgrounds.
+- Home now has 2 interactive hotspots:
+  - `g#hotspot-caption`: Captation and Restitution (camera + poster click target),
+  - `g#hotspot-laptop`: Communication (PC click target).
 - Room background was updated to an open, frameless perspective (no closed perimeter box), keeping a more limitless spatial feel.
 - Required SVG group structure is present:
   - `g#room-background`
-  - `g#hotspot-window` (Lighting)
+  - `g#hotspot-caption` (Captation and Restitution)
   - `g#hotspot-laptop` (Communication)
-  - `g#hotspot-model` (Representation)
 - Each hotspot group includes:
   - `role="button"`
   - `tabindex="0"`
@@ -41,10 +49,10 @@
   - per-hotspot panel content via `data-panel-*` attributes.
   - inline tooltip label node (`[data-tooltip-text]`) shown on hover/focus before click.
 - Communication hotspot laptop uses a straight, open silhouette with explicit screen + base geometry.
-- Representation hotspot object is a small house-like physical model silhouette.
+- Captation/Restitution hotspot combines camera + wall poster into a single trigger target.
 - Home panel content now supports both formats:
   - bullet mode via `data-panel-points`
-  - paragraph mode via `data-panel-body` (used by Communication and Representation summary copy).
+  - paragraph mode via `data-panel-body` (used by Communication and Captation/Restitution summary copy).
 - Communication panel body formatting:
   - first two sentences are rendered as a bold lead (`<strong>`)
   - a blank line is inserted before the remaining paragraph text.
@@ -55,7 +63,7 @@
   - panel titles/content/CTA labels
   - hotspot aria-labels for each language.
 - Home language choice is now persisted in `localStorage` key `arch_home_lang` and reused by subpages.
-- Laptop/model hitboxes were adjusted to avoid overlap and improve reliable click selection of Communication.
+- Captation/Communication hit zones are now separated for reliable click selection.
 - Homepage typography alignment:
   - `Explore the room.` is larger, black, and bold.
   - Home contact typography is aligned to the same title-family style (`Avenir Next` stack) with stronger tracking/weight for heading and CTA.
@@ -68,15 +76,22 @@
   - this avoids a deadlock where the room stayed hidden if intersection happened before the minimum scroll gate was reached.
 - Hotspot reveal animation now uses a stronger staged entrance style:
   - each object appears sequentially with soft blur-to-sharp + upward settle (`room-hotspot-enter`),
-  - line geometry draws in with short delayed stroke animation (`room-hotspot-draw`),
   - pointer events stay disabled until reveal is active.
-- Hover/focus discoverability now includes small in-SVG tooltip pills (EN/FR localized) for each object:
-  - Lighting
-  - Communication
-  - Representation.
+- Hover/focus discoverability now includes small in-SVG tooltip pills (EN/FR localized) for:
+  - Captation and Restitution
+  - Communication.
 - Homepage hotspot interaction color state:
-  - default remains black line-art,
-  - hover/focus/active (clicked) state now switches object strokes + tooltip label accents to blue.
+  - default remains neutral line-art,
+  - hover/focus/active now switches hotspot overlays + tooltip accents to blue.
+- Homepage hotspots use vector object-trace hitlines (`.hotspot-hitline`) so clicks target object regions instead of broad section rectangles.
+- Click-only visual reveal behavior was removed on home hotspots to avoid extra line artifacts around objects.
+- Temporary mask overlays were removed to avoid visible gray artifacts near objects.
+- Home hotspot feedback now relies on tooltip/state styling and panel opening only (no extra drawn reveal overlays).
+- Captation hotspot wording is normalized as "Captation and Restitution" (ARIA label, panel title, CTA label, EN/FR tooltip text).
+- Captation hotspot now has two tooltip positions (poster area + camera area), both synchronized by i18n updates.
+- Communication hit-area around PC was expanded (`hotspot-laptop` invisible hit rect) so hover/click can trigger from all around the object.
+- Communication hotspot also uses `pointer-events: bounding-box` when visible to keep hover activation reliable across the full PC envelope.
+- Manual wall overlay (`#room-wall-lines`) was removed because it introduced visible double/overlapping wall lines against the source SVG.
 
 ## Communication Page Model (2026-03-01)
 - `src/communication/index.md` now sets `bodyClass: communication-page` for page-specific styling.
@@ -120,14 +135,12 @@
 
 ## Representation Page Model (2026-03-01)
 - `src/representation/index.md` now sets `bodyClass: representation-page`.
+- Representation page title is now `Captation and Restitution` (URL remains `/representation/`).
 - Representation now uses the same pure-white visual language as Communication:
   - no sunrays overlays
   - white topbar/background
   - compact text widths and typography.
-- Representation now includes an interactive map-to-model block (same interaction language as Communication):
-  - map asset: `src/representation/img/street-map-wireframe.svg`
-  - map spot reveals `#rep-model-stack` on single click
-  - revealed window shows `src/representation/img/model-reference-white-v3.svg` (light annotation board; versioned URL for cache busting).
+- All figure/media blocks were removed from the Representation page content (`<figure>` / map/model interactive block removed).
 - In Representation services copy, the standalone `We analyze` subsection was removed and its items were merged in parentheses into `Atmosphere-sensitive information`.
 
 ## Lighting Page Model (2026-03-01)

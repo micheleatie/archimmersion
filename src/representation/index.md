@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-title: Representation
+title: Captation and Restitution
 bodyClass: representation-page
 sectionKey: representation
 order: 2
@@ -59,25 +59,3 @@ We combine advanced 3D scanning tools with a sensitive understanding of architec
 	•	Real estate transformation
 
 	•	Architects/Interior Designers needing high-precision base models for renovation and construction
-
-<div class="comm-experience" data-repr-experience>
-  <h2>Street to annotated model</h2>
-  <figure class="comm-map">
-    <div class="comm-map-frame">
-      <img src="{{ './img/street-map-wireframe.svg' | resolvePageAsset(page.url) | toBaseRelative }}" alt="Wireframe top-view street map" />
-      <a class="comm-map-spot comm-map-spot--street" href="{{ '/representation/#rep-model-stack' | toBaseRelative }}" data-map-spot data-target="rep-model-stack" aria-label="Open annotated 3D model from this street spot" aria-controls="rep-model-stack" aria-pressed="false"></a>
-    </div>
-    <figcaption>Map pin: open the annotated 3D model view.</figcaption>
-  </figure>
-
-  <div class="comm-panorama-area">
-    <div class="comm-panorama-stack rep-model-stack" id="rep-model-stack" data-panorama-stack>
-      <figure class="comm-panorama rep-model-window">
-        <figcaption>Annotated 3D model window</figcaption>
-        <div class="comm-panorama-scroll">
-          <img class="rep-model-image" src="{{ './img/model-reference-white-v3.svg' | resolvePageAsset(page.url) | toBaseRelative }}?v=20260301d" alt="Annotated 3D architectural model with integrated technical callouts" />
-        </div>
-      </figure>
-    </div>
-  </div>
-</div>

@@ -1399,7 +1399,7 @@ body.home-page .site-footer {
 
 .room-svg-wrap {
   margin: 0 auto;
-  max-width: min(1040px, 100%);
+  max-width: min(1320px, 100%);
 }
 
 .room-svg {
@@ -1433,31 +1433,27 @@ body.home-page .site-footer {
   pointer-events: auto;
 }
 
-.room-stage.is-visible #hotspot-window {
+.room-stage.is-visible #hotspot-caption {
   animation-delay: 120ms;
 }
 
 .room-stage.is-visible #hotspot-laptop {
   animation-delay: 220ms;
-}
-
-.room-stage.is-visible #hotspot-model {
-  animation-delay: 320ms;
-}
-
-.room-hotspot .hotspot-hitarea {
-  fill: transparent;
-  stroke: none;
+  pointer-events: bounding-box;
 }
 
 .room-hotspot .hotspot-shape {
-  fill: none;
-  opacity: 0.92;
-  stroke: #000000;
-  stroke-dasharray: 1200;
-  stroke-dashoffset: 1200;
-  stroke-width: 1.45;
-  transition: stroke 180ms ease, stroke-width 180ms ease, opacity 180ms ease;
+  display: none;
+  pointer-events: none;
+}
+
+.room-hotspot .hotspot-hitline {
+  fill: rgba(0, 0, 0, 0.001);
+  pointer-events: all;
+  stroke: rgba(0, 0, 0, 0.001);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 28;
   vector-effect: non-scaling-stroke;
 }
 
@@ -1485,29 +1481,6 @@ body.home-page .site-footer {
   text-transform: uppercase;
   transition: fill 160ms ease;
   user-select: none;
-}
-
-.room-stage.is-visible #hotspot-window .hotspot-shape {
-  animation: room-hotspot-draw 640ms ease-out forwards;
-  animation-delay: 180ms;
-}
-
-.room-stage.is-visible #hotspot-laptop .hotspot-shape {
-  animation: room-hotspot-draw 640ms ease-out forwards;
-  animation-delay: 280ms;
-}
-
-.room-stage.is-visible #hotspot-model .hotspot-shape {
-  animation: room-hotspot-draw 640ms ease-out forwards;
-  animation-delay: 380ms;
-}
-
-.room-hotspot:hover .hotspot-shape,
-.room-hotspot:focus-visible .hotspot-shape,
-.room-hotspot.is-active .hotspot-shape {
-  opacity: 1;
-  stroke: var(--hotspot-accent);
-  stroke-width: 2.1;
 }
 
 .room-hotspot:hover .hotspot-tooltip,
@@ -1550,16 +1523,6 @@ body.home-page .site-footer {
     filter: blur(0);
     opacity: 1;
     transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes room-hotspot-draw {
-  from {
-    stroke-dashoffset: 1200;
-  }
-
-  to {
-    stroke-dashoffset: 0;
   }
 }
 
@@ -1766,7 +1729,11 @@ body.room-panel-open {
     min-height: 340px;
   }
 
-  .room-hotspot .hotspot-shape {
+  .room-hotspot .hotspot-hitline {
+    stroke-width: 34;
+  }
+
+  .room-hotspot .hotspot-shape > * {
     stroke-width: 1.7;
   }
 

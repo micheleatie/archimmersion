@@ -1,0 +1,354 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" role="img" aria-label="Minimalist architectural room line-art illustration">
+  <defs>
+    <style>
+      .main {
+        fill: none;
+        stroke: #000;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .mid {
+        fill: none;
+        stroke: #000;
+        stroke-width: 1.6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .detail {
+        fill: none;
+        stroke: #000;
+        stroke-width: 1.1;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .fine {
+        fill: none;
+        stroke: #000;
+        stroke-width: 0.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+
+  <rect width="1536" height="1024" fill="#fff" />
+
+  <g id="room">
+    <path class="main" d="M230 142H1330" />
+    <path class="main" d="M230 142L80 95" />
+    <path class="main" d="M1330 142L1400 95" />
+    <path class="main" d="M230 142V520" />
+    <path class="main" d="M1330 142V520" />
+    <path class="main" d="M230 520L5 790" />
+    <path class="main" d="M1330 520L1530 785" />
+    <path class="detail" d="M20 835L240 590" />
+    <path class="detail" d="M1305 600L1520 860" />
+  </g>
+
+  <g id="door">
+    <path class="main" d="M115 158L284 243V778L115 784Z" />
+    <path class="mid" d="M133 176L267 244V730L133 736Z" />
+    <path class="mid" d="M138 515L265 514" />
+    <path class="mid" d="M136 486L136 536" />
+    <path class="main" d="M275 227L253 220V770L275 778Z" />
+    <path class="mid" d="M282 243L282 777" />
+    <path class="mid" d="M253 220H578V553" />
+    <path class="main" d="M274 243H552V553" />
+    <path class="detail" d="M150 495L182 498L184 506L150 506Z" />
+    <path class="detail" d="M184 500L212 500" />
+    <path class="fine" d="M126 760L126 770" />
+  </g>
+
+  <g id="outside">
+    <path class="detail" d="M286 244H548V550" />
+    <path class="fine" d="M289 710L548 710" />
+    <path class="fine" d="M289 680L548 680" />
+    <path class="fine" d="M289 650L548 650" />
+    <path class="fine" d="M289 620L548 620" />
+    <path class="fine" d="M289 590L548 590" />
+    <path class="fine" d="M289 560L548 560" />
+    <path class="fine" d="M290 740L548 740" />
+    <path class="fine" d="M320 550L290 575" />
+    <path class="fine" d="M380 550L290 630" />
+    <path class="fine" d="M440 550L290 690" />
+    <path class="fine" d="M500 550L290 748" />
+    <path class="fine" d="M548 575L450 670" />
+    <path class="fine" d="M548 620L400 760" />
+
+    <g class="fine">
+      <path d="M324 510V430" />
+      <path d="M326 430C301 410 301 387 320 379C336 360 356 364 364 383C384 380 396 396 390 410C404 420 400 444 382 450" />
+      <path d="M322 447C310 460 314 478 330 486" />
+      <path d="M345 450C354 465 352 485 340 500" />
+      <path d="M361 447C374 465 374 485 364 505" />
+      <path d="M336 470L309 500" />
+      <path d="M343 482L380 516" />
+    </g>
+
+    <g class="fine">
+      <path d="M382 516V425" />
+      <path d="M385 425C360 401 362 380 380 374C390 358 412 359 423 380C445 376 458 398 448 414C461 424 456 444 438 452" />
+      <path d="M390 450C376 462 378 481 394 492" />
+      <path d="M410 447C422 462 421 483 410 502" />
+      <path d="M427 448C437 463 440 486 430 506" />
+      <path d="M405 473L382 506" />
+      <path d="M413 486L446 514" />
+    </g>
+
+    <g class="fine">
+      <path d="M448 516V450" />
+      <path d="M449 450C433 432 436 416 451 410C460 397 477 399 486 414C503 410 515 423 510 438C521 447 518 462 504 468" />
+      <path d="M451 468C440 478 441 495 454 504" />
+      <path d="M467 468C475 479 476 497 468 512" />
+      <path d="M480 468C489 478 492 496 484 514" />
+      <path d="M463 486L448 508" />
+      <path d="M470 494L494 514" />
+    </g>
+
+    <g class="fine">
+      <path d="M516 516V430" />
+      <path d="M516 430C494 409 495 387 514 379C526 360 546 362 556 381C578 378 590 397 584 412C596 422 592 442 574 449" />
+      <path d="M520 447C506 459 509 478 524 486" />
+      <path d="M538 447C548 462 548 482 538 500" />
+      <path d="M555 446C566 460 568 482 560 503" />
+      <path d="M536 474L516 505" />
+      <path d="M543 488L572 514" />
+    </g>
+
+    <path class="fine" d="M288 523H548" />
+  </g>
+
+  <g id="scanner">
+    <rect class="main" x="393" y="446" width="40" height="42" rx="7" />
+    <rect class="detail" x="406" y="460" width="15" height="18" rx="2" />
+    <path class="detail" d="M397 487H430" />
+    <path class="mid" d="M408 488V516" />
+    <path class="main" d="M408 516L381 560" />
+    <path class="main" d="M408 516L413 560" />
+    <path class="main" d="M408 516L445 560" />
+  </g>
+
+  <g id="wall_panel">
+    <rect class="main" x="795" y="198" width="370" height="195" />
+    <circle class="mid" cx="867" cy="254" r="17" />
+    <path class="detail" d="M867 224V214" />
+    <path class="detail" d="M867 294V284" />
+    <path class="detail" d="M897 254H907" />
+    <path class="detail" d="M827 254H817" />
+    <path class="detail" d="M846 233L838 226" />
+    <path class="detail" d="M888 233L896 226" />
+    <path class="detail" d="M846 275L838 282" />
+    <path class="detail" d="M888 275L896 282" />
+    <circle class="mid" cx="1013" cy="232" r="7" />
+    <path class="detail" d="M922 240H996" />
+    <path class="detail" d="M922 260H1006" />
+    <path class="detail" d="M1080 240L1045 252" />
+    <circle class="detail" cx="1075" cy="232" r="5" />
+
+    <path class="main" d="M885 300L965 275L1043 299L965 325Z" />
+    <path class="mid" d="M885 300V360" />
+    <path class="mid" d="M965 325V361" />
+    <path class="mid" d="M1043 299V360" />
+    <path class="detail" d="M907 312V360" />
+    <path class="detail" d="M940 324V360" />
+    <path class="detail" d="M989 314V360" />
+    <path class="detail" d="M1015 307V360" />
+    <path class="detail" d="M920 342H1025" />
+    <path class="main" d="M835 360H1125" />
+    <path class="detail" d="M1036 342H1069V360" />
+
+    <g class="fine">
+      <circle cx="836" cy="304" r="1.6" />
+      <circle cx="836" cy="324" r="1.6" />
+      <circle cx="836" cy="344" r="1.6" />
+      <circle cx="856" cy="324" r="1.6" />
+      <circle cx="856" cy="344" r="1.6" />
+      <circle cx="856" cy="304" r="1.6" />
+    </g>
+
+    <g class="detail">
+      <path d="M1035 268L1075 245L1115 268L1099 302H1052Z" />
+      <path d="M1035 268L1076 285L1115 268" />
+      <path d="M1076 245V285" />
+      <path d="M1052 302L1076 285L1099 302" />
+      <circle cx="1035" cy="268" r="2.5" />
+      <circle cx="1075" cy="245" r="2.5" />
+      <circle cx="1115" cy="268" r="2.5" />
+      <circle cx="1099" cy="302" r="2.5" />
+      <circle cx="1052" cy="302" r="2.5" />
+      <circle cx="1128" cy="267" r="2.2" />
+      <path d="M1115 268H1126" />
+      <circle cx="1098" cy="309" r="5" />
+    </g>
+
+    <path class="detail" d="M1064 342H1116" />
+  </g>
+
+  <g id="desk">
+    <path class="main" d="M201 814H1510" />
+    <path class="main" d="M230 620H1392" />
+    <path class="main" d="M201 814L230 620" />
+    <path class="main" d="M1510 814L1392 620" />
+    <path class="detail" d="M205 842H1522" />
+
+    <path class="main" d="M250 815V951" />
+    <path class="main" d="M365 815V951" />
+    <path class="main" d="M1264 815V958" />
+    <path class="main" d="M1380 815V988" />
+
+    <path class="fine" d="M600 814L695 620" />
+    <path class="fine" d="M705 814L785 620" />
+    <path class="fine" d="M812 814L882 620" />
+    <path class="fine" d="M920 814L985 620" />
+    <path class="fine" d="M1028 814L1088 620" />
+    <path class="fine" d="M1138 814L1188 620" />
+    <path class="fine" d="M1247 814L1288 620" />
+    <path class="fine" d="M292 775L1450 775" />
+  </g>
+
+  <g id="house_model">
+    <path class="main" d="M402 702L834 702L965 756L533 756Z" />
+    <path class="mid" d="M533 756V788L965 788V756" />
+    <path class="mid" d="M402 702V734L533 788" />
+    <path class="mid" d="M834 702V734L965 788" />
+
+    <path class="mid" d="M443 726L815 726L923 768L551 768Z" />
+    <path class="fine" d="M588 726L665 768" />
+    <path class="fine" d="M671 726L748 768" />
+    <path class="fine" d="M755 726L832 768" />
+    <path class="fine" d="M450 750H905" />
+
+    <path class="main" d="M557 539L770 539L850 611L635 611Z" />
+    <path class="main" d="M635 611L635 695" />
+    <path class="main" d="M850 611V695" />
+    <path class="main" d="M557 539V695" />
+    <path class="main" d="M770 539V695" />
+
+    <path class="main" d="M528 554L643 486L788 484L883 554" />
+    <path class="main" d="M643 486L713 545L788 484" />
+    <path class="main" d="M883 554L890 564L780 486" />
+    <path class="main" d="M528 554L518 566L643 486" />
+
+    <path class="detail" d="M566 611H610V675H566Z" />
+    <path class="detail" d="M665 611H721V692H665Z" />
+    <path class="detail" d="M752 611H793V675H752Z" />
+    <path class="detail" d="M622 560H651V585H622Z" />
+    <path class="detail" d="M746 560H775V585H746Z" />
+
+    <path class="detail" d="M579 616V672" />
+    <path class="detail" d="M694 616V689" />
+    <path class="detail" d="M765 616V672" />
+    <path class="detail" d="M681 640H708" />
+
+    <path class="fine" d="M560 546L548 690" />
+    <path class="fine" d="M595 531L596 694" />
+    <path class="fine" d="M735 531L736 694" />
+    <path class="fine" d="M810 545L811 694" />
+
+    <path class="mid" d="M474 672C454 658 452 644 464 636C474 622 490 627 495 640C510 642 518 656 511 665C515 674 508 684 495 688" />
+    <path class="mid" d="M476 684L452 688" />
+    <path class="mid" d="M500 686L520 688" />
+    <path class="mid" d="M885 684C867 669 868 655 879 647C889 633 904 636 910 649C925 650 934 664 927 674C932 684 924 693 911 697" />
+    <path class="mid" d="M887 696L868 700" />
+    <path class="mid" d="M912 697L933 701" />
+  </g>
+
+  <g id="laptop">
+    <rect class="main" x="940" y="465" width="341" height="186" rx="12" />
+    <rect class="mid" x="963" y="486" width="295" height="130" />
+    <path class="main" d="M930 651H1292L1318 690H903Z" />
+    <path class="mid" d="M957 652H1260" />
+    <path class="detail" d="M1072 662H1165L1178 680H1058Z" />
+    <ellipse class="detail" cx="1110" cy="472" rx="7" ry="3" />
+
+    <path class="detail" d="M999 528H1029" />
+    <path class="detail" d="M1008 535H1020" />
+    <path class="detail" d="M998 542H1018" />
+    <path class="detail" d="M1218 528H1248" />
+    <path class="detail" d="M1228 536H1241" />
+
+    <path class="mid" d="M1018 595H1227" />
+    <path class="detail" d="M997 550H1010" />
+    <path class="detail" d="M997 569H1010" />
+    <path class="detail" d="M997 588H1010" />
+    <path class="detail" d="M1260 550H1247" />
+    <path class="detail" d="M1260 569H1247" />
+    <path class="detail" d="M1260 588H1247" />
+
+    <path class="mid" d="M1036 552L1125 515L1210 550L1122 581Z" />
+    <path class="mid" d="M1036 552V592" />
+    <path class="mid" d="M1122 581V593" />
+    <path class="mid" d="M1210 550V592" />
+    <path class="detail" d="M1068 565V592" />
+    <path class="detail" d="M1098 575V592" />
+    <path class="detail" d="M1144 568V592" />
+    <path class="detail" d="M1173 560V592" />
+
+    <path class="detail" d="M1054 546L1126 520L1192 546" />
+    <path class="detail" d="M1126 520V580" />
+    <path class="detail" d="M1126 563L1060 588" />
+    <path class="detail" d="M1126 563L1186 588" />
+
+    <path class="detail" d="M1182 452H1227V485" />
+    <path class="detail" d="M1186 448H1237V478" />
+    <path class="detail" d="M1228 476L1237 485" />
+    <path class="fine" d="M1195 459H1228" />
+    <path class="fine" d="M1195 466H1225" />
+    <path class="fine" d="M1195 473H1218" />
+  </g>
+
+  <g id="props">
+    <path class="main" d="M341 749C362 734 401 737 424 754C439 765 441 787 425 799C404 813 365 810 343 793C329 781 327 761 341 749Z" />
+    <path class="main" d="M437 775C454 757 485 755 505 769C519 779 520 799 507 812C489 828 458 829 438 815C425 806 423 787 437 775Z" />
+    <path class="mid" d="M420 754L574 822" />
+    <path class="main" d="M336 744L518 822" />
+    <path class="main" d="M424 754L605 826" />
+    <ellipse class="mid" cx="420" cy="790" rx="20" ry="16" />
+    <ellipse class="mid" cx="500" cy="812" rx="20" ry="16" />
+    <ellipse class="detail" cx="420" cy="790" rx="12" ry="9" />
+    <ellipse class="detail" cx="500" cy="812" rx="12" ry="9" />
+    <ellipse class="detail" cx="420" cy="790" rx="5" ry="4" />
+    <ellipse class="detail" cx="500" cy="812" rx="5" ry="4" />
+
+    <path class="mid" d="M586 742L633 754L624 768L576 756Z" />
+    <path class="mid" d="M582 754L629 765L620 779L573 768Z" />
+    <path class="mid" d="M820 756L870 765L860 778L809 769Z" />
+    <path class="mid" d="M816 769L866 777L856 790L806 782Z" />
+
+    <path class="main" d="M1028 755C1048 744 1082 744 1098 758C1116 772 1115 794 1097 808C1080 821 1047 822 1028 809C1009 795 1009 770 1028 755Z" />
+    <ellipse class="detail" cx="1062" cy="773" rx="24" ry="8" />
+
+    <path class="main" d="M1186 762L1272 748L1306 781L1220 795Z" />
+    <path class="detail" d="M1197 770L1282 756" />
+    <path class="detail" d="M1210 781L1294 767" />
+
+    <path class="main" d="M1244 745L1358 729L1436 767L1324 785Z" />
+    <path class="mid" d="M1253 752L1347 738" />
+    <path class="mid" d="M1271 765L1364 751" />
+    <path class="detail" d="M1291 774L1383 760" />
+
+    <path class="main" d="M1338 672C1365 664 1418 666 1438 684C1456 700 1456 734 1442 756C1429 777 1374 782 1348 768C1326 756 1314 723 1321 699C1324 688 1328 676 1338 672Z" />
+    <path class="mid" d="M1348 671C1344 648 1354 626 1374 611" />
+    <path class="mid" d="M1368 668C1362 639 1372 614 1398 598" />
+    <path class="mid" d="M1388 670C1389 640 1404 615 1428 605" />
+    <path class="mid" d="M1406 675C1418 649 1436 633 1459 626" />
+    <path class="mid" d="M1382 638C1362 628 1351 611 1346 593" />
+    <path class="mid" d="M1408 629C1394 613 1387 597 1388 578" />
+    <path class="mid" d="M1434 628C1426 607 1429 586 1440 570" />
+    <path class="mid" d="M1367 603C1392 600 1414 607 1428 621" />
+    <path class="mid" d="M1386 585C1411 582 1431 590 1446 603" />
+    <path class="mid" d="M1410 572C1433 569 1456 576 1472 591" />
+    <path class="mid" d="M1414 651C1440 648 1461 656 1478 669" />
+    <path class="mid" d="M1366 690H1442" />
+    <path class="detail" d="M1356 710H1434" />
+    <circle class="detail" cx="1391" cy="636" r="2.8" />
+    <circle class="detail" cx="1419" cy="620" r="2.8" />
+
+    <path class="fine" d="M737 790L808 778" />
+    <path class="fine" d="M827 780L897 767" />
+    <path class="fine" d="M930 764L1000 753" />
+    <path class="fine" d="M1118 790L1174 782" />
+    <path class="fine" d="M1288 810L1368 796" />
+  </g>
+</svg>

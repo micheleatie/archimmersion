@@ -15,47 +15,54 @@ bodyClass: home-page
   <div class="room-svg-wrap">
     <svg
       class="room-svg"
-      viewBox="0 0 1000 620"
+      viewBox="0 0 1536 1024"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
-      aria-label="Architectural room with three interactive objects"
+      aria-label="Architectural room with two interactive objects"
     >
-      <g id="room-background" class="room-lines">
-        <path d="M220 130H780" />
-        <path d="M220 130L140 90" />
-        <path d="M780 130L860 90" />
-        <path d="M220 420H780" />
-        <path d="M220 420L140 500" />
-        <path d="M780 420L860 500" />
-
-        <path d="M320 322H700L760 360H260Z" />
-        <path d="M260 360V470" />
-        <path d="M760 360V470" />
-        <path d="M320 322V442" />
-        <path d="M700 322V442" />
+      <g id="room-background">
+        <image
+          href="{{ '/assets/img/for-archimmersion.svg' | toBaseRelative }}"
+          x="0"
+          y="0"
+          width="1536"
+          height="1024"
+          preserveAspectRatio="xMidYMid meet"
+        />
       </g>
-
       <g
-        id="hotspot-window"
+        id="hotspot-caption"
         class="room-hotspot"
         role="button"
         tabindex="0"
-        aria-label="Open Lighting section"
+        aria-label="Open Captation and Restitution section"
         aria-controls="pillar-panel"
         aria-pressed="false"
-        data-panel-title="LIGHTING"
-        data-panel-points="Light as a design material|Atmosphere-led interior strategy|Spatial sequence and proportion|Calm, sensorial architectural thinking"
-        data-panel-cta-label="Open Lighting"
-        data-panel-cta-href="{{ '/design/' | toBaseRelative }}"
+        data-panel-title="CAPTATION AND RESTITUTION"
+        data-panel-body="We intervene on-site to capture your building with precision and sensitivity. Using advanced 3D scanning technologies, we provide a faithful, immersive, and atmosphere-driven digital restitution — ideal for renovation, design development, and communication."
+        data-panel-cta-label="Open Captation and Restitution"
+        data-panel-cta-href="{{ '/representation/' | toBaseRelative }}"
       >
-        <rect class="hotspot-hitarea" x="232" y="152" width="196" height="156" />
-        <rect class="hotspot-shape" x="250" y="170" width="160" height="120" />
-        <path class="hotspot-shape" d="M330 170V290" />
-        <path class="hotspot-shape" d="M250 230H410" />
+        <g class="hotspot-hitlines" aria-hidden="true">
+          <circle class="hotspot-hitline" cx="410" cy="438" r="38" />
+          <path class="hotspot-hitline" d="M410 468L380 560M410 468L413 560M410 468L447 560" />
+          <rect class="hotspot-hitline" x="795" y="198" width="370" height="195" rx="8" />
+        </g>
+        <g class="hotspot-shape" aria-hidden="true">
+          <rect x="795" y="198" width="370" height="195" />
+          <circle cx="410" cy="438" r="28" />
+          <path d="M410 468L380 560M410 468L413 560M410 468L447 560" />
+        </g>
         <g class="hotspot-tooltip" aria-hidden="true">
-          <rect class="hotspot-tooltip-bg" x="282" y="140" width="96" height="24" rx="12" ry="12" />
-          <text class="hotspot-tooltip-text" x="330" y="152" text-anchor="middle" dominant-baseline="middle" data-tooltip-text>
-            Lighting
+          <rect class="hotspot-tooltip-bg" x="812" y="172" width="252" height="24" rx="12" ry="12" />
+          <text class="hotspot-tooltip-text" x="938" y="184" text-anchor="middle" dominant-baseline="middle" data-tooltip-text>
+            Captation &amp; Restitution
+          </text>
+        </g>
+        <g class="hotspot-tooltip" aria-hidden="true">
+          <rect class="hotspot-tooltip-bg" x="262" y="374" width="252" height="24" rx="12" ry="12" />
+          <text class="hotspot-tooltip-text" x="388" y="386" text-anchor="middle" dominant-baseline="middle" data-tooltip-text>
+            Captation &amp; Restitution
           </text>
         </g>
       </g>
@@ -73,47 +80,19 @@ bodyClass: home-page
         data-panel-cta-label="Open Communication"
         data-panel-cta-href="{{ '/communication/' | toBaseRelative }}"
       >
-        <rect class="hotspot-hitarea" x="518" y="244" width="202" height="126" />
-        <rect class="hotspot-shape" x="548" y="250" width="124" height="76" />
-        <rect class="hotspot-shape" x="560" y="261" width="100" height="54" />
-        <path class="hotspot-shape" d="M544 328H676" />
-        <path class="hotspot-shape" d="M524 334H696L682 354H538Z" />
-        <path class="hotspot-shape" d="M551 341H669" />
-        <path class="hotspot-shape" d="M560 347H660" />
-        <g class="hotspot-tooltip" aria-hidden="true">
-          <rect class="hotspot-tooltip-bg" x="545" y="216" width="130" height="24" rx="12" ry="12" />
-          <text class="hotspot-tooltip-text" x="610" y="228" text-anchor="middle" dominant-baseline="middle" data-tooltip-text>
-            Communication
-          </text>
+        <g class="hotspot-hitlines" aria-hidden="true">
+          <rect class="hotspot-hitline" x="760" y="390" width="690" height="370" rx="28" />
         </g>
-      </g>
-
-      <g
-        id="hotspot-model"
-        class="room-hotspot"
-        role="button"
-        tabindex="0"
-        aria-label="Open Representation section"
-        aria-controls="pillar-panel"
-        aria-pressed="false"
-        data-panel-title="REPRESENTATION"
-        data-panel-body="We intervene on-site to capture your building with precision and sensitivity. Using advanced 3D scanning technologies, we provide a faithful, immersive, and atmosphere-driven digital restitution — ideal for renovation, design development, and communication."
-        data-panel-cta-label="Open Representation"
-        data-panel-cta-href="{{ '/representation/' | toBaseRelative }}"
-      >
-        <rect class="hotspot-hitarea" x="370" y="286" width="130" height="90" />
-        <path class="hotspot-shape" d="M420 313L444 295L468 313V338H420Z" />
-        <path class="hotspot-shape" d="M444 295L468 313L490 304L466 286Z" />
-        <path class="hotspot-shape" d="M468 313V338L490 329V304Z" />
-        <path class="hotspot-shape" d="M432 324H444" />
-        <path class="hotspot-shape" d="M432 324V336" />
-        <path class="hotspot-shape" d="M444 324V336" />
-        <path class="hotspot-shape" d="M452 321H462" />
-        <path class="hotspot-shape" d="M456 338V324" />
+        <g class="hotspot-shape" aria-hidden="true">
+          <rect x="940" y="465" width="341" height="186" rx="12" />
+          <rect x="963" y="486" width="295" height="130" />
+          <path d="M930 651H1292L1318 690H903Z" />
+          <path d="M957 652H1260" />
+        </g>
         <g class="hotspot-tooltip" aria-hidden="true">
-          <rect class="hotspot-tooltip-bg" x="382" y="264" width="124" height="24" rx="12" ry="12" />
-          <text class="hotspot-tooltip-text" x="444" y="276" text-anchor="middle" dominant-baseline="middle" data-tooltip-text>
-            Representation
+          <rect class="hotspot-tooltip-bg" x="1038" y="438" width="146" height="24" rx="12" ry="12" />
+          <text class="hotspot-tooltip-text" x="1111" y="450" text-anchor="middle" dominant-baseline="middle" data-tooltip-text>
+            Communication
           </text>
         </g>
       </g>
