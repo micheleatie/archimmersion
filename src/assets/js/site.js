@@ -239,14 +239,21 @@
           }
         };
 
-        const stopPointerConflict = (event) => {
+        const handlePress = (event) => {
+          if ("button" in event && event.button !== 0) {
+            return;
+          }
+          event.preventDefault();
           event.stopPropagation();
+          openTargetState();
         };
 
-        control.addEventListener("pointerdown", stopPointerConflict);
-        control.addEventListener("mousedown", stopPointerConflict);
-        control.addEventListener("touchstart", stopPointerConflict, { passive: true });
-        control.addEventListener("click", () => {
+        control.addEventListener("pointerdown", handlePress);
+        control.addEventListener("mousedown", handlePress);
+        control.addEventListener("touchstart", handlePress, { passive: false });
+        control.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
           openTargetState();
         });
 

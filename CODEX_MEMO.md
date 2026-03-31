@@ -126,7 +126,8 @@
     - JS now drives a simple local component state on `.comm-experience` (`closed` / `exterior` / `interior`) instead of relying on hash navigation during clicks
     - when interior target is selected, JS reveals both exterior and interior windows side-by-side
     - initial page load still honors `#comm-panorama-stack` and `#comm-interior-stack` if present in the URL
-    - map spot and interior pin explicitly stop drag propagation before click handling.
+    - map spot and interior pin explicitly stop drag propagation before click handling
+    - interior pin now opens on pointer/touch press as well as click, reducing failures from tiny drag movement inside the panorama.
   - panorama navigation tuning:
     - wheel horizontal scroll accelerated (`deltaY * 2.4`)
     - drag-to-scroll accelerated (delta multiplied by `1.7`)
@@ -134,6 +135,7 @@
       - panorama/map `<img>` nodes are marked `draggable="false"` to avoid Chrome image-drag conflicts
       - panorama drag now uses classic mouse `mousedown` / `mousemove` / `mouseup` tracking instead of pointer capture
       - scroller uses `touch-action: pan-x pinch-zoom`, `overscroll-behavior-x: contain`, and `-webkit-overflow-scrolling: touch`
+      - interior pin keeps the same visual ring/dot but uses a larger invisible hit area for easier clicking.
   - panorama render widths reduced (desktop/mobile) so key content appears sooner.
 
 ## Representation Page Model (2026-03-01)

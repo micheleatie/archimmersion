@@ -862,13 +862,13 @@ body.representation-page .rep-model-image {
 
 .comm-panorama-pin {
   appearance: none;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #000000;
+  background: transparent;
+  border: 0;
   border-radius: 999px;
   cursor: pointer;
   display: inline-block;
   font: inherit;
-  height: 36px;
+  height: 64px;
   left: 41.5%;
   padding: 0;
   pointer-events: auto;
@@ -877,8 +877,21 @@ body.representation-page .rep-model-image {
   top: 59%;
   touch-action: manipulation;
   transform: translate(-50%, -50%);
+  width: 64px;
+  z-index: 3;
+}
+
+.comm-panorama-pin::before {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #000000;
+  border-radius: 999px;
+  content: "";
+  height: 36px;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 36px;
-  z-index: 2;
 }
 
 .comm-panorama-pin::after {
@@ -897,6 +910,12 @@ body.representation-page .rep-model-image {
 .comm-panorama-pin:hover,
 .comm-panorama-pin:focus-visible,
 .comm-panorama-pin[aria-pressed="true"] {
+  outline: none;
+}
+
+.comm-panorama-pin:hover::before,
+.comm-panorama-pin:focus-visible::before,
+.comm-panorama-pin[aria-pressed="true"]::before {
   box-shadow: 0 0 0 1px #000000 inset;
 }
 
