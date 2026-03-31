@@ -198,6 +198,7 @@
   - this avoids broken asset URLs under the runtime `<base>` behavior.
 - With runtime `<base>` enabled, fragment links in subpages should include the page path:
   - use `{{ '/communication/#some-id' | toBaseRelative }}` instead of `href="#some-id"`.
+- After editing Nunjucks/Markdown source, run `npm run build` (or `npm run dev`) to refresh `_site/`; local previews can otherwise keep serving stale generated HTML.
 
 ## Deployment Notes
 - Repository remote: `client` -> `git@github.com:micheleatie/archimmersion.git`.
