@@ -185,13 +185,13 @@
         return;
       }
 
-      const getTargetId = (spot) => {
-        const dataTarget = spot.dataset.target || "";
+      const getTargetId = (control) => {
+        const dataTarget = control.dataset.target || "";
         if (dataTarget) {
           return dataTarget;
         }
 
-        const href = spot.getAttribute("href") || "";
+        const href = control.getAttribute("href") || "";
         const hashIndex = href.indexOf("#");
         return hashIndex >= 0 ? href.slice(hashIndex + 1) : "";
       };
@@ -222,51 +222,20 @@
         });
       };
 
-      mapSpots.forEach((mapSpot) => {
-        const targetId = getTargetId(mapSpot);
+      const bindRevealControl = (control) => {
+        const targetId = getTargetId(control);
+        if (!targetId) {
+          return;
+        }
 
-        mapSpot.addEventListener("click", (event) => {
-          event.preventDefault();
+        control.addEventListener("click", () => {
           revealPanoramas(targetId);
           window.history.replaceState(null, "", `#${targetId}`);
         });
+      };
 
-        mapSpot.addEventListener("pointerup", (event) => {
-          event.preventDefault();
-          revealPanoramas(targetId);
-          window.history.replaceState(null, "", `#${targetId}`);
-        });
-
-        mapSpot.addEventListener("keydown", (event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            revealPanoramas(targetId);
-            window.history.replaceState(null, "", `#${targetId}`);
-          }
-        });
-      });
-
-      interiorPins.forEach((pin) => {
-        pin.addEventListener("click", (event) => {
-          event.preventDefault();
-          revealPanoramas("comm-interior-stack");
-          window.history.replaceState(null, "", "#comm-interior-stack");
-        });
-
-        pin.addEventListener("pointerup", (event) => {
-          event.preventDefault();
-          revealPanoramas("comm-interior-stack");
-          window.history.replaceState(null, "", "#comm-interior-stack");
-        });
-
-        pin.addEventListener("keydown", (event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            revealPanoramas("comm-interior-stack");
-            window.history.replaceState(null, "", "#comm-interior-stack");
-          }
-        });
-      });
+      mapSpots.forEach(bindRevealControl);
+      interiorPins.forEach(bindRevealControl);
 
       const currentHashId = window.location.hash.replace("#", "");
       if (currentHashId) {

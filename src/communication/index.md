@@ -52,7 +52,7 @@ links:
   <figure class="comm-map">
     <div class="comm-map-frame">
       <img src="{{ './img/street-map-wireframe.svg' | resolvePageAsset(page.url) | toBaseRelative }}" alt="Wireframe top-view street map" draggable="false" />
-      <a class="comm-map-spot comm-map-spot--street" href="{{ '/communication/#comm-panorama-stack' | toBaseRelative }}" data-map-spot data-target="comm-panorama-stack" aria-label="Open 360 view from this street spot" data-comm-i18n-aria="mapSpotAria" aria-controls="comm-panorama-stack" aria-pressed="false"></a>
+      <button class="comm-map-spot comm-map-spot--street" type="button" data-map-spot data-target="comm-panorama-stack" aria-label="Open 360 view from this street spot" data-comm-i18n-aria="mapSpotAria" aria-controls="comm-panorama-stack" aria-pressed="false"></button>
     </div>
     <figcaption data-comm-i18n="mapCaption">Map pin: open exterior 360 street view.</figcaption>
   </figure>
@@ -63,7 +63,7 @@ links:
         <div class="comm-panorama-scroll" data-panorama-scroll>
           <div class="comm-panorama-track">
             <img src="{{ './img/panorama-360-example.svg' | resolvePageAsset(page.url) | toBaseRelative }}" alt="Example 360 panoramic street view" draggable="false" />
-            <a class="comm-panorama-pin" href="{{ '/communication/#comm-interior-stack' | toBaseRelative }}" data-interior-pin aria-label="Open interior 360 from this building" data-comm-i18n-aria="interiorPinAria" aria-controls="comm-interior-stack" aria-pressed="false"></a>
+            <button class="comm-panorama-pin" type="button" data-interior-pin data-target="comm-interior-stack" aria-label="Open interior 360 from this building" data-comm-i18n-aria="interiorPinAria" aria-controls="comm-interior-stack" aria-pressed="false"></button>
           </div>
         </div>
       </figure>

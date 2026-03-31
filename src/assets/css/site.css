@@ -727,9 +727,11 @@ body.representation-page .section-project-cta-wrap {
   border-radius: 999px;
   cursor: pointer;
   display: inline-flex;
+  font: inherit;
   height: 44px;
   justify-content: center;
   left: 56%;
+  padding: 0;
   pointer-events: auto;
   position: absolute;
   text-decoration: none;
@@ -834,6 +836,7 @@ body.representation-page .section-project-cta-wrap {
 
 .comm-panorama-scroll img {
   -webkit-user-drag: none;
+  pointer-events: none;
   user-select: none;
   display: block;
   height: 190px;
@@ -860,8 +863,10 @@ body.representation-page .rep-model-image {
   border-radius: 999px;
   cursor: pointer;
   display: inline-block;
+  font: inherit;
   height: 36px;
   left: 41.5%;
+  padding: 0;
   pointer-events: auto;
   position: absolute;
   text-decoration: none;

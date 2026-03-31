@@ -122,9 +122,8 @@
   - map and panorama SVGs were densified with richer wireframe detail to make scroll/navigation obvious
   - panorama viewport intentionally small; navigation uses mouse-wheel horizontal scroll + pointer drag via `src/assets/js/site.js`.
   - reveal action hardened:
-    - map spot now handles click + pointerup + keyboard Enter/Space
-    - CSS fallback enabled via `:target` so reveal works even without JS
-    - JS also adds `.is-visible` class when active
+    - map spot and interior pin are implemented as real `<button type="button">` controls with `data-target`
+    - JS toggles `.is-visible` and `hidden` directly; interaction no longer depends on anchor navigation behavior
     - when interior target is selected, JS reveals both exterior and interior windows side-by-side
     - hashchange listener keeps reveal state aligned with URL hash navigation
     - map spot has explicit z-index/pointer-events for reliable tapping.
