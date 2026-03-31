@@ -282,10 +282,12 @@
 
       scrollers.forEach((scroller) => {
         let isDragging = false;
+        let activePointerId = null;
         let startX = 0;
         let startScrollLeft = 0;
         const wheelSpeedFactor = 2.4;
         const dragSpeedFactor = 1.7;
+        const interactiveSelector = "a, button, input, select, textarea, summary, [role='button']";
 
         scroller.addEventListener(
           "wheel",
@@ -301,15 +303,30 @@
         );
 
         scroller.addEventListener("pointerdown", (event) => {
+          if (event.button !== 0) {
+            return;
+          }
+
+          if (event.pointerType === "touch") {
+            return;
+          }
+
+          if (event.target instanceof Element && event.target.closest(interactiveSelector)) {
+            return;
+          }
+
           isDragging = true;
+          activePointerId = event.pointerId;
           startX = event.clientX;
           startScrollLeft = scroller.scrollLeft;
           scroller.classList.add("is-dragging");
-          scroller.setPointerCapture(event.pointerId);
+          if (typeof scroller.setPointerCapture === "function") {
+            scroller.setPointerCapture(event.pointerId);
+          }
         });
 
         scroller.addEventListener("pointermove", (event) => {
-          if (!isDragging) {
+          if (!isDragging || event.pointerId !== activePointerId) {
             return;
           }
 
@@ -323,12 +340,23 @@
             return;
           }
 
+          if (
+            activePointerId !== null &&
+            typeof scroller.hasPointerCapture === "function" &&
+            scroller.hasPointerCapture(activePointerId) &&
+            typeof scroller.releasePointerCapture === "function"
+          ) {
+            scroller.releasePointerCapture(activePointerId);
+          }
+
           isDragging = false;
+          activePointerId = null;
           scroller.classList.remove("is-dragging");
         };
 
         scroller.addEventListener("pointerup", stopDragging);
         scroller.addEventListener("pointercancel", stopDragging);
+        scroller.addEventListener("lostpointercapture", stopDragging);
       });
     });
   };

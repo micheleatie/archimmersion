@@ -810,14 +810,17 @@ body.representation-page .section-project-cta-wrap {
 }
 
 .comm-panorama-scroll {
+  -webkit-overflow-scrolling: touch;
   background: #ffffff;
   border: 1px solid #000000;
   cursor: grab;
   max-width: min(90vw, 500px);
+  overscroll-behavior-x: contain;
   overflow-x: auto;
   overflow-y: hidden;
   padding: 0.3rem;
   scrollbar-width: thin;
+  touch-action: pan-x pinch-zoom;
 }
 
 .comm-panorama-scroll.is-dragging {
@@ -830,6 +833,8 @@ body.representation-page .section-project-cta-wrap {
 }
 
 .comm-panorama-scroll img {
+  -webkit-user-drag: none;
+  user-select: none;
   display: block;
   height: 190px;
   max-width: none;
@@ -853,6 +858,7 @@ body.representation-page .rep-model-image {
   background: rgba(255, 255, 255, 0.9);
   border: 1px solid #000000;
   border-radius: 999px;
+  cursor: pointer;
   display: inline-block;
   height: 36px;
   left: 41.5%;

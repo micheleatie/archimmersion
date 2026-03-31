@@ -131,6 +131,10 @@
   - panorama navigation tuning:
     - wheel horizontal scroll accelerated (`deltaY * 2.4`)
     - drag-to-scroll accelerated (delta multiplied by `1.7`)
+    - cross-browser hardening:
+      - panorama/map `<img>` nodes are marked `draggable="false"` to avoid Chrome image-drag conflicts
+      - panorama drag logic ignores interactive descendants like the interior pin, preventing Safari click interception
+      - scroller uses `touch-action: pan-x pinch-zoom`, `overscroll-behavior-x: contain`, and `-webkit-overflow-scrolling: touch`
   - panorama render widths reduced (desktop/mobile) so key content appears sooner.
 
 ## Representation Page Model (2026-03-01)
