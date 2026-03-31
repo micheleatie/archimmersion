@@ -189,10 +189,10 @@
   - `src/communication/index.md`
 - All detailed section pages (non-home) now include a shared bottom CTA button via `src/_includes/layouts/base.njk`:
   - label: `Start a project`
-  - action: `mailto:atiemichele@gmail.com`
+  - action: `mailto:michele.atie@archimmersion.fr`
   - style: black rectangular button (`.section-project-cta`).
 - Homepage interactive pillar copy and CTA targets are currently authored directly in hotspot `data-panel-*` attributes inside `src/index.njk`.
-- Homepage contact button currently uses fixed recipient `mailto:atiemichele@gmail.com`.
+- Homepage contact button currently uses fixed recipient `mailto:michele.atie@archimmersion.fr`.
 - In Markdown pages using raw HTML tags (`<img ...>`), image paths should use:
   - `{{ './img/file.svg' | resolvePageAsset(page.url) | toBaseRelative }}`
   - this avoids broken asset URLs under the runtime `<base>` behavior.
