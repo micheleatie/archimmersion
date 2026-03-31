@@ -788,6 +788,9 @@ body.representation-page .section-project-cta-wrap {
   margin-top: 1rem;
 }
 
+.comm-experience.is-panorama-open #comm-panorama-stack,
+.comm-experience.is-interior-open #comm-panorama-stack,
+.comm-experience.is-interior-open #comm-interior-stack,
 .comm-panorama-stack.is-visible,
 .comm-panorama-stack:target {
   display: grid;
@@ -823,6 +826,7 @@ body.representation-page .section-project-cta-wrap {
   padding: 0.3rem;
   scrollbar-width: thin;
   touch-action: pan-x pinch-zoom;
+  user-select: none;
 }
 
 .comm-panorama-scroll.is-dragging {
@@ -897,6 +901,7 @@ body.representation-page .rep-model-image {
 }
 
 .comm-panorama-stack--interior {
+  animation: comm-interior-appear 220ms ease;
   align-content: start;
   grid-template-columns: minmax(0, auto) minmax(220px, 1fr);
   grid-template-rows: auto;
@@ -925,6 +930,18 @@ body.representation-page .rep-model-image {
   font-size: 0.92rem;
   line-height: 1.46;
   margin: 0 0 0.55rem;
+}
+
+@keyframes comm-interior-appear {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .carousel-host {

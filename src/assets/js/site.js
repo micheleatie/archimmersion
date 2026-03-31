@@ -180,6 +180,8 @@
       const interiorPins = Array.from(experience.querySelectorAll("[data-interior-pin]"));
       const panoramaStacks = Array.from(experience.querySelectorAll("[data-panorama-stack]"));
       const scrollers = Array.from(experience.querySelectorAll("[data-panorama-scroll]"));
+      const exteriorStack = experience.querySelector("#comm-panorama-stack");
+      const interiorStack = experience.querySelector("#comm-interior-stack");
 
       if (!mapSpots.length || !panoramaStacks.length) {
         return;
@@ -196,29 +198,26 @@
         return hashIndex >= 0 ? href.slice(hashIndex + 1) : "";
       };
 
-      const revealPanoramas = (targetId) => {
-        if (!targetId) {
-          return;
-        }
-
-        const showExteriorWithInterior = targetId === "comm-interior-stack";
+      const setExperienceState = (state) => {
+        const showExterior = state === "exterior" || state === "interior";
+        const showInterior = state === "interior";
+        experience.classList.toggle("is-panorama-open", showExterior);
+        experience.classList.toggle("is-interior-open", showInterior);
 
         panoramaStacks.forEach((stack) => {
-          const isTarget = stack.id === targetId;
-          const isExteriorCompanion = showExteriorWithInterior && stack.id === "comm-panorama-stack";
-          const shouldShow = isTarget || isExteriorCompanion;
-
+          const shouldShow =
+            (stack === exteriorStack && showExterior) ||
+            (stack === interiorStack && showInterior);
           stack.classList.toggle("is-visible", shouldShow);
           stack.hidden = !shouldShow;
         });
 
         mapSpots.forEach((spot) => {
-          const pressed = getTargetId(spot) === targetId;
-          spot.setAttribute("aria-pressed", pressed ? "true" : "false");
+          spot.setAttribute("aria-pressed", showExterior ? "true" : "false");
         });
 
         interiorPins.forEach((pin) => {
-          pin.setAttribute("aria-pressed", targetId === "comm-interior-stack" ? "true" : "false");
+          pin.setAttribute("aria-pressed", showInterior ? "true" : "false");
         });
       };
 
@@ -228,9 +227,34 @@
           return;
         }
 
+        const nextState = targetId === "comm-interior-stack" ? "interior" : "exterior";
+        const openTarget = nextState === "interior" ? interiorStack : exteriorStack;
+
+        const openTargetState = () => {
+          setExperienceState(nextState);
+          if (openTarget) {
+            window.requestAnimationFrame(() => {
+              openTarget.scrollIntoView({ block: "nearest", inline: "nearest" });
+            });
+          }
+        };
+
+        const stopPointerConflict = (event) => {
+          event.stopPropagation();
+        };
+
+        control.addEventListener("pointerdown", stopPointerConflict);
+        control.addEventListener("mousedown", stopPointerConflict);
+        control.addEventListener("touchstart", stopPointerConflict, { passive: true });
         control.addEventListener("click", () => {
-          revealPanoramas(targetId);
-          window.history.replaceState(null, "", `#${targetId}`);
+          openTargetState();
+        });
+
+        control.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openTargetState();
+          }
         });
       };
 
@@ -238,20 +262,16 @@
       interiorPins.forEach(bindRevealControl);
 
       const currentHashId = window.location.hash.replace("#", "");
-      if (currentHashId) {
-        revealPanoramas(currentHashId);
+      if (currentHashId === "comm-interior-stack") {
+        setExperienceState("interior");
+      } else if (currentHashId === "comm-panorama-stack") {
+        setExperienceState("exterior");
+      } else {
+        setExperienceState("closed");
       }
-
-      window.addEventListener("hashchange", () => {
-        const hashId = window.location.hash.replace("#", "");
-        if (hashId) {
-          revealPanoramas(hashId);
-        }
-      });
 
       scrollers.forEach((scroller) => {
         let isDragging = false;
-        let activePointerId = null;
         let startX = 0;
         let startScrollLeft = 0;
         const wheelSpeedFactor = 2.4;
@@ -271,12 +291,8 @@
           { passive: false },
         );
 
-        scroller.addEventListener("pointerdown", (event) => {
+        const startDragging = (event) => {
           if (event.button !== 0) {
-            return;
-          }
-
-          if (event.pointerType === "touch") {
             return;
           }
 
@@ -284,48 +300,37 @@
             return;
           }
 
+          event.preventDefault();
           isDragging = true;
-          activePointerId = event.pointerId;
           startX = event.clientX;
           startScrollLeft = scroller.scrollLeft;
           scroller.classList.add("is-dragging");
-          if (typeof scroller.setPointerCapture === "function") {
-            scroller.setPointerCapture(event.pointerId);
-          }
-        });
+        };
 
-        scroller.addEventListener("pointermove", (event) => {
-          if (!isDragging || event.pointerId !== activePointerId) {
+        const dragScroller = (event) => {
+          if (!isDragging) {
             return;
           }
 
           event.preventDefault();
           const delta = event.clientX - startX;
           scroller.scrollLeft = startScrollLeft - delta * dragSpeedFactor;
-        });
+        };
 
         const stopDragging = () => {
           if (!isDragging) {
             return;
           }
 
-          if (
-            activePointerId !== null &&
-            typeof scroller.hasPointerCapture === "function" &&
-            scroller.hasPointerCapture(activePointerId) &&
-            typeof scroller.releasePointerCapture === "function"
-          ) {
-            scroller.releasePointerCapture(activePointerId);
-          }
-
           isDragging = false;
-          activePointerId = null;
           scroller.classList.remove("is-dragging");
         };
 
-        scroller.addEventListener("pointerup", stopDragging);
-        scroller.addEventListener("pointercancel", stopDragging);
-        scroller.addEventListener("lostpointercapture", stopDragging);
+        scroller.addEventListener("mousedown", startDragging);
+        scroller.addEventListener("dragstart", (event) => event.preventDefault());
+        window.addEventListener("mousemove", dragScroller);
+        window.addEventListener("mouseup", stopDragging);
+        scroller.addEventListener("mouseleave", stopDragging);
       });
     });
   };

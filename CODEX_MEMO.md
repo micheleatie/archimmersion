@@ -123,16 +123,16 @@
   - panorama viewport intentionally small; navigation uses mouse-wheel horizontal scroll + pointer drag via `src/assets/js/site.js`.
   - reveal action hardened:
     - map spot and interior pin are implemented as real `<button type="button">` controls with `data-target`
-    - JS toggles `.is-visible` and `hidden` directly; interaction no longer depends on anchor navigation behavior
+    - JS now drives a simple local component state on `.comm-experience` (`closed` / `exterior` / `interior`) instead of relying on hash navigation during clicks
     - when interior target is selected, JS reveals both exterior and interior windows side-by-side
-    - hashchange listener keeps reveal state aligned with URL hash navigation
-    - map spot has explicit z-index/pointer-events for reliable tapping.
+    - initial page load still honors `#comm-panorama-stack` and `#comm-interior-stack` if present in the URL
+    - map spot and interior pin explicitly stop drag propagation before click handling.
   - panorama navigation tuning:
     - wheel horizontal scroll accelerated (`deltaY * 2.4`)
     - drag-to-scroll accelerated (delta multiplied by `1.7`)
     - cross-browser hardening:
       - panorama/map `<img>` nodes are marked `draggable="false"` to avoid Chrome image-drag conflicts
-      - panorama drag logic ignores interactive descendants like the interior pin, preventing Safari click interception
+      - panorama drag now uses classic mouse `mousedown` / `mousemove` / `mouseup` tracking instead of pointer capture
       - scroller uses `touch-action: pan-x pinch-zoom`, `overscroll-behavior-x: contain`, and `-webkit-overflow-scrolling: touch`
   - panorama render widths reduced (desktop/mobile) so key content appears sooner.
 
