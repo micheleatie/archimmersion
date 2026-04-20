@@ -3,6 +3,7 @@
 ## Architecture Snapshot
 - Eleventy v3 with Nunjucks templates.
 - Input/output config: `src` -> `_site`.
+- Repo-root `index.html` is a separate standalone line-art preview file and does not reflect the Eleventy site.
 - Base layout: `src/_includes/layouts/base.njk`.
 - Homepage template: `src/index.njk`.
 - Section content is Markdown-first:
