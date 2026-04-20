@@ -43,7 +43,7 @@
     const lang = getStoredLang();
     const t = {
       en: {
-        navRepresentation: "Data Capture and Restittution",
+        navRepresentation: "Data Capture and Restitution",
         navCommunication: "Communication",
         h1: "Communication",
         whatWeOffer: "What We Offer",
@@ -81,7 +81,7 @@
           "The 360 interior sequence helps clients evaluate scale, openings, and ambient quality before final detailing.",
       },
       fr: {
-        navRepresentation: "Data Capture and Restittution",
+        navRepresentation: "Data Capture and Restitution",
         navCommunication: "Communication",
         h1: "Communication",
         whatWeOffer: "Ce Que Nous Proposons",
@@ -379,13 +379,13 @@
       contactCta: "Email Us",
       panels: {
         "hotspot-caption": {
-          openLabel: "Open Data Capture and Restittution section",
-          title: "DATA CAPTURE AND RESTITTUTION",
-          tooltip: "Data Capture & Restittution",
+          openLabel: "Open Data Capture and Restitution section",
+          title: "DATA CAPTURE AND RESTITUTION",
+          tooltip: "Data Capture & Restitution",
           lead: "Faithful 3D Scan & Immersive Representation",
           body:
             "We intervene on-site to capture your building with precision and sensitivity. Using advanced 3D scanning technologies, we provide a faithful, immersive, and atmosphere-driven digital restitution — ideal for renovation, design development, and communication.",
-          ctaLabel: "Open Data Capture and Restittution",
+          ctaLabel: "Open Data Capture and Restitution",
         },
         "hotspot-laptop": {
           openLabel: "Open Communication section",
@@ -407,13 +407,13 @@
       contactCta: "Envoyer un email",
       panels: {
         "hotspot-caption": {
-          openLabel: "Ouvrir la section Data Capture and Restittution",
-          title: "DATA CAPTURE AND RESTITTUTION",
-          tooltip: "Data Capture & Restittution",
+          openLabel: "Ouvrir la section Data Capture and Restitution",
+          title: "DATA CAPTURE AND RESTITUTION",
+          tooltip: "Data Capture & Restitution",
           lead: "Scan 3D fidele et representation immersive",
           body:
             "Nous intervenons sur site pour capturer votre batiment avec precision et sensibilite. Grace a des technologies avancees de scan 3D, nous produisons une restitution numerique fidele, immersive et guidee par l'atmosphere, ideale pour la renovation, le developpement de projet et la communication.",
-          ctaLabel: "Ouvrir Data Capture and Restittution",
+          ctaLabel: "Ouvrir Data Capture and Restitution",
         },
         "hotspot-laptop": {
           openLabel: "Ouvrir la section Communication",

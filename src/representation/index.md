@@ -1,6 +1,6 @@
 ---
 layout: layouts/base.njk
-title: Data Capture and Restittution
+title: Data Capture and Restitution
 bodyClass: representation-page
 sectionKey: representation
 order: 2
