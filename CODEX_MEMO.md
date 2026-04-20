@@ -18,7 +18,7 @@
   - `communication` -> `/communication/`
 - User-facing section label for `design` is now `Lighting` (URL remains `/design/`).
 - Subpage titlebar headnote now lists only:
-  - `Captation and Restitution` (`/representation/`)
+  - `Data Capture and Restittution` (`/representation/`)
   - `Communication` (`/communication/`)
   - plus the `Archimmersion` home wordmark link.
 
@@ -34,12 +34,12 @@
 - As of 2026-03-06, `src/assets/img/for-archimmersion.svg` was refreshed from client file `Desktop/archimmersion2.svg` (only SVG source swapped; scene structure and hotspots unchanged).
 - `src/assets/img/room-sketch-test-pdf.png` and `src/assets/img/room-autotrace-clean.svg` remain as legacy references but are no longer active homepage backgrounds.
 - Home now has 2 interactive hotspots:
-  - `g#hotspot-caption`: Captation and Restitution (camera + poster click target),
+  - `g#hotspot-caption`: Data Capture and Restittution (camera + poster click target),
   - `g#hotspot-laptop`: Communication (PC click target).
 - Room background was updated to an open, frameless perspective (no closed perimeter box), keeping a more limitless spatial feel.
 - Required SVG group structure is present:
   - `g#room-background`
-  - `g#hotspot-caption` (Captation and Restitution)
+  - `g#hotspot-caption` (Data Capture and Restittution)
   - `g#hotspot-laptop` (Communication)
 - Each hotspot group includes:
   - `role="button"`
@@ -49,10 +49,10 @@
   - per-hotspot panel content via `data-panel-*` attributes.
   - inline tooltip label node (`[data-tooltip-text]`) shown on hover/focus before click.
 - Communication hotspot laptop uses a straight, open silhouette with explicit screen + base geometry.
-- Captation/Restitution hotspot combines camera + wall poster into a single trigger target.
+- Data Capture/Restittution hotspot combines camera + wall poster into a single trigger target.
 - Home panel content now supports both formats:
   - bullet mode via `data-panel-points`
-  - paragraph mode via `data-panel-body` (used by Communication and Captation/Restitution summary copy).
+  - paragraph mode via `data-panel-body` (used by Communication and Data Capture/Restittution summary copy).
 - Communication panel body formatting:
   - first two sentences are rendered as a bold lead (`<strong>`)
   - a blank line is inserted before the remaining paragraph text.
@@ -63,7 +63,7 @@
   - panel titles/content/CTA labels
   - hotspot aria-labels for each language.
 - Home language choice is now persisted in `localStorage` key `arch_home_lang` and reused by subpages.
-- Captation/Communication hit zones are now separated for reliable click selection.
+- Data Capture/Communication hit zones are now separated for reliable click selection.
 - Homepage typography alignment:
   - `Explore the room.` is larger, black, and bold.
   - Home contact typography is aligned to the same title-family style (`Avenir Next` stack) with stronger tracking/weight for heading and CTA.
@@ -78,7 +78,7 @@
   - each object appears sequentially with soft blur-to-sharp + upward settle (`room-hotspot-enter`),
   - pointer events stay disabled until reveal is active.
 - Hover/focus discoverability now includes small in-SVG tooltip pills (EN/FR localized) for:
-  - Captation and Restitution
+  - Data Capture and Restittution
   - Communication.
 - Homepage hotspot interaction color state:
   - default remains neutral line-art,
@@ -87,8 +87,8 @@
 - Click-only visual reveal behavior was removed on home hotspots to avoid extra line artifacts around objects.
 - Temporary mask overlays were removed to avoid visible gray artifacts near objects.
 - Home hotspot feedback now relies on tooltip/state styling and panel opening only (no extra drawn reveal overlays).
-- Captation hotspot wording is normalized as "Captation and Restitution" (ARIA label, panel title, CTA label, EN/FR tooltip text).
-- Captation hotspot now has two tooltip positions (poster area + camera area), both synchronized by i18n updates.
+- Data Capture hotspot wording is normalized as "Data Capture and Restittution" (ARIA label, panel title, CTA label, EN/FR tooltip text).
+- Data Capture hotspot now has two tooltip positions (poster area + camera area), both synchronized by i18n updates.
 - Communication hit-area around PC was expanded (`hotspot-laptop` invisible hit rect) so hover/click can trigger from all around the object.
 - Communication hotspot also uses `pointer-events: bounding-box` when visible to keep hover activation reliable across the full PC envelope.
 - Manual wall overlay (`#room-wall-lines`) was removed because it introduced visible double/overlapping wall lines against the source SVG.
@@ -140,7 +140,7 @@
 
 ## Representation Page Model (2026-03-01)
 - `src/representation/index.md` now sets `bodyClass: representation-page`.
-- Representation page title is now `Captation and Restitution` (URL remains `/representation/`).
+- Representation page title is now `Data Capture and Restittution` (URL remains `/representation/`).
 - Representation now uses the same pure-white visual language as Communication:
   - no sunrays overlays
   - white topbar/background

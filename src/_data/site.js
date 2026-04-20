@@ -1,8 +1,8 @@
 module.exports = {
   name: "Archimmersion",
   description:
-    "Archimmersion is a studio focused on captation and restitution, and communication.",
-  subtitleWords: ["Captation and Restitution", "Communication"],
+    "Archimmersion is a studio focused on data capture and restittution, and communication.",
+  subtitleWords: ["Data Capture and Restittution", "Communication"],
   // Toggle homepage palette here: "colorful" or "liquid-glass"
   palette: "colorful",
   // Toggle background style here: "flat" or "sunrays-glass"
