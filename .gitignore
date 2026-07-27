@@ -2,6 +2,8 @@ node_modules/
 _site/
 .cache/
 npm-debug.log*
+__pycache__/
+*.pyc
 DEPLOYMENT_HANDOFF.md
 output/.DS_Store
 /output

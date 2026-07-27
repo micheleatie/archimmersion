@@ -16,12 +16,20 @@ Run `npm run build` before publishing. Generated files live in `_site/` and are 
 - `src/index.njk` — holding-page content
 - `src/_includes/layouts/holding.njk` — minimal document shell
 - `src/assets/css/holding.css` — holding-page styling
+- `src/assets/img/wordmark-construction.svg` — self-contained animated wordmark
+- `scripts/generate_wordmark_svg.py` — wordmark asset generator
 
 The page intentionally has no navigation, contact route, or service content.
+Its title is revealed through varied architectural guide lines and continuous
+Avenir Next contour drawing, with a reduced-motion fallback to the finished
+wordmark.
 
 ## Previous site
 
 The former interactive site has not been deleted. Its complete source snapshot is in [`archive/site-v1/`](archive/site-v1/), outside Eleventy’s input directory. See its README for restoration steps.
+
+Earlier wordmark options are preserved under
+[`archive/holding-variants/`](archive/holding-variants/).
 
 ## Deployment
 

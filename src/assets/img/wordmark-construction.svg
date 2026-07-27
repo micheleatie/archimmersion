@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+  viewBox="-215.00 -946.00 10784.00 1184.00"
+  role="img"
+  aria-label="Archimmersion">
+  <style>
+    .letter {
+      animation: settle-letter 3.26s linear both;
+      transform: translateX(var(--construct-x));
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    .draft-guide {
+      --guide-opacity: 0.22;
+      animation: draw-guide 1.9s linear both;
+      animation-delay: var(--guide-delay);
+      fill: none;
+      stroke: #161616;
+      stroke-dasharray: 0 1;
+      stroke-dashoffset: 0;
+      stroke-linecap: round;
+      stroke-opacity: 0;
+      stroke-width: 0.85;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .guide-diagonal {
+      --guide-opacity: 0.26;
+    }
+
+    .guide-curve {
+      --guide-opacity: 0.3;
+      stroke-width: 1;
+    }
+
+    .outline-trace {
+      animation: draw-outline 2.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+      animation-delay: var(--outline-delay);
+      fill: none;
+      stroke: #161616;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-opacity: 0;
+      stroke-width: 1;
+      vector-effect: non-scaling-stroke;
+    }
+
+    .letter-fill {
+      animation: fill-letter 460ms ease-out both;
+      animation-delay: var(--fill-delay);
+      fill: #161616;
+      fill-opacity: 0;
+      stroke: none;
+    }
+
+    @keyframes settle-letter {
+      0%,
+      8% {
+        transform: translateX(var(--construct-x));
+      }
+
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes draw-guide {
+      0%,
+      3% {
+        stroke-dasharray: 0 1;
+        stroke-opacity: var(--guide-opacity);
+      }
+
+      60% {
+        stroke-dasharray: 1 0;
+        stroke-opacity: var(--guide-opacity);
+      }
+
+      84% {
+        stroke-dasharray: 1 0;
+        stroke-opacity: var(--guide-opacity);
+      }
+
+      100% {
+        stroke-dasharray: 1 0;
+        stroke-opacity: 0;
+      }
+    }
+
+    @keyframes draw-outline {
+      0% {
+        stroke-dashoffset: 1;
+        stroke-opacity: 0;
+      }
+
+      8% {
+        stroke-opacity: 0.62;
+      }
+
+      64% {
+        stroke-dashoffset: 0;
+        stroke-opacity: 0.62;
+      }
+
+      92% {
+        stroke-dashoffset: 0;
+        stroke-opacity: 0.62;
+      }
+
+      100% {
+        stroke-dashoffset: 0;
+        stroke-opacity: 0;
+      }
+    }
+
+    @keyframes fill-letter {
+      0% {
+        fill-opacity: 0;
+      }
+
+      100% {
+        fill-opacity: 1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .draft-guide,
+      .outline-trace,
+      .letter-fill,
+      .letter {
+        animation: none;
+      }
+
+      .letter {
+        transform: none;
+      }
+
+      .draft-guide,
+      .outline-trace {
+        stroke-opacity: 0;
+      }
+
+      .letter-fill {
+        fill-opacity: 1;
+      }
+    }
+  </style>
+  <g transform="scale(1 -1)">
+    <g transform="translate(0 0)">
+<clipPath id="letter-clip-0" clipPathUnits="userSpaceOnUse"><path d="M115 0H5L312 708H402L706 0H594L522 174H186ZM221 261H486L354 593Z" /></clipPath>
+<g class="letter" data-letter="A" data-index="0" style="--construct-x: -72px; --letter-delay: 0ms">
+<path class="draft-guide guide-horizontal" d="M-84.68 708L762.24 708" pathLength="1" style="--guide-delay: 0ms" />
+<path class="draft-guide guide-horizontal" d="M-46.68 0L806.32 0" pathLength="1" style="--guide-delay: 55ms" />
+<path class="draft-guide guide-vertical" d="M159.22 -62.32L159.22 799.2" pathLength="1" style="--guide-delay: 110ms" />
+<path class="draft-guide guide-edge" d="M-21.9089 -62.0571L351.608 799.342" pathLength="1" style="--guide-delay: 165ms" />
+<path class="draft-guide guide-edge" d="M378.611 762.471L742.582 -85.1982" pathLength="1" style="--guide-delay: 220ms" />
+<path class="draft-guide guide-edge" d="M384.241 668.488L187.65 177.752" pathLength="1" style="--guide-delay: 275ms" />
+<path class="letter-fill" d="M115 0H5L312 708H402L706 0H594L522 174H186ZM221 261H486L354 593Z" style="--fill-delay: 1580ms" />
+<path class="outline-trace" d="M115 0H5L312 708H402L706 0H594L522 174H186Z" pathLength="1" clip-path="url(#letter-clip-0)" style="--outline-delay: 140ms" />
+<path class="outline-trace" d="M221 261H486L354 593Z" pathLength="1" clip-path="url(#letter-clip-0)" style="--outline-delay: 178ms" />
+</g>
+</g><g transform="translate(871 0)">
+<clipPath id="letter-clip-1" clipPathUnits="userSpaceOnUse"><path d="M185 0H86V708H313Q364 708 410.0 697.5Q456 687 490.5 664.0Q525 641 545.0 603.5Q565 566 565 512Q565 434 517.0 386.0Q469 338 393 325L591 0H471L291 315H185ZM185 398H299Q334 398 364.0 404.0Q394 410 416.5 423.5Q439 437 452.0 458.5Q465 480 465 512Q465 544 452.0 565.5Q439 587 417.5 600.0Q396 613 367.0 618.5Q338 624 306 624H185Z" /></clipPath>
+<g class="letter" data-letter="R" data-index="1" style="--construct-x: -60px; --letter-delay: 22ms">
+<path class="draft-guide guide-horizontal" d="M-40.26 708L670.18 708" pathLength="1" style="--guide-delay: 22ms" />
+<path class="draft-guide guide-horizontal" d="M13.24 0L732.24 0" pathLength="1" style="--guide-delay: 77ms" />
+<path class="draft-guide guide-vertical" d="M479.9 -87.74L479.9 836.4" pathLength="1" style="--guide-delay: 132ms" />
+<path class="draft-guide guide-edge" d="M86 -95.23L86 848.17" pathLength="1" style="--guide-delay: 187ms" />
+<path class="draft-guide guide-edge" d="M342.897 407.24L674.505 -137.066" pathLength="1" style="--guide-delay: 242ms" />
+<path class="draft-guide guide-edge" d="M512.939 -73.3926L216.148 445.992" pathLength="1" style="--guide-delay: 297ms" />
+<path class="letter-fill" d="M185 0H86V708H313Q364 708 410.0 697.5Q456 687 490.5 664.0Q525 641 545.0 603.5Q565 566 565 512Q565 434 517.0 386.0Q469 338 393 325L591 0H471L291 315H185ZM185 398H299Q334 398 364.0 404.0Q394 410 416.5 423.5Q439 437 452.0 458.5Q465 480 465 512Q465 544 452.0 565.5Q439 587 417.5 600.0Q396 613 367.0 618.5Q338 624 306 624H185Z" style="--fill-delay: 1598ms" />
+<path class="outline-trace" d="M185 0H86V708H313Q364 708 410.0 697.5Q456 687 490.5 664.0Q525 641 545.0 603.5Q565 566 565 512Q565 434 517.0 386.0Q469 338 393 325L591 0H471L291 315H185Z" pathLength="1" clip-path="url(#letter-clip-1)" style="--outline-delay: 166ms" />
+<path class="outline-trace" d="M185 398H299Q334 398 364.0 404.0Q394 410 416.5 423.5Q439 437 452.0 458.5Q465 480 465 512Q465 544 452.0 565.5Q439 587 417.5 600.0Q396 613 367.0 618.5Q338 624 306 624H185Z" pathLength="1" clip-path="url(#letter-clip-1)" style="--outline-delay: 204ms" />
+</g>
+</g><g transform="translate(1645 0)">
+<clipPath id="letter-clip-2" clipPathUnits="userSpaceOnUse"><path d="M693 110Q651 53 584.0 17.5Q517 -18 423 -18Q342 -18 273.5 9.5Q205 37 155.5 86.5Q106 136 78.0 204.5Q50 273 50 355Q50 438 78.5 506.5Q107 575 157.5 623.5Q208 672 277.0 699.0Q346 726 427 726Q463 726 500.0 719.0Q537 712 571.0 698.0Q605 684 633.0 663.5Q661 643 681 616L603 556Q577 592 529.5 615.5Q482 639 427 639Q365 639 315.5 616.5Q266 594 231.0 555.0Q196 516 177.0 464.5Q158 413 158 355Q158 295 176.5 243.0Q195 191 229.5 152.5Q264 114 313.5 92.0Q363 70 424 70Q484 70 533.0 94.0Q582 118 614 164Z" /></clipPath>
+<g class="letter" data-letter="C" data-index="2" style="--construct-x: -48px; --letter-delay: 44ms">
+<path class="draft-guide guide-diagonal" d="M759.755 676.581L484.867 465.129" pathLength="1" style="--guide-delay: 44ms" />
+<path class="draft-guide guide-diagonal" d="M512.604 233.308L842.245 7.98418" pathLength="1" style="--guide-delay: 99ms" />
+<path class="draft-guide guide-curve" d="M716.42 545.304Q696.98 607.359 651.62 648.354" pathLength="1" style="--guide-delay: 154ms" />
+<path class="draft-guide guide-curve" d="M665.117 298.895Q642.708 170.555 565.218 113.495" pathLength="1" style="--guide-delay: 209ms" />
+<path class="letter-fill" d="M693 110Q651 53 584.0 17.5Q517 -18 423 -18Q342 -18 273.5 9.5Q205 37 155.5 86.5Q106 136 78.0 204.5Q50 273 50 355Q50 438 78.5 506.5Q107 575 157.5 623.5Q208 672 277.0 699.0Q346 726 427 726Q463 726 500.0 719.0Q537 712 571.0 698.0Q605 684 633.0 663.5Q661 643 681 616L603 556Q577 592 529.5 615.5Q482 639 427 639Q365 639 315.5 616.5Q266 594 231.0 555.0Q196 516 177.0 464.5Q158 413 158 355Q158 295 176.5 243.0Q195 191 229.5 152.5Q264 114 313.5 92.0Q363 70 424 70Q484 70 533.0 94.0Q582 118 614 164Z" style="--fill-delay: 1616ms" />
+<path class="outline-trace" d="M693 110Q651 53 584.0 17.5Q517 -18 423 -18Q342 -18 273.5 9.5Q205 37 155.5 86.5Q106 136 78.0 204.5Q50 273 50 355Q50 438 78.5 506.5Q107 575 157.5 623.5Q208 672 277.0 699.0Q346 726 427 726Q463 726 500.0 719.0Q537 712 571.0 698.0Q605 684 633.0 663.5Q661 643 681 616L603 556Q577 592 529.5 615.5Q482 639 427 639Q365 639 315.5 616.5Q266 594 231.0 555.0Q196 516 177.0 464.5Q158 413 158 355Q158 295 176.5 243.0Q195 191 229.5 152.5Q264 114 313.5 92.0Q363 70 424 70Q484 70 533.0 94.0Q582 118 614 164Z" pathLength="1" clip-path="url(#letter-clip-2)" style="--outline-delay: 192ms" />
+</g>
+</g><g transform="translate(2513 0)">
+<clipPath id="letter-clip-3" clipPathUnits="userSpaceOnUse"><path d="M86 708H185V412H543V708H643V0H543V324H185V0H86Z" /></clipPath>
+<g class="letter" data-letter="H" data-index="3" style="--construct-x: -36px; --letter-delay: 66ms">
+<path class="draft-guide guide-horizontal" d="M-4.86 708L699.98 708" pathLength="1" style="--guide-delay: 66ms" />
+<path class="draft-guide guide-horizontal" d="M33.64 0L744.64 0" pathLength="1" style="--guide-delay: 121ms" />
+<path class="draft-guide guide-edge" d="M643 794.24L643 -87.01" pathLength="1" style="--guide-delay: 176ms" />
+<path class="draft-guide guide-edge" d="M86 -60.83L86 816.57" pathLength="1" style="--guide-delay: 231ms" />
+<path class="draft-guide guide-edge" d="M103.38 412L661.58 412" pathLength="1" style="--guide-delay: 286ms" />
+<path class="letter-fill" d="M86 708H185V412H543V708H643V0H543V324H185V0H86Z" style="--fill-delay: 1634ms" />
+<path class="outline-trace" d="M86 708H185V412H543V708H643V0H543V324H185V0H86Z" pathLength="1" clip-path="url(#letter-clip-3)" style="--outline-delay: 218ms" />
+</g>
+</g><g transform="translate(3402 0)">
+<clipPath id="letter-clip-4" clipPathUnits="userSpaceOnUse"><path d="M185 0H86V708H185Z" /></clipPath>
+<g class="letter" data-letter="I" data-index="4" style="--construct-x: -24px; --letter-delay: 88ms">
+<path class="draft-guide guide-horizontal" d="M-41.44 708L264.92 708" pathLength="1" style="--guide-delay: 88ms" />
+<path class="draft-guide guide-horizontal" d="M12.56 0L327.56 0" pathLength="1" style="--guide-delay: 143ms" />
+<path class="draft-guide guide-vertical" d="M86 -88.56L86 837.6" pathLength="1" style="--guide-delay: 198ms" />
+<path class="draft-guide guide-vertical" d="M185 -116.64L185 790.08" pathLength="1" style="--guide-delay: 253ms" />
+<path class="letter-fill" d="M185 0H86V708H185Z" style="--fill-delay: 1652ms" />
+<path class="outline-trace" d="M185 0H86V708H185Z" pathLength="1" clip-path="url(#letter-clip-4)" style="--outline-delay: 244ms" />
+</g>
+</g><g transform="translate(3833 0)">
+<clipPath id="letter-clip-5" clipPathUnits="userSpaceOnUse"><path d="M452 164H454L663 708H817V0H718V592H716L481 0H418L184 592H182V0H86V708H240Z" /></clipPath>
+<g class="letter" data-letter="M" data-index="5" style="--construct-x: -12px; --letter-delay: 110ms">
+<path class="draft-guide guide-horizontal" d="M-78.02 708L919.86 708" pathLength="1" style="--guide-delay: 110ms" />
+<path class="draft-guide guide-horizontal" d="M-8.52 0L1000.48 0" pathLength="1" style="--guide-delay: 165ms" />
+<path class="draft-guide guide-edge" d="M817 816.42L817 -169.58" pathLength="1" style="--guide-delay: 220ms" />
+<path class="draft-guide guide-edge" d="M86 -157.07L86 891.48" pathLength="1" style="--guide-delay: 275ms" />
+<path class="draft-guide guide-edge" d="M767.797 722.485L399.458 -205.417" pathLength="1" style="--guide-delay: 330ms" />
+<path class="letter-fill" d="M452 164H454L663 708H817V0H718V592H716L481 0H418L184 592H182V0H86V708H240Z" style="--fill-delay: 1670ms" />
+<path class="outline-trace" d="M452 164H454L663 708H817V0H718V592H716L481 0H418L184 592H182V0H86V708H240Z" pathLength="1" clip-path="url(#letter-clip-5)" style="--outline-delay: 270ms" />
+</g>
+</g><g transform="translate(4896 0)">
+<clipPath id="letter-clip-6" clipPathUnits="userSpaceOnUse"><path d="M452 164H454L663 708H817V0H718V592H716L481 0H418L184 592H182V0H86V708H240Z" /></clipPath>
+<g class="letter" data-letter="M" data-index="6" style="--construct-x: 0px; --letter-delay: 132ms">
+<path class="draft-guide guide-horizontal" d="M-6.04 708L874.72 708" pathLength="1" style="--guide-delay: 132ms" />
+<path class="draft-guide guide-horizontal" d="M32.96 0L919.96 0" pathLength="1" style="--guide-delay: 187ms" />
+<path class="draft-guide guide-edge" d="M817 768.84L817 -95.16" pathLength="1" style="--guide-delay: 242ms" />
+<path class="draft-guide guide-edge" d="M86 -88.14L86 810.96" pathLength="1" style="--guide-delay: 297ms" />
+<path class="draft-guide guide-edge" d="M745.066 665.222L435.242 -115.27" pathLength="1" style="--guide-delay: 352ms" />
+<path class="letter-fill" d="M452 164H454L663 708H817V0H718V592H716L481 0H418L184 592H182V0H86V708H240Z" style="--fill-delay: 1688ms" />
+<path class="outline-trace" d="M452 164H454L663 708H817V0H718V592H716L481 0H418L184 592H182V0H86V708H240Z" pathLength="1" clip-path="url(#letter-clip-6)" style="--outline-delay: 296ms" />
+</g>
+</g><g transform="translate(5959 0)">
+<clipPath id="letter-clip-7" clipPathUnits="userSpaceOnUse"><path d="M185 88H555V0H86V708H540V621H185V409H519V324H185Z" /></clipPath>
+<g class="letter" data-letter="E" data-index="7" style="--construct-x: 12px; --letter-delay: 154ms">
+<path class="draft-guide guide-horizontal" d="M-42.62 708L635.66 708" pathLength="1" style="--guide-delay: 154ms" />
+<path class="draft-guide guide-horizontal" d="M11.88 0L698.88 0" pathLength="1" style="--guide-delay: 209ms" />
+<path class="draft-guide guide-vertical" d="M451.82 -89.38L451.82 838.8" pathLength="1" style="--guide-delay: 264ms" />
+<path class="draft-guide guide-edge" d="M86 -85.02L86 840.98" pathLength="1" style="--guide-delay: 319ms" />
+<path class="draft-guide guide-edge" d="M670.54 0L-81.86 0" pathLength="1" style="--guide-delay: 374ms" />
+<path class="draft-guide guide-edge" d="M-17.55 708L698.05 708" pathLength="1" style="--guide-delay: 429ms" />
+<path class="letter-fill" d="M185 88H555V0H86V708H540V621H185V409H519V324H185Z" style="--fill-delay: 1706ms" />
+<path class="outline-trace" d="M185 88H555V0H86V708H540V621H185V409H519V324H185Z" pathLength="1" clip-path="url(#letter-clip-7)" style="--outline-delay: 322ms" />
+</g>
+</g><g transform="translate(6720 0)">
+<clipPath id="letter-clip-8" clipPathUnits="userSpaceOnUse"><path d="M185 0H86V708H313Q364 708 410.0 697.5Q456 687 490.5 664.0Q525 641 545.0 603.5Q565 566 565 512Q565 434 517.0 386.0Q469 338 393 325L591 0H471L291 315H185ZM185 398H299Q334 398 364.0 404.0Q394 410 416.5 423.5Q439 437 452.0 458.5Q465 480 465 512Q465 544 452.0 565.5Q439 587 417.5 600.0Q396 613 367.0 618.5Q338 624 306 624H185Z" /></clipPath>
+<g class="letter" data-letter="R" data-index="8" style="--construct-x: 24px; --letter-delay: 176ms">
+<path class="draft-guide guide-horizontal" d="M-79.2 708L694.6 708" pathLength="1" style="--guide-delay: 176ms" />
+<path class="draft-guide guide-horizontal" d="M-9.2 0L775.8 0" pathLength="1" style="--guide-delay: 231ms" />
+<path class="draft-guide guide-vertical" d="M197.1 -114.8L197.1 876" pathLength="1" style="--guide-delay: 286ms" />
+<path class="draft-guide guide-edge" d="M86 -124.6L86 891.4" pathLength="1" style="--guide-delay: 341ms" />
+<path class="draft-guide guide-edge" d="M327.445 432.603L700.259 -179.339" pathLength="1" style="--guide-delay: 396ms" />
+<path class="draft-guide guide-edge" d="M525.873 -96.0277L193.062 486.391" pathLength="1" style="--guide-delay: 451ms" />
+<path class="letter-fill" d="M185 0H86V708H313Q364 708 410.0 697.5Q456 687 490.5 664.0Q525 641 545.0 603.5Q565 566 565 512Q565 434 517.0 386.0Q469 338 393 325L591 0H471L291 315H185ZM185 398H299Q334 398 364.0 404.0Q394 410 416.5 423.5Q439 437 452.0 458.5Q465 480 465 512Q465 544 452.0 565.5Q439 587 417.5 600.0Q396 613 367.0 618.5Q338 624 306 624H185Z" style="--fill-delay: 1724ms" />
+<path class="outline-trace" d="M185 0H86V708H313Q364 708 410.0 697.5Q456 687 490.5 664.0Q525 641 545.0 603.5Q565 566 565 512Q565 434 517.0 386.0Q469 338 393 325L591 0H471L291 315H185Z" pathLength="1" clip-path="url(#letter-clip-8)" style="--outline-delay: 348ms" />
+<path class="outline-trace" d="M185 398H299Q334 398 364.0 404.0Q394 410 416.5 423.5Q439 437 452.0 458.5Q465 480 465 512Q465 544 452.0 565.5Q439 587 417.5 600.0Q396 613 367.0 618.5Q338 624 306 624H185Z" pathLength="1" clip-path="url(#letter-clip-8)" style="--outline-delay: 386ms" />
+</g>
+</g><g transform="translate(7494 0)">
+<clipPath id="letter-clip-9" clipPathUnits="userSpaceOnUse"><path d="M438 577Q417 606 381.0 624.5Q345 643 300 643Q276 643 251.5 636.5Q227 630 207.0 615.5Q187 601 174.5 579.5Q162 558 162 528Q162 499 173.5 479.5Q185 460 204.5 446.5Q224 433 250.5 423.5Q277 414 307 404Q343 393 380.0 379.0Q417 365 447.0 342.0Q477 319 496.0 284.5Q515 250 515 197Q515 142 494.5 101.5Q474 61 440.0 34.5Q406 8 361.5 -5.0Q317 -18 270 -18Q203 -18 140.5 8.0Q78 34 37 85L114 150Q139 113 181.0 90.0Q223 67 272 67Q297 67 322.0 74.0Q347 81 367.5 96.0Q388 111 401.0 133.5Q414 156 414 188Q414 220 400.5 241.5Q387 263 364.0 278.0Q341 293 310.5 303.5Q280 314 246 325Q212 335 179.0 349.5Q146 364 120.0 386.5Q94 409 78.0 442.0Q62 475 62 524Q62 577 83.5 615.0Q105 653 139.5 678.0Q174 703 217.5 714.5Q261 726 305 726Q367 726 421.0 704.0Q475 682 508 645Z" /></clipPath>
+<g class="letter" data-letter="S" data-index="9" style="--construct-x: 36px; --letter-delay: 198ms">
+<path class="draft-guide guide-diagonal" d="M-6.4642 48.3094L179.196 205.036" pathLength="1" style="--guide-delay: 198ms" />
+<path class="draft-guide guide-diagonal" d="M558.432 693.991L363.769 504.89" pathLength="1" style="--guide-delay: 253ms" />
+<path class="draft-guide guide-curve" d="M-28.8663 235.363Q0.42875 91.8125 99.3837 29.2625" pathLength="1" style="--guide-delay: 308ms" />
+<path class="draft-guide guide-curve" d="M556.128 540.062Q540.197 637.713 456.227 686.763" pathLength="1" style="--guide-delay: 363ms" />
+<path class="letter-fill" d="M438 577Q417 606 381.0 624.5Q345 643 300 643Q276 643 251.5 636.5Q227 630 207.0 615.5Q187 601 174.5 579.5Q162 558 162 528Q162 499 173.5 479.5Q185 460 204.5 446.5Q224 433 250.5 423.5Q277 414 307 404Q343 393 380.0 379.0Q417 365 447.0 342.0Q477 319 496.0 284.5Q515 250 515 197Q515 142 494.5 101.5Q474 61 440.0 34.5Q406 8 361.5 -5.0Q317 -18 270 -18Q203 -18 140.5 8.0Q78 34 37 85L114 150Q139 113 181.0 90.0Q223 67 272 67Q297 67 322.0 74.0Q347 81 367.5 96.0Q388 111 401.0 133.5Q414 156 414 188Q414 220 400.5 241.5Q387 263 364.0 278.0Q341 293 310.5 303.5Q280 314 246 325Q212 335 179.0 349.5Q146 364 120.0 386.5Q94 409 78.0 442.0Q62 475 62 524Q62 577 83.5 615.0Q105 653 139.5 678.0Q174 703 217.5 714.5Q261 726 305 726Q367 726 421.0 704.0Q475 682 508 645Z" style="--fill-delay: 1742ms" />
+<path class="outline-trace" d="M438 577Q417 606 381.0 624.5Q345 643 300 643Q276 643 251.5 636.5Q227 630 207.0 615.5Q187 601 174.5 579.5Q162 558 162 528Q162 499 173.5 479.5Q185 460 204.5 446.5Q224 433 250.5 423.5Q277 414 307 404Q343 393 380.0 379.0Q417 365 447.0 342.0Q477 319 496.0 284.5Q515 250 515 197Q515 142 494.5 101.5Q474 61 440.0 34.5Q406 8 361.5 -5.0Q317 -18 270 -18Q203 -18 140.5 8.0Q78 34 37 85L114 150Q139 113 181.0 90.0Q223 67 272 67Q297 67 322.0 74.0Q347 81 367.5 96.0Q388 111 401.0 133.5Q414 156 414 188Q414 220 400.5 241.5Q387 263 364.0 278.0Q341 293 310.5 303.5Q280 314 246 325Q212 335 179.0 349.5Q146 364 120.0 386.5Q94 409 78.0 442.0Q62 475 62 524Q62 577 83.5 615.0Q105 653 139.5 678.0Q174 703 217.5 714.5Q261 726 305 726Q367 726 421.0 704.0Q475 682 508 645Z" pathLength="1" clip-path="url(#letter-clip-9)" style="--outline-delay: 374ms" />
+</g>
+</g><g transform="translate(8223 0)">
+<clipPath id="letter-clip-10" clipPathUnits="userSpaceOnUse"><path d="M185 0H86V708H185Z" /></clipPath>
+<g class="letter" data-letter="I" data-index="10" style="--construct-x: 48px; --letter-delay: 220ms">
+<path class="draft-guide guide-horizontal" d="M-43.8 708L266.4 708" pathLength="1" style="--guide-delay: 220ms" />
+<path class="draft-guide guide-horizontal" d="M11.2 0L330.2 0" pathLength="1" style="--guide-delay: 275ms" />
+<path class="draft-guide guide-vertical" d="M86 -90.2L86 840" pathLength="1" style="--guide-delay: 330ms" />
+<path class="draft-guide guide-vertical" d="M185 -118.8L185 791.6" pathLength="1" style="--guide-delay: 385ms" />
+<path class="letter-fill" d="M185 0H86V708H185Z" style="--fill-delay: 1760ms" />
+<path class="outline-trace" d="M185 0H86V708H185Z" pathLength="1" clip-path="url(#letter-clip-10)" style="--outline-delay: 400ms" />
+</g>
+</g><g transform="translate(8654 0)">
+<clipPath id="letter-clip-11" clipPathUnits="userSpaceOnUse"><path d="M800 355Q800 273 771.5 204.5Q743 136 693.0 86.5Q643 37 574.0 9.5Q505 -18 424 -18Q343 -18 274.5 9.5Q206 37 156.0 86.5Q106 136 78.0 204.5Q50 273 50 355Q50 438 78.0 506.5Q106 575 156.0 623.5Q206 672 274.5 699.0Q343 726 424 726Q505 726 574.0 699.0Q643 672 693.0 623.5Q743 575 771.5 506.5Q800 438 800 355ZM693 355Q693 413 674.0 464.5Q655 516 620.0 555.0Q585 594 535.5 616.5Q486 639 424 639Q363 639 313.5 616.5Q264 594 229.5 555.0Q195 516 176.0 464.5Q157 413 157 355Q157 296 176.0 244.0Q195 192 230.0 153.5Q265 115 314.0 93.0Q363 71 424 71Q485 71 535.0 93.0Q585 115 620.0 153.5Q655 192 674.0 244.0Q693 296 693 355Z" /></clipPath>
+<g class="letter" data-letter="O" data-index="11" style="--construct-x: 60px; --letter-delay: 242ms">
+<path class="draft-guide guide-vertical" d="M50 -133.62L50 895.2" pathLength="1" style="--guide-delay: 242ms" />
+<path class="draft-guide guide-vertical" d="M800 -170.28L800 833.16" pathLength="1" style="--guide-delay: 297ms" />
+<path class="letter-fill" d="M800 355Q800 273 771.5 204.5Q743 136 693.0 86.5Q643 37 574.0 9.5Q505 -18 424 -18Q343 -18 274.5 9.5Q206 37 156.0 86.5Q106 136 78.0 204.5Q50 273 50 355Q50 438 78.0 506.5Q106 575 156.0 623.5Q206 672 274.5 699.0Q343 726 424 726Q505 726 574.0 699.0Q643 672 693.0 623.5Q743 575 771.5 506.5Q800 438 800 355ZM693 355Q693 413 674.0 464.5Q655 516 620.0 555.0Q585 594 535.5 616.5Q486 639 424 639Q363 639 313.5 616.5Q264 594 229.5 555.0Q195 516 176.0 464.5Q157 413 157 355Q157 296 176.0 244.0Q195 192 230.0 153.5Q265 115 314.0 93.0Q363 71 424 71Q485 71 535.0 93.0Q585 115 620.0 153.5Q655 192 674.0 244.0Q693 296 693 355Z" style="--fill-delay: 1778ms" />
+<path class="outline-trace" d="M800 355Q800 273 771.5 204.5Q743 136 693.0 86.5Q643 37 574.0 9.5Q505 -18 424 -18Q343 -18 274.5 9.5Q206 37 156.0 86.5Q106 136 78.0 204.5Q50 273 50 355Q50 438 78.0 506.5Q106 575 156.0 623.5Q206 672 274.5 699.0Q343 726 424 726Q505 726 574.0 699.0Q643 672 693.0 623.5Q743 575 771.5 506.5Q800 438 800 355Z" pathLength="1" clip-path="url(#letter-clip-11)" style="--outline-delay: 426ms" />
+<path class="outline-trace" d="M693 355Q693 413 674.0 464.5Q655 516 620.0 555.0Q585 594 535.5 616.5Q486 639 424 639Q363 639 313.5 616.5Q264 594 229.5 555.0Q195 516 176.0 464.5Q157 413 157 355Q157 296 176.0 244.0Q195 192 230.0 153.5Q265 115 314.0 93.0Q363 71 424 71Q485 71 535.0 93.0Q585 115 620.0 153.5Q655 192 674.0 244.0Q693 296 693 355Z" pathLength="1" clip-path="url(#letter-clip-11)" style="--outline-delay: 464ms" />
+</g>
+</g><g transform="translate(9663 0)">
+<clipPath id="letter-clip-12" clipPathUnits="userSpaceOnUse"><path d="M585 142H587V708H686V0H561L187 578H185V0H86V708H215Z" /></clipPath>
+<g class="letter" data-letter="N" data-index="12" style="--construct-x: 72px; --letter-delay: 264ms">
+<path class="draft-guide guide-horizontal" d="M-8.4 708L745.2 708" pathLength="1" style="--guide-delay: 264ms" />
+<path class="draft-guide guide-horizontal" d="M31.6 0L791.6 0" pathLength="1" style="--guide-delay: 319ms" />
+<path class="draft-guide guide-edge" d="M686 770.4L686 -97.6" pathLength="1" style="--guide-delay: 374ms" />
+<path class="draft-guide guide-edge" d="M86 -72L86 828" pathLength="1" style="--guide-delay: 429ms" />
+<path class="draft-guide guide-edge" d="M609.675 -75.2255L137.89 653.897" pathLength="1" style="--guide-delay: 484ms" />
+<path class="letter-fill" d="M585 142H587V708H686V0H561L187 578H185V0H86V708H215Z" style="--fill-delay: 1796ms" />
+<path class="outline-trace" d="M585 142H587V708H686V0H561L187 578H185V0H86V708H215Z" pathLength="1" clip-path="url(#letter-clip-12)" style="--outline-delay: 452ms" />
+</g>
+</g>
+  </g>
+</svg>
