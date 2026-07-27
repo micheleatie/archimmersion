@@ -14,6 +14,8 @@
 - Mobile final state: `output/design-qa/sequence-v12-mobile-final.png`
 - Third consecutive reload at 650 ms:
   `output/design-qa/reload-third-load-650ms.png`
+- Optimized drawing sequence:
+  `output/design-qa/safari-optimized-sequence.png`
 - Desktop viewport: 1440 × 900 CSS pixels
 - Mobile viewport: 320 × 568 CSS pixels
 
@@ -87,6 +89,13 @@ No actionable P0, P1, or P2 differences remain.
   contours visible, and the supporting copy hidden. Two consecutive 320-pixel
   reloads produced the same construction state. The final state still had all
   13 fills complete and no visible guides or contours.
+- Rendering cost: all 62 guides now use one fixed normalized dash pattern and
+  animate only its offset. This preserves the same draw, hold, and fade states
+  without recalculating dash geometry on every frame. Paint containment limits
+  invalidation to the wordmark. Desktop Safari control was unavailable in this
+  Codex session, so the Safari-specific improvement requires confirmation on
+  the reporting Mac; the optimized desktop and mobile sequences were visually
+  verified with no browser errors or overflow.
 
 ## Preserved options
 
@@ -120,6 +129,8 @@ active architectural version cannot overwrite them.
 - [x] Preserve earlier local options.
 - [x] Respect reduced-motion preferences.
 - [x] Restart the complete construction sequence on every page reload.
+- [x] Replace animated dash geometry with offset-only guide drawing.
+- [x] Contain SVG repaint work to the wordmark.
 - [x] Verify desktop sequence, mobile layout, visual comparison, and logs.
 
 final result: passed

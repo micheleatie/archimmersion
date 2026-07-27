@@ -38,6 +38,7 @@ body {
 }
 
 .holding-wordmark {
+  contain: paint;
   display: block;
   height: auto;
   margin: 0 auto;

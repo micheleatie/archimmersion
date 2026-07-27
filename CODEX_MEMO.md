@@ -38,6 +38,13 @@ cache at the end of its internal animation while the page-level copy animations
 started again. Inline markup gives every navigation or reload a new animation
 timeline, so the entire construction sequence always restarts together.
 
+For browser rendering efficiency, drafting guides keep a fixed normalized dash
+pattern and animate only `stroke-dashoffset`. Do not animate
+`stroke-dasharray`: Safari may repeatedly tessellate all 62 guide strokes and
+pause during the construction phase. The root wordmark also uses paint
+containment so its frame-by-frame SVG repaint does not invalidate the rest of
+the holding page.
+
 ## Working entry points
 
 - Start locally with `npm run dev`.

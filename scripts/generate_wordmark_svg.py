@@ -433,8 +433,8 @@ def main() -> None:
       animation-delay: var(--guide-delay);
       fill: none;
       stroke: #161616;
-      stroke-dasharray: 0 1;
-      stroke-dashoffset: 0;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
       stroke-linecap: round;
       stroke-opacity: 0;
       stroke-width: 0.85;
@@ -486,22 +486,22 @@ def main() -> None:
     @keyframes draw-guide {{
       0%,
       3% {{
-        stroke-dasharray: 0 1;
+        stroke-dashoffset: 1;
         stroke-opacity: var(--guide-opacity);
       }}
 
       60% {{
-        stroke-dasharray: 1 0;
+        stroke-dashoffset: 0;
         stroke-opacity: var(--guide-opacity);
       }}
 
       84% {{
-        stroke-dasharray: 1 0;
+        stroke-dashoffset: 0;
         stroke-opacity: var(--guide-opacity);
       }}
 
       100% {{
-        stroke-dasharray: 1 0;
+        stroke-dashoffset: 0;
         stroke-opacity: 0;
       }}
     }}
