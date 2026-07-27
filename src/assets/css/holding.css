@@ -27,9 +27,8 @@ body {
 
 .holding-message {
   margin: 0;
-  max-width: 42rem;
   text-align: center;
-  width: min(100%, 42rem);
+  width: 100%;
 }
 
 .holding-title {
@@ -38,7 +37,8 @@ body {
   letter-spacing: 0.16em;
   line-height: 1;
   margin: 0;
-  padding-left: 0.16em;
+  padding: 0;
+  white-space: nowrap;
 }
 
 .holding-copy {
@@ -72,6 +72,5 @@ body {
   .holding-title {
     font-size: clamp(1.5rem, 8.5vw, 2.1rem);
     letter-spacing: 0.1em;
-    padding-left: 0.1em;
   }
 }
