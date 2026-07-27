@@ -16,13 +16,16 @@ Run `npm run build` before publishing. Generated files live in `_site/` and are 
 - `src/index.njk` — holding-page content
 - `src/_includes/layouts/holding.njk` — minimal document shell
 - `src/assets/css/holding.css` — holding-page styling
-- `src/assets/img/wordmark-construction.svg` — self-contained animated wordmark
-- `scripts/generate_wordmark_svg.py` — wordmark asset generator
+- `src/_includes/wordmark-construction.njk` — inline animated wordmark used by
+  the holding page
+- `src/assets/img/wordmark-construction.svg` — standalone generated copy
+- `scripts/generate_wordmark_svg.py` — generator for both wordmark copies
 
 The page intentionally has no navigation, contact route, or service content.
 Its title is revealed through varied architectural guide lines and continuous
 Avenir Next contour drawing, with a reduced-motion fallback to the finished
-wordmark.
+wordmark. The live wordmark is inline so every page reload creates a fresh
+animation timeline instead of reusing a completed external SVG image.
 
 ## Previous site
 

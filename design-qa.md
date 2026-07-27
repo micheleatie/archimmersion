@@ -12,6 +12,8 @@
   `output/design-qa/architectural-reference-comparison.png`
 - Mobile drawing state: `output/design-qa/sequence-v12-mobile-mid.png`
 - Mobile final state: `output/design-qa/sequence-v12-mobile-final.png`
+- Third consecutive reload at 650 ms:
+  `output/design-qa/reload-third-load-650ms.png`
 - Desktop viewport: 1440 × 900 CSS pixels
 - Mobile viewport: 320 × 568 CSS pixels
 
@@ -79,6 +81,12 @@ No actionable P0, P1, or P2 differences remain.
   wordmark immediately and suppresses every guide and outline animation.
 - Runtime: the SVG loaded completely. Browser logs contained no errors or
   warnings.
+- Reload behavior: the wordmark is inline in the page rather than an external
+  cached image. At 650 ms, the initial load and three consecutive desktop
+  reloads each had 0 of 13 fills complete, all 62 guides visible, all 17
+  contours visible, and the supporting copy hidden. Two consecutive 320-pixel
+  reloads produced the same construction state. The final state still had all
+  13 fills complete and no visible guides or contours.
 
 ## Preserved options
 
@@ -111,6 +119,7 @@ active architectural version cannot overwrite them.
 - [x] Remove the secondary holding-page tagline.
 - [x] Preserve earlier local options.
 - [x] Respect reduced-motion preferences.
+- [x] Restart the complete construction sequence on every page reload.
 - [x] Verify desktop sequence, mobile layout, visual comparison, and logs.
 
 final result: passed

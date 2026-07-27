@@ -32,6 +32,12 @@ timeline, and all letters reach their exact final positions together as the
 last outlines finish. Its linear pace keeps the convergence perceptible through
 the late fill and outline-fade stages rather than resolving halfway through.
 
+The live SVG is included directly in the page document. This is intentional:
+an external SVG loaded through an `<img>` could be restored from the browser
+cache at the end of its internal animation while the page-level copy animations
+started again. Inline markup gives every navigation or reload a new animation
+timeline, so the entire construction sequence always restarts together.
+
 ## Working entry points
 
 - Start locally with `npm run dev`.
@@ -43,10 +49,11 @@ the late fill and outline-fade stages rather than resolving halfway through.
 
 - `src/index.njk` contains the holding-page content.
 - `src/_includes/layouts/holding.njk` provides the document shell.
+- `src/_includes/wordmark-construction.njk` is the inline live wordmark.
 - `src/assets/css/holding.css` contains all live presentation styles.
-- `src/assets/img/wordmark-construction.svg` is the active generated wordmark.
-- `scripts/generate_wordmark_svg.py` regenerates that SVG from the local system
-  font without adding a browser or build-time dependency.
+- `src/assets/img/wordmark-construction.svg` is the standalone generated copy.
+- `scripts/generate_wordmark_svg.py` regenerates both wordmark copies from the
+  local system font without adding a browser or build-time dependency.
 - `.eleventy.js` is intentionally minimal and copies only the active assets.
 
 ## Archived site

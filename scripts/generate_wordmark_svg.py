@@ -16,6 +16,10 @@ FONT_INDEX = 5  # Avenir Next Medium
 TRACKING = 160
 PADDING = 220
 OUTPUT_PATH = Path(__file__).resolve().parents[1] / "src/assets/img/wordmark-construction.svg"
+INLINE_OUTPUT_PATH = (
+    Path(__file__).resolve().parents[1]
+    / "src/_includes/wordmark-construction.njk"
+)
 SAVED_V1_PATH = (
     Path(__file__).resolve().parents[1]
     / "archive/holding-variants/contour-drawing-v1/wordmark-construction.svg"
@@ -411,9 +415,10 @@ def main() -> None:
 
     svg = f"""<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg"
+  class="holding-wordmark"
   viewBox="{view_x:.2f} {view_y:.2f} {view_width:.2f} {view_height:.2f}"
-  role="img"
-  aria-label="Archimmersion">
+  aria-hidden="true"
+  focusable="false">
   <style>
     .letter {{
       animation: settle-letter 3.26s linear both;
@@ -567,6 +572,9 @@ def main() -> None:
 
     OUTPUT_PATH.write_text(svg, encoding="utf-8")
     print(f"Wrote {OUTPUT_PATH}")
+    inline_svg = svg.split("?>", 1)[1].lstrip()
+    INLINE_OUTPUT_PATH.write_text(inline_svg, encoding="utf-8")
+    print(f"Wrote {INLINE_OUTPUT_PATH}")
     if not SAVED_V1_PATH.exists():
         SAVED_V1_PATH.parent.mkdir(parents=True, exist_ok=True)
         SAVED_V1_PATH.write_text(svg, encoding="utf-8")
