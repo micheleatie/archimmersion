@@ -1,0 +1,77 @@
+:root {
+  color-scheme: light;
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: #f7f7f5;
+  color: #161616;
+}
+
+.holding-page {
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  padding: 2rem;
+}
+
+.holding-message {
+  margin: 0;
+  max-width: 42rem;
+  text-align: center;
+  width: min(100%, 42rem);
+}
+
+.holding-title {
+  font-size: clamp(2rem, 7vw, 5.5rem);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  margin: 0;
+  padding-left: 0.16em;
+}
+
+.holding-copy {
+  color: #505050;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+  margin: 1.8rem 0 0;
+  text-transform: uppercase;
+}
+
+.holding-contact {
+  color: inherit;
+  display: inline-block;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  margin-top: 1.1rem;
+  text-underline-offset: 0.28em;
+}
+
+.holding-contact:hover,
+.holding-contact:focus-visible {
+  color: #6d6d6d;
+}
+
+@media (max-width: 420px) {
+  .holding-page {
+    padding: 1.5rem;
+  }
+
+  .holding-title {
+    font-size: clamp(1.5rem, 8.5vw, 2.1rem);
+    letter-spacing: 0.1em;
+    padding-left: 0.1em;
+  }
+}
