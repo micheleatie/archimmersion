@@ -16,6 +16,7 @@
   `output/design-qa/reload-third-load-650ms.png`
 - Optimized drawing sequence:
   `output/design-qa/safari-optimized-sequence.png`
+- Favicon size comparison: `output/design-qa/favicon-size-check.png`
 - Desktop viewport: 1440 × 900 CSS pixels
 - Mobile viewport: 320 × 568 CSS pixels
 
@@ -96,6 +97,10 @@ No actionable P0, P1, or P2 differences remain.
   Codex session, so the Safari-specific improvement requires confirmation on
   the reporting Mac; the optimized desktop and mobile sequences were visually
   verified with no browser errors or overflow.
+- Favicon: the transparent SVG uses the exact Avenir Next A from the wordmark
+  plus one low-opacity construction axis. It remains recognizable at 16 and
+  32 pixels, provides a light-on-dark color-scheme variant, and is linked as
+  both the standard SVG favicon and Safari mask icon.
 
 ## Preserved options
 
@@ -131,6 +136,7 @@ active architectural version cannot overwrite them.
 - [x] Restart the complete construction sequence on every page reload.
 - [x] Replace animated dash geometry with offset-only guide drawing.
 - [x] Contain SVG repaint work to the wordmark.
+- [x] Add and verify the architectural SVG favicon at tab sizes.
 - [x] Verify desktop sequence, mobile layout, visual comparison, and logs.
 
 final result: passed

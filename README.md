@@ -16,6 +16,7 @@ Run `npm run build` before publishing. Generated files live in `_site/` and are 
 - `src/index.njk` — holding-page content
 - `src/_includes/layouts/holding.njk` — minimal document shell
 - `src/assets/css/holding.css` — holding-page styling
+- `src/assets/img/favicon.svg` — architectural A favicon and Safari mask icon
 - `src/_includes/wordmark-construction.njk` — inline animated wordmark used by
   the holding page
 - `src/assets/img/wordmark-construction.svg` — standalone generated copy

@@ -58,6 +58,10 @@ the holding page.
 - `src/_includes/layouts/holding.njk` provides the document shell.
 - `src/_includes/wordmark-construction.njk` is the inline live wordmark.
 - `src/assets/css/holding.css` contains all live presentation styles.
+- `src/assets/img/favicon.svg` is the transparent architectural A favicon. It
+  reuses the exact first-letter geometry from the wordmark, includes a subtle
+  construction axis, adapts to dark color schemes, and doubles as Safari's
+  pinned-tab mask.
 - `src/assets/img/wordmark-construction.svg` is the standalone generated copy.
 - `scripts/generate_wordmark_svg.py` regenerates both wordmark copies from the
   local system font without adding a browser or build-time dependency.
