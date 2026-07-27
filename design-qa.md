@@ -97,8 +97,9 @@ No actionable P0, P1, or P2 differences remain.
   Codex session, so the Safari-specific improvement requires confirmation on
   the reporting Mac; the optimized desktop and mobile sequences were visually
   verified with no browser errors or overflow.
-- Favicon: the transparent SVG uses the exact Avenir Next A from the wordmark
-  plus one low-opacity construction axis. It remains recognizable at 16 and
+- Favicon: the transparent SVG uses the exact Avenir Next A from the wordmark.
+  Its two low-opacity guides are precise extensions of the real outer diagonal
+  edges rather than a generic center axis. It remains recognizable at 16 and
   32 pixels, provides a light-on-dark color-scheme variant, and is linked as
   both the standard SVG favicon and Safari mask icon.
 

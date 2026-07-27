@@ -4,7 +4,8 @@
       fill: #161616;
     }
 
-    .axis {
+    .guides {
+      fill: none;
       stroke: #161616;
       stroke-width: 0.55;
       opacity: 0.2;
@@ -15,12 +16,16 @@
         fill: #f7f7f5;
       }
 
-      .axis {
+      .guides {
         stroke: #f7f7f5;
       }
     }
   </style>
-  <path class="axis" d="M16.16 0.75V31.25" />
+  <path
+    class="guides"
+    d="M-30 -81L347 789M367 789L741 -81"
+    transform="translate(2 30.4) scale(0.04 -0.04)"
+  />
   <path
     class="mark"
     d="M115 0H5L312 708H402L706 0H594L522 174H186ZM221 261H486L354 593Z"
